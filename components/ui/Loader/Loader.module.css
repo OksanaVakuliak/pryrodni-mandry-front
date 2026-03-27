@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader {
+  width: 80px;
+  height: 80px;
+
+  fill: none;
+  stroke: #22c55e;
+
+  stroke-width: 2;
+
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+
+  animation: draw 1.5s ease-in-out infinite;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 150;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -150;
+  }
+}
