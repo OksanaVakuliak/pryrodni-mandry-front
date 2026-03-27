@@ -1,8 +1,9 @@
-interface IconProps {
+import { SVGProps } from 'react';
+
+interface IconProps extends SVGProps<SVGSVGElement> {
   name: string;
   width?: number;
   height?: number;
-  className?: string;
 }
 
 export const Icon = ({
@@ -10,9 +11,16 @@ export const Icon = ({
   width = 24,
   height = 24,
   className,
+  ...props
 }: IconProps) => {
   return (
-    <svg width={width} height={height} className={className}>
+    <svg
+      width={width}
+      height={height}
+      className={className}
+      aria-hidden="true"
+      {...props}
+    >
       <use href={`/sprite.svg#${name}`} />
     </svg>
   );
