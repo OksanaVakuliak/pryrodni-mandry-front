@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { User } from '@/types/Users';
-import { clientApi } from '@/lib/api/api';
+import api from '@/lib/api/api';
 import { AxiosError } from 'axios';
 
 interface AuthState {
@@ -32,7 +32,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   checkAuth: async () => {
     try {
-      const { data } = await clientApi.get<User>('/api/profile/me');
+      const { data } = await api.get<User>('/api/profile/me');
 
       set({
         user: data,
