@@ -1,0 +1,31 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  background: #e6f2e8;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 72px;
+  height: 72px;
+}
+
+.avatar {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.meta {
+  font-size: 14px;
+  color: #6b7280;
+}

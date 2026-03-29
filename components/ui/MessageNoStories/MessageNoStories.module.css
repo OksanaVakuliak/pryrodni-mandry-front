@@ -1,0 +1,26 @@
+.wrapper {
+  background: #e6f2e8;
+  padding: 24px;
+  border-radius: 16px;
+  max-width: 420px;
+}
+
+.text {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1f2937;
+}
+
+.button {
+  background: #3b7d3f;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #2f6a33;
+}
