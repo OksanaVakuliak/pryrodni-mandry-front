@@ -34,9 +34,7 @@ export default function AuthLayout({
     <>
       <AuthHeader />
 
-      <main>
-        <div>{children}</div>
-      </main>
+      <main>{children}</main>
 
       <AuthFooter />
     </>
