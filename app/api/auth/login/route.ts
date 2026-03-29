@@ -1,25 +1,21 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { serverApi } from '@/lib/api/serverApi';
+import { AxiosError } from 'axios';
+import { LoginBody } from '@/types/auth';
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    const body: LoginBody = await req.json();
 
-    const res = await fetch(`${process.env.BACKEND_URL}/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      return NextResponse.json(data, { status: res.status });
-    }
+    const { data } = await serverApi.post('/auth/login', body);
 
     return NextResponse.json(data);
-  } catch {
-    return NextResponse.json({ message: 'Server error' }, { status: 500 });
+  } catch (error) {
+    const err = error as AxiosError<{ message: string }>;
+
+    return NextResponse.json(
+      { message: err.response?.data?.message || 'Login error' },
+      { status: err.response?.status || 500 },
+    );
   }
 }

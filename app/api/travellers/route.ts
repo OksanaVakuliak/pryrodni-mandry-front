@@ -1,17 +1,18 @@
 import { NextResponse } from 'next/server';
+import { serverApi } from '@/lib/api/serverApi';
+import { getAuthHeaders } from '@/lib/api/serverApi';
 
 export async function GET() {
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/travellers`);
+    const headers = await getAuthHeaders();
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      return NextResponse.json(data, { status: res.status });
-    }
+    const { data } = await serverApi.get('/travellers', { headers });
 
     return NextResponse.json(data);
   } catch {
-    return NextResponse.json({ message: 'Server error' }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Failed to fetch travellers' },
+      { status: 500 },
+    );
   }
 }

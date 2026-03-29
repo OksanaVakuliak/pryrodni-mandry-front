@@ -1,17 +1,15 @@
 import { NextResponse } from 'next/server';
+import { serverApi } from '@/lib/api/serverApi';
 
 export async function GET() {
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/stories/popular`);
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      return NextResponse.json(data, { status: res.status });
-    }
+    const { data } = await serverApi.get('/stories/popular');
 
     return NextResponse.json(data);
   } catch {
-    return NextResponse.json({ message: 'Server error' }, { status: 500 });
+    return NextResponse.json(
+      { message: 'Failed to fetch stories' },
+      { status: 500 },
+    );
   }
 }
