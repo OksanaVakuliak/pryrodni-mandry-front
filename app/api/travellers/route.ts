@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { serverApi } from '@/lib/api/serverApi';
+import { serverApi } from '@/app/api/api';
 import { getAuthHeaders } from '@/lib/api/serverApi';
 
 export async function GET() {

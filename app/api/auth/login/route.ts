@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { serverApi } from '@/lib/api/serverApi';
+import { serverApi } from '@/app/api/api';
 import { AxiosError } from 'axios';
 import { LoginBody } from '@/types/auth';
 
