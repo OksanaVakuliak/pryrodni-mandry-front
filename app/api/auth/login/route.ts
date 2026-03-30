@@ -1,21 +1,35 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { serverApi } from '@/app/api/api';
-import { AxiosError } from 'axios';
-import { LoginBody } from '@/types/auth';
+import { cookies } from 'next/headers';
+import { parse } from 'cookie';
 
 export async function POST(req: NextRequest) {
   try {
-    const body: LoginBody = await req.json();
+    const body = await req.json();
 
-    const { data } = await serverApi.post('/auth/login', body);
+    const res = await serverApi.post('/auth/login', body);
 
-    return NextResponse.json(data);
-  } catch (error) {
-    const err = error as AxiosError<{ message: string }>;
+    const cookieStore = await cookies();
+    const setCookie = res.headers['set-cookie'];
 
-    return NextResponse.json(
-      { message: err.response?.data?.message || 'Login error' },
-      { status: err.response?.status || 500 },
-    );
+    if (setCookie) {
+      const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
+
+      for (const cookieStr of cookieArray) {
+        const parsed = parse(cookieStr);
+
+        if (parsed.accessToken) {
+          cookieStore.set('accessToken', parsed.accessToken);
+        }
+
+        if (parsed.refreshToken) {
+          cookieStore.set('refreshToken', parsed.refreshToken);
+        }
+      }
+    }
+
+    return NextResponse.json(res.data);
+  } catch {
+    return NextResponse.json({ message: 'Login error' }, { status: 500 });
   }
 }
