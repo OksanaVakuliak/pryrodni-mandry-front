@@ -11,7 +11,8 @@ export async function POST() {
     await serverApi.post('/auth/logout', {}, { headers });
 
     const cookieStore = await cookies();
-    cookieStore.delete('token');
+    cookieStore.delete('accessToken');
+    cookieStore.delete('refreshToken');
 
     return new NextResponse(null, { status: 204 });
   } catch (error) {
