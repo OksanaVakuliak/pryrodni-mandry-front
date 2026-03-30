@@ -32,23 +32,6 @@
   }
 }
 
-.title {
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 120%;
-  letter-spacing: -0.01em;
-  color: var(--color-scheme-1-text);
-
-  @media only screen and (min-width: 768px) {
-    font-size: 44px;
-  }
-
-  @media only screen and (min-width: 1440px) {
-    font-size: 52px;
-  }
-}
-
 .link {
   font-family: var(--font-family);
   font-weight: 500;
@@ -94,44 +77,38 @@
 .navButtons {
   display: flex;
   gap: 10px;
-  margin: 40px 0;
+  margin-top: 40px;
 
   justify-content: flex-end;
 }
 
 .navButton {
-  border: 1px solid var(--color-scheme-1-border);
-
-  padding: 12px;
-  width: 48px;
-  height: 48px;
-
-  background: var(--color-mantis-lighter);
-
-  transition:
-    background var(--transition-default),
-    opasity var(--transition-default);
+  border: 1px solid var(--color-scheme-1-border) !important;
+  padding: 12px !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: var(--color-mantis-lighter) !important;
 }
 
 .navNext,
 .navPrev {
-  border-radius: 8px;
+  border-radius: 8px !important;
 }
 
 .navButton:hover,
 .navButton:focus {
-  background: var(--color-neutral-lightest);
+  background: var(--color-neutral-lightest) !important;
 }
 
 .navButton:active {
-  background: var(--color-mantis-light);
+  background: var(--color-mantis-light) !important;
 }
 
 .navButton:disabled {
-  background: var(--color-scheme-1-foreground);
-  opacity: 0.4;
+  background: var(--color-scheme-1-foreground) !important;
+  opacity: 0.4 !important;
 }
 
 .icon {
-  stroke: #1b391b;
+  stroke: var(--color-mantis-darkest);
 }
