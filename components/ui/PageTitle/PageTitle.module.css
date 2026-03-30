@@ -4,7 +4,6 @@
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--color-scheme-1-text);
-  margin: 0;
 }
 
 h1.title {
@@ -23,6 +22,7 @@ h3.title {
   h1.title {
     font-size: 48px;
   }
+
   h2.title {
     font-size: 44px;
   }
@@ -32,9 +32,11 @@ h3.title {
   h1.title {
     font-size: 56px;
   }
+
   h2.title {
     font-size: 52px;
   }
+
   h3.title {
     font-size: 26px;
   }
