@@ -5,7 +5,6 @@ import { useAuthStore } from "@/lib/store/useAuthStore";
 
 const Join = () => {
     const { isAuthenticated } = useAuthStore();
-    // const isAuthenticated = true;
     return (
         <section className={`container ${css.joinSection}`} id='join'>
             <div className={css.wrapper}>
