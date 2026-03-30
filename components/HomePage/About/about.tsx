@@ -28,6 +28,7 @@ const About = () => {
                 height={410}
                 src="/Image/About.webp"
                 alt="forest"
+                loading="eager"
             />
         </section>
 )

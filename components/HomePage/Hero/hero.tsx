@@ -19,6 +19,7 @@ const Hero = () => {
                     height={469}
                     src="/Image/Hero.webp"
                     alt="mountains"
+                    loading="eager"
                 />
             </div>
         </section>);
