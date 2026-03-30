@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from "next/image";
 import css from './hero.module.css';
 
@@ -14,10 +13,10 @@ const Hero = () => {
                 </div>
                 <Image
                     className={css.heroImage}
+                    width={335}
+                    height={469}
                     src="/Image/Hero.webp"
-                    alt="hero"
-                    width={200}
-                    height={200}
+                    alt="mountains"
                 />
             </div>
         </section>);

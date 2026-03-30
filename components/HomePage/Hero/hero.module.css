@@ -1,13 +1,7 @@
-.heroSection {
-    padding: 64px 20px;
-}
-
 .wrapper {
     display: flex;
     flex-direction: column;
 }
-
-.heroContent {}
 
 .heroLink {
     display: block;
@@ -47,16 +41,10 @@
     width: 335px;
     height: 469px;
     margin-bottom: 24px;
+    object-fit: cover;
 }
 
-
-
 @media only screen and (min-width: 768px) {
-    .heroSection {
-        padding-left: 32px;
-        padding-right: 32px;
-    }
-
     .heroImage {
         width: 704px;
     }
@@ -71,9 +59,6 @@
 }
 
 @media only screen and (min-width: 1440px) {
-    .heroSection {
-        padding: 72px 64px;
-    }
 
     .heroTitle {
         font-size: 56px;
@@ -98,7 +83,6 @@
         height: 580px;
         padding-top: 73px;
         padding-bottom: 73px;
-
         margin-right: 24px;
     }
 
