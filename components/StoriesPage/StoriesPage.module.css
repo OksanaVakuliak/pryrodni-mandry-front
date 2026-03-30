@@ -1,0 +1,20 @@
+.pageWrapper {
+  background-color: var(--color-scheme-2-background);
+  min-height: 100vh;
+}
+
+.showMoreContainer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 72px;
+}
+
+.showMoreButton {
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .showMoreContainer {
+    padding-bottom: 48px;
+  }
+}
