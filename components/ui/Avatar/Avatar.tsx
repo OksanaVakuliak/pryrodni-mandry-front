@@ -15,10 +15,7 @@ export const Avatar = ({
   className = '',
 }: AvatarProps) => {
   return (
-    <div
-      className={`${styles.avatarWrapper} ${className}`}
-      style={{ '--avatar-size': `${size}px` } as React.CSSProperties}
-    >
+    <div className={`${styles.avatarWrapper} ${className}`}>
       {src ? (
         <Image
           src={src}

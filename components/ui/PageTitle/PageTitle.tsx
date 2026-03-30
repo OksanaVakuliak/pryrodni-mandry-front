@@ -4,7 +4,7 @@ import React from 'react';
 interface PageTitleProps {
   children: React.ReactNode;
   className?: string;
-  tag?: 'h1' | 'h2';
+  tag?: 'h1' | 'h2' | 'h3';
 }
 
 export const PageTitle = ({

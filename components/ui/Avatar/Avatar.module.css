@@ -1,6 +1,6 @@
 .avatarWrapper {
-  width: var(--avatar-size, 40px);
-  height: var(--avatar-size, 40px);
+  width: var(--avatar-size, 32px);
+  height: var(--avatar-size, 32px);
 
   display: flex;
   align-items: center;
@@ -14,8 +14,8 @@
 }
 
 .avatarImage {
-  width: 100% !important;
-  height: 100% !important;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
