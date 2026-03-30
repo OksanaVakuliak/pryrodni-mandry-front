@@ -3,6 +3,7 @@
 import Link, { LinkProps as NextLinkProps } from 'next/link';
 import { ReactNode, AnchorHTMLAttributes } from 'react';
 import styles from './Link.module.css';
+import { Icon } from '../Icon/Icon';
 
 interface CustomLinkProps
   extends NextLinkProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
@@ -37,13 +38,10 @@ export const CustomLink = ({
       onClick={isDisabled ? (e) => e.preventDefault() : props.onClick}
     >
       {variant === 'iconButton' && iconId && (
-        <svg className={styles.icon}>
-          <use href={`/Icons/sprite.svg#${iconId}`} />
-        </svg>
+        <Icon name={iconId} className={styles.icon} width={24} height={24} />
       )}
 
       {variant === 'textWithBorder' && children}
-
       {variant !== 'iconButton' && variant !== 'textWithBorder' && children}
     </Link>
   );

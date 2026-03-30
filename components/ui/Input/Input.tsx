@@ -1,5 +1,6 @@
 'use client';
-import { forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes, useId } from 'react';
+import { Icon } from '../Icon/Icon';
 import styles from './Input.module.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -9,26 +10,43 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, iconId, className = '', ...props }, ref) => {
+  ({ label, error, iconId, className = '', id, ...props }, ref) => {
+    const generatedId = useId();
+    const inputId = id || generatedId;
+    const errorId = `${inputId}-error`;
+
     return (
       <div className={`${styles.inputContainer} ${className}`}>
-        {label && <label className={styles.label}>{label}</label>}
+        {label && (
+          <label htmlFor={inputId} className={styles.label}>
+            {label}
+          </label>
+        )}
 
         <div className={styles.inputWrapper}>
           <input
             ref={ref}
+            id={inputId}
             className={`${styles.input} ${error ? styles.inputError : ''}`}
+            aria-invalid={!!error}
+            aria-describedby={error ? errorId : undefined}
             {...props}
           />
 
           {iconId && (
-            <svg className={styles.icon}>
-              <use href={`/Icons/sprite.svg#${iconId}`} />
-            </svg>
+            <Icon
+              name={iconId}
+              className={styles.icon}
+              width={20}
+              height={20}
+            />
           )}
         </div>
-
-        {error && <span className={styles.errorMessage}>{error}</span>}
+        {error && (
+          <span id={errorId} className={styles.errorMessage}>
+            {error}
+          </span>
+        )}
       </div>
     );
   },

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from './Avatar.module.css';
+import { Icon } from '../Icon/Icon';
 
 interface AvatarProps {
   src?: string;
@@ -7,19 +8,16 @@ interface AvatarProps {
   size?: number;
   className?: string;
 }
-
 export const Avatar = ({
   src,
   alt = 'User avatar',
   size = 40,
   className = '',
 }: AvatarProps) => {
-  const spritePath = '/Icons/sprite.svg';
-  const placeholderId = 'icon-image';
   return (
     <div
       className={`${styles.avatarWrapper} ${className}`}
-      style={{ width: size, height: size }}
+      style={{ '--avatar-size': `${size}px` } as React.CSSProperties}
     >
       {src ? (
         <Image
@@ -28,17 +26,15 @@ export const Avatar = ({
           width={size}
           height={size}
           className={styles.avatarImage}
-          priority={size > 100}
         />
       ) : (
-        <svg
+        <Icon
+          name="icon-image"
           width={size}
           height={size}
           className={styles.avatarSvg}
           aria-label={alt}
-        >
-          <use href={`${spritePath}#${placeholderId}`} />
-        </svg>
+        />
       )}
     </div>
   );

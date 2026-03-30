@@ -92,3 +92,8 @@
   font-size: 12px;
   color: var(--color-red);
 }
+.dropdownItem:focus {
+  outline: none;
+  background-color: var(--color-mantis-lighter);
+  color: var(--color-scheme-1-accent);
+}

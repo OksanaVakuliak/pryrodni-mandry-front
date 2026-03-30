@@ -1,6 +1,8 @@
 'use client';
+
 import { forwardRef, useState } from 'react';
 import { Input } from '../Input/Input';
+import { Icon } from '../Icon/Icon';
 import styles from './PasswordInput.module.css';
 
 interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -35,9 +37,12 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           onClick={togglePasswordVisibility}
           aria-label={showPassword ? 'Сховати пароль' : 'Показати пароль'}
         >
-          <svg className={styles.eyeIcon}>
-            <use href={`/Icons/sprite.svg#${iconId}`} />
-          </svg>
+          <Icon
+            name={iconId}
+            className={styles.eyeIcon}
+            width={20}
+            height={20}
+          />
         </button>
       </div>
     );
