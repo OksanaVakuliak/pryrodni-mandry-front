@@ -1,0 +1,59 @@
+.link {
+  text-decoration: none;
+  transition: all var(--transition-default);
+  cursor: pointer;
+  font-family: var(--font-family);
+  border: 1px solid transparent;
+}
+
+.textWithBorder {
+  color: var(--color-scheme-2-text);
+  font-size: 18px;
+  font-weight: 400;
+  padding: 4px 12px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.textWithBorder:hover,
+.textWithBorder:focus {
+  border-color: var(--color-scheme-2-text);
+}
+
+.textWithBorder:active {
+  background-color: var(--color-neutral-light);
+  border-color: var(--color-scheme-2-text);
+}
+
+.iconButton {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: var(--color-scheme-2-text);
+}
+
+.iconButton:hover,
+.iconButton:focus {
+  border-color: var(--color-scheme-2-text);
+}
+
+.iconButton:active {
+  background-color: var(--color-neutral-light);
+  border-color: var(--color-scheme-2-text);
+}
+
+.iconButton:disabled {
+  color: var(--opacity-neutral-darkest-15);
+  border-color: transparent;
+  cursor: not-allowed;
+}
+
+.iconButton .icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
