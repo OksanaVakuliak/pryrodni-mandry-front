@@ -8,12 +8,7 @@
     margin-bottom: 32px;
 }
 
-.title {
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 120%;
-    letter-spacing: -0.01em;
-    color: var(--color-scheme-2-text);
+.aboutTitle {
     margin-bottom: 24px;
 }
 
@@ -29,11 +24,6 @@
 }
 
 .itemTitle {
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 140%;
-    letter-spacing: -0.01em;
-    color: var(--color-scheme-2-text);
     margin-bottom: 16px;
 }
 
@@ -59,12 +49,6 @@
     .aboutSection {
         padding-top: 64px;
         padding-bottom: 64px;
-    }
-
-    .title {
-        font-size: 44px;
-        line-height: 120%;
-        margin-bottom: 24px;
     }
 
     .list {
@@ -93,16 +77,8 @@
         align-items: center;
     }
 
-    .title {
-        font-size: 52px;
-    }
-
     .text {
         font-size: 20px;
-    }
-
-    .itemTitle {
-        font-size: 26px;
     }
 
     .itemText {

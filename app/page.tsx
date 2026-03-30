@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import About from "@/components/HomePage/About/about";
 import Hero from "@/components/HomePage/Hero/hero";
 import Join from "@/components/HomePage/Join/join";
+import PopularStories from "@/components/PopularStories/PopularStories";
+import OurTravellers from '@/components/OurTravellers/OurTravellers';
 
 export const metadata: Metadata = {
   title: "Головна",
@@ -28,9 +30,9 @@ const HomePage = () => {
     return (
     <>
       <Hero />
-      {/* <PopularStories /> */}
+      <PopularStories />
       <About />
-      {/* <OurTravellers /> */}
+      <OurTravellers />
       <Join />
     </>
   );
