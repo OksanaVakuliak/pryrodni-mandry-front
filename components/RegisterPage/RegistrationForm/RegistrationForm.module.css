@@ -1,0 +1,109 @@
+.formCard {
+  background: #ffffff;
+  padding: 40px;
+  width: 100%;
+  /* Максимальна ширина згідно з Figma-Hug */
+  max-width: 581px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* Таби зверху: Реєстрація / Вхід */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tab {
+  padding-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #828282;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.tab:hover {
+  color: #4f4f4f;
+}
+
+.activeTab {
+  color: #000000;
+  border-bottom: 2px solid #6da061; /* Колір підкреслення як у кнопки */
+}
+
+/* Заголовки */
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: #111111;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 18px;
+  text-align: center;
+  color: #4f4f4f;
+  margin-bottom: 32px;
+}
+
+/* Форма та інпути */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Відступ між полями введення */
+}
+
+/* Кнопка "Зареєструватись" */
+.submitBtn {
+  background-color: #6da061; /* Зелений колір з макету */
+  color: #ffffff;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background-color: #5b8a51;
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.submitBtn:disabled {
+  background-color: #a5c09e;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 640px) {
+  .formCard {
+    padding: 24px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+}
