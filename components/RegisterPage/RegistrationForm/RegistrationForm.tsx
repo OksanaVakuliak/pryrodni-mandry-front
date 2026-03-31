@@ -1,5 +1,6 @@
 'use client';
 
+import css from './RegistrationForm.module.css';
 import { useRouter } from 'next/navigation';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { toast } from 'react-hot-toast';
@@ -12,7 +13,6 @@ import { PasswordInput } from '@/components/ui/PasswordInput/PasswordInput';
 import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
-import css from './RegistrationForm.module.css';
 
 export default function RegistrationForm() {
   const router = useRouter();
@@ -21,10 +21,10 @@ export default function RegistrationForm() {
   return (
     <section className={css.formCard}>
       <div className={css.tabs}>
-        <span className={`${css.tab} ${css.activeTab}`}>Реєстрація</span>
-        <span className={css.tab} onClick={() => router.push('/login')}>
+        <div className={`${css.tab} ${css.activeTab}`}>Реєстрація</div>
+        <div className={css.tab} onClick={() => router.push('/login')}>
           Вхід
-        </span>
+        </div>
       </div>
       <PageTitle className={css.title}>Реєстрація</PageTitle>
       <p className={css.subtitle}>Раді вас бачити у спільноті мандрівників!</p>
