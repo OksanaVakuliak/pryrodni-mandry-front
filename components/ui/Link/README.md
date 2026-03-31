@@ -6,7 +6,7 @@
 
 ## 🛠 Властивості (Props)
 
-| Проп         | Тип         | Дефолт      | **************\*\*\***************                                    |
+| Проп         | Тип         | Дефолт      | ******\*\*******\*\*\*******\*\*******                                |
 | :----------- | :---------- | :---------- | :-------------------------------------------------------------------- |
 | `href`       | `string`    | —           | **Обов'язковий**. Шлях для переходу.                                  |
 | `variant`    | `string`    | `'primary'` | Стиль: `primary`, `secondary`, `nav`, `textWithBorder`, `iconButton`. |
@@ -55,6 +55,12 @@ TypeScript
 TypeScript
 
 <Link href="#" variant="iconButton" iconId="icon-bookmark" isDisabled />
+
+4.  Кнопка "Мандрівники" (Primary) Використовується для головних закликів до дії
+    (CTA), має фоновий колір mantis-dark.
+
+TypeScript <CustomLink href="/travelers" variant="primary"> Всі мандрівники
+</CustomLink>
 
 💡 Нотатки для команди
 

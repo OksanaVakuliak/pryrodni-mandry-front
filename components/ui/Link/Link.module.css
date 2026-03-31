@@ -57,3 +57,29 @@
   height: 20px;
   fill: currentColor;
 }
+.primary {
+  background: var(--color-mantis-dark);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color-white);
+  line-height: 150%;
+  transition:
+    background-color var(--transition-base),
+    transform var(--transition-base);
+  border: 1px solid transparent;
+}
+
+.primary:hover {
+  background: var(--color-mantis-lighter);
+  color: var(--color-scheme-2-text);
+}
+
+.disabled {
+  background: var(--color-mantis-dark);
+  opacity: 0.3;
+  color: var(--color-neutral);
+  pointer-events: none;
+  cursor: not-allowed;
+  border: 1px solid var(--color-mantis-dark);
+}
