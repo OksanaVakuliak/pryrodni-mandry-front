@@ -6,7 +6,6 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { useQuery } from '@tanstack/react-query';
 import { getPopularStories } from '@/lib/api/clientApi';
-import css from './PopularStories.module.css';
 // import StoryCard from '@/components/ui/StoryCard/StoryCard';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { useEffect, useState } from 'react';
@@ -15,6 +14,7 @@ import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { Button } from '@/components/ui/Button/Button';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { CustomLink } from '@/components/ui/Link/Link';
+import css from './PopularStories.module.css';
 
 export default function PopularStories() {
   const [isBeginning, setIsBeginning] = useState(true);
