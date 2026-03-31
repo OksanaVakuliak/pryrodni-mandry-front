@@ -34,16 +34,18 @@ export const SaveStoryButton = ({
       if (isSaved) {
         await api.patch(`/stories/${storyId}/delete`);
         setIsSaved(false);
-        toast.success('Видалено');
+        toast.success('Видалено зі збережених');
       } else {
         await api.patch(`/stories/${storyId}/save`);
         setIsSaved(true);
-        toast.success('Збережено');
+        toast.success('Історію збережено!');
       }
     } catch (error) {
       const axiosError = error as AxiosError<{ message?: string }>;
       
-      const errorMessage = axiosError.response?.data?.message || 'Помилка сервера';
+      console.error('API Error:', axiosError.response?.status, axiosError.config?.url);
+      
+      const errorMessage = axiosError.response?.data?.message || 'Сталася помилка при збереженні';
       toast.error(errorMessage);
     } finally {
       setIsRequesting(false);
