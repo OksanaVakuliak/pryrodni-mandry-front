@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { AxiosError } from 'axios';
-import api from '@/lib/api/api'; 
 import { Button } from '@/components/ui/Button/Button';
+import { storiesApi } from '@/lib/api/clientApi';
+import { useStoriesStore } from '@/lib/store/useStoriesStore';
 
 interface SaveStoryButtonProps {
   storyId: string;
@@ -19,12 +19,14 @@ export const SaveStoryButton = ({
   isAuthenticated,
 //   onOpenAuthModal,
 }: SaveStoryButtonProps) => {
-  const [isSaved, setIsSaved] = useState<boolean>(initialIsSaved);
+  const isSaved = useStoriesStore((state) => state.savedStories[storyId] ?? initialIsSaved);
+  const setStorySaved = useStoriesStore((state) => state.setStorySaved);
+  
   const [isRequesting, setIsRequesting] = useState<boolean>(false);
 
   const handleToggleSave = async () => {
     if (!isAuthenticated) {
-    //   onOpenAuthModal(); 
+    //   onOpenAuthModal();
       return;
     }
 
@@ -32,21 +34,17 @@ export const SaveStoryButton = ({
 
     try {
       if (isSaved) {
-        await api.patch(`/stories/${storyId}/delete`);
-        setIsSaved(false);
+        await storiesApi.deleteStory(storyId);
+        setStorySaved(storyId, false); 
         toast.success('Видалено зі збережених');
       } else {
-        await api.patch(`/stories/${storyId}/save`);
-        setIsSaved(true);
+        await storiesApi.saveStory(storyId);
+        setStorySaved(storyId, true); 
         toast.success('Історію збережено!');
       }
     } catch (error) {
-      const axiosError = error as AxiosError<{ message?: string }>;
-      
-      console.error('Save button error:', axiosError.response?.status, axiosError.config?.url);
-      
-      const errorMessage = axiosError.response?.data?.message || 'Помилка доступу до сервера';
-      toast.error(errorMessage);
+      toast.error('Сталася помилка. Спробуйте пізніше');
+      console.error('Save error:', error);
     } finally {
       setIsRequesting(false);
     }
@@ -58,8 +56,17 @@ export const SaveStoryButton = ({
       isLoading={isRequesting}
       variant={isSaved ? 'secondary' : 'primary'}
       type="button"
+      className="flex items-center gap-2"
     >
-      {isSaved ? 'Збережено' : 'Зберегти'}
+      {isSaved ? (
+        <>
+          <span>Збережено</span>
+        </>
+      ) : (
+        <>
+          <span>Зберегти</span>
+        </>
+      )}
     </Button>
   );
 };

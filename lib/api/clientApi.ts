@@ -15,5 +15,18 @@ export const getTravellers = async (
     params: { perPage, page },
   });
 
+
+  
   return data.data.users;
+};
+
+export const storiesApi = {
+    saveStory: async (storyId: string) => {
+        const response = await instance.patch(`/stories/${storyId}/save`);
+        return response.data;
+    },
+    deleteStory: async (storyId: string) => {
+        const response = await instance.patch(`/stories/${storyId}/delete`);
+        return response.data;
+    },
 };
