@@ -31,10 +31,12 @@ export const SaveStoryButton = ({
     setIsRequesting(true);
 
     try {
+
       if (isSaved) {
         await api.patch(`/stories/${storyId}/delete`);
         setIsSaved(false);
-        toast.success('Видалено зі збережених');
+          toast.success('Видалено зі збережених');
+          
       } else {
         await api.patch(`/stories/${storyId}/save`);
         setIsSaved(true);
