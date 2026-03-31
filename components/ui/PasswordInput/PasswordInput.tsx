@@ -40,8 +40,8 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           <Icon
             name={iconId}
             className={styles.eyeIcon}
-            width={20}
-            height={20}
+            width={15}
+            height={15}
           />
         </button>
       </div>
