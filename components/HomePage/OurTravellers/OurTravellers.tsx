@@ -14,7 +14,6 @@ import { CustomLink } from '@/components/ui/Link/Link';
 
 import 'swiper/css';
 import css from './OurTravellers.module.css';
-import { TravellerCard } from '@/components/ui/TravellerCard/TravellerCard';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 
 const OurTravellers = () => {

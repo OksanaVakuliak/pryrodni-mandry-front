@@ -17,10 +17,6 @@
 
 .allLink {
   display: none;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.5;
-  color: var(--color-white);
 }
 
 .sliderWrapper {
@@ -46,10 +42,6 @@
 .mobileAllLink {
   display: block;
   margin-top: 48px;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.5;
-  color: var(--color-white);
 }
 
 @media (min-width: 768px) {
