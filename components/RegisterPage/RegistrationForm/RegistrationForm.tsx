@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
-import { clientApi } from '@/lib/api/clientApi';
+import { register } from '@/lib/api/clientApi';
 import { useAuthStore } from '@/lib/store/useAuthStore';
 import { registerSchema } from '@/schemas/authValidation';
 import { Input } from '@/components/ui/Input/Input';
@@ -33,7 +33,7 @@ export default function RegistrationForm() {
         validationSchema={registerSchema}
         onSubmit={async (values, { setSubmitting }) => {
           try {
-            const userData = await clientApi.register(values);
+            const userData = await register(values);
 
             setUser(userData);
 
