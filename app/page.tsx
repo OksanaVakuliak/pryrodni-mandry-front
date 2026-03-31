@@ -5,6 +5,7 @@ import Join from "@/components/HomePage/Join/join";
 // import PopularStories from "@/components/PopularStories/PopularStories";
 // import OurTravellers from '@/components/OurTravellers/OurTravellers';
 
+
 export const metadata: Metadata = {
   title: "Головна",
   description: "Еко-мандрівки Україною та спільнота свідомих мандрівників",
@@ -39,3 +40,4 @@ const HomePage = () => {
 }
 
 export default HomePage;
+
