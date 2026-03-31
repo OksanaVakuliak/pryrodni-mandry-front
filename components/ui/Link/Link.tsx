@@ -8,7 +8,13 @@ import { Icon } from '../Icon/Icon';
 interface CustomLinkProps
   extends NextLinkProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
   children?: ReactNode;
-  variant?: 'primary' | 'secondary' | 'nav' | 'textWithBorder' | 'iconButton';
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'nav'
+    | 'textWithBorder'
+    | 'iconButton'
+    | 'button';
   iconId?: string;
   className?: string;
   isDisabled?: boolean;
