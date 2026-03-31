@@ -7,8 +7,9 @@ import axios from 'axios';
 import { clientApi } from '@/lib/api/clientApi';
 import { useAuthStore } from '@/lib/store/useAuthStore';
 import { registerSchema } from '@/schemas/authValidation';
-import { Input } from '@/components/ui/Input';
-import { PasswordInput } from '@/components/ui/PasswordInput';
+import { Input } from '@/components/ui/Input/Input';
+import { PasswordInput } from '@/components/ui/PasswordInput/PasswordInput';
+import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
 import css from './RegistrationForm.module.css';
 
@@ -53,34 +54,41 @@ export default function RegistrationForm() {
           }
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, getFieldProps, touched, errors }) => (
           <Form className={css.form}>
             <Input
-              name="name"
+              {...getFieldProps('name')}
               label="Ім’я та Прізвище*"
               placeholder="Ваше імʼя та прізвище"
+              error={touched.name && errors.name ? errors.name : undefined}
             />
 
             <Input
-              name="email"
+              {...getFieldProps('email')}
               type="email"
               label="Пошта*"
               placeholder="hello@podorozhnyky.ua"
+              error={touched.email && errors.email ? errors.email : undefined}
             />
 
             <PasswordInput
-              name="password"
+              {...getFieldProps('password')}
               label="Пароль*"
               placeholder="********"
+              error={
+                touched.password && errors.password
+                  ? errors.password
+                  : undefined
+              }
             />
 
-            <button
+            <Button
               type="submit"
               className={css.submitBtn}
-              disabled={isSubmitting}
+              isLoading={isSubmitting}
             >
               {isSubmitting ? <Loader /> : 'Зареєструватись'}
-            </button>
+            </Button>
           </Form>
         )}
       </Formik>
