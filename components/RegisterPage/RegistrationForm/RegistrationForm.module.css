@@ -1,7 +1,7 @@
 .formCard {
   background: var(--color-white);
   width: 100%;
-  max-width: 644px;
+  max-width: 335px;
   margin: 0 auto;
   margin-top: 64px;
 }
@@ -9,7 +9,7 @@
 .tabs {
   display: flex;
   align-items: center;
-  margin-bottom: 35px;
+  margin-bottom: 32px;
 }
 
 .tab {
@@ -17,7 +17,7 @@
   text-align: center;
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   color: var(--color-neutral-darkest);
   padding: 12px 0px;
@@ -33,12 +33,12 @@
 .formCard .title {
   text-align: center;
   margin-bottom: 24px;
-  font-size: 52px;
+  font-size: 27px;
 }
 
 .subtitle {
   font-family: var(--font-family);
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
   text-align: center;
@@ -54,7 +54,7 @@
 
 .form label {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   color: var(--color-neutral-darkest);
 }
@@ -63,31 +63,30 @@
   min-height: 44px;
 }
 
-@media (max-width: 640px) {
+@media only screen and (min-width: 768px) {
   .formCard {
-    max-width: 100%;
-    padding: 0 20px;
+    max-width: 644px;
   }
 
-  .tabs {
-    margin-bottom: 40px;
+  .formCard .title {
+    font-size: 44px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .tab {
+    font-size: 18px;
   }
 
-  .title {
-    margin-bottom: 20px;
+  .formCard .title {
+    font-size: 52px;
   }
 
   .subtitle {
-    font-size: 16px;
-    margin-bottom: 32px;
+    font-size: 20px;
   }
 
-  .form {
-    gap: 18px;
-  }
-
-  .submitBtn {
-    min-height: 52px;
-    font-size: 16px;
+  .form label {
+    font-size: 18px;
   }
 }
