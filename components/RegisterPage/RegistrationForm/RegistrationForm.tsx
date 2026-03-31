@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/Input/Input';
 import { PasswordInput } from '@/components/ui/PasswordInput/PasswordInput';
 import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import css from './RegistrationForm.module.css';
 
 export default function RegistrationForm() {
@@ -18,14 +19,14 @@ export default function RegistrationForm() {
   const setUser = useAuthStore((state) => state.setUser);
 
   return (
-    <div className={css.formCard}>
+    <section className={css.formCard}>
       <div className={css.tabs}>
         <span className={`${css.tab} ${css.activeTab}`}>Реєстрація</span>
         <span className={css.tab} onClick={() => router.push('/login')}>
           Вхід
         </span>
       </div>
-      <h1 className={css.title}>Реєстрація</h1>
+      <PageTitle className={css.title}>Реєстрація</PageTitle>
       <p className={css.subtitle}>Раді вас бачити у спільноті мандрівників!</p>
 
       <Formik
@@ -92,6 +93,6 @@ export default function RegistrationForm() {
           </Form>
         )}
       </Formik>
-    </div>
+    </section>
   );
 }
