@@ -83,7 +83,7 @@ const OurTravellers = () => {
           >
             {travellers?.map((traveller) => (
               <SwiperSlide key={traveller._id}>
-                <TravellerCard traveller={traveller} />
+                {/* <TravellerCard traveller={traveller} /> */}
               </SwiperSlide>
             ))}
           </Swiper>
