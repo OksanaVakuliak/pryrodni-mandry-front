@@ -1,3 +1,4 @@
+import { Select } from '@/components/ui/Select/Select';
 import css from './StoriesCategories.module.css';
 import { Category } from '@/types/Category';
 
@@ -12,25 +13,23 @@ export const StoriesCategories = ({
   activeCategory,
   onCategoryChange,
 }: StoriesCategoriesProps) => {
+  const selectOptions = [
+    { value: '', label: 'Всі статті' },
+    ...categories.map((cat) => ({ value: cat._id, label: cat.category })),
+  ];
+
   return (
     <div className={css.container}>
       <div className={css.mobileSelectWrapper}>        
         <div className={css.selectContainer}>
-          <select
-            id="category-select"
+          <Select
             className={css.mobileSelect}
             value={activeCategory || ''}
-            onChange={(e) =>
-              onCategoryChange(e.target.value === '' ? undefined : e.target.value)
+            onChange={(value) =>
+              onCategoryChange(value === '' ? undefined : String(value))
             }
-          >
-            <option value="">Всі статті</option>
-            {categories.map((cat) => (
-              <option key={cat._id} value={cat._id}>
-                {cat.category}
-              </option>
-            ))}
-          </select>
+            options={selectOptions}
+          />
         </div>
       </div>
 

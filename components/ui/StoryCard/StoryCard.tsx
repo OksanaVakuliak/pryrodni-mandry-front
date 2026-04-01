@@ -4,6 +4,7 @@ import { Icon } from '../Icon/Icon';
 import Link from 'next/link';
 import buttonCss from '../Button/Button.module.css';
 import css from './StoryCard.module.css';
+import { PageTitle } from '../PageTitle/PageTitle';
 
 interface StoryCardProps {
   story: Story;
@@ -40,7 +41,7 @@ export const StoryCard = ({ story }: StoryCardProps) => {
             />
           </span>
         </div>
-        <h3 className={css.title}>{story.title}</h3>
+        <PageTitle tag="h3" className={css.title}>{story.title}</PageTitle>
         <div className={css.footer}>
           <Link href={`/stories/${story._id}`} className={`${buttonCss.button} ${buttonCss.secondary} ${css.viewButton}`}>
             Переглянути статтю
