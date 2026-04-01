@@ -1,0 +1,22 @@
+@media screen and (min-width: 375px) {
+  .headerContainer {
+    width: 100%;
+  }
+
+  .svgLogo {
+    width: 124px;
+    height: 40px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .svgLogo {
+    width: 128px;
+    height: 40px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .svgLogo {
+    width: 124px;
+    height: 40px;
+  }
+}
