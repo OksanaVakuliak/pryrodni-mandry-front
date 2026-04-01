@@ -1,0 +1,225 @@
+@media screen and (min-width: 375px) {
+  .authBtn {
+    display: none;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    max-width: 375px;
+    margin: 0 auto;
+  }
+
+  .headerContainer {
+    background: var(--color-scheme-2-background);
+  }
+
+  .svg {
+    width: 124px;
+    height: 36px;
+  }
+
+  .navTablet {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+  .auth {
+    margin-top: 60px;
+    align-items: center;
+  }
+
+  .navLinkTablet {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--color-scheme-2-text);
+    text-decoration: none;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .burgerButton {
+    border: 1px solid var(--color-scheme-2-border);
+    border-radius: 6px;
+    padding: 4px;
+    width: 32px;
+    height: 32px;
+    background: var(--opacity-neutral-darkest-5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .burgerIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .modalTablet {
+    background: var(--color-scheme-2-background);
+    border: 2px solid var(--color-scheme-2-text);
+    border-radius: 15px;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 630px;
+    padding: 80px 65px;
+    justify-content: center;
+    z-index: 100;
+  }
+
+  .modalTablet.isOpen {
+    display: flex;
+  }
+
+  .closeButton {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: transparent;
+    outline: transparent;
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    max-width: 768px;
+  }
+
+  .navTablet {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .authBtn {
+    display: block;
+  }
+
+  .auth {
+    margin-top: 0;
+    align-items: center;
+  }
+
+  .navLinkTablet {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-scheme-2-text);
+    text-decoration: none;
+  }
+
+  .modalTablet {
+    background: var(--color-scheme-2-background);
+    border: 2px solid var(--color-scheme-2-text);
+    border-radius: 15px;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 450px;
+    padding: 80px;
+    justify-content: center;
+    z-index: 100;
+  }
+
+  .modalTablet.isOpen {
+    display: flex;
+  }
+
+  .tabletContainer {
+    display: flex;
+    gap: 16px;
+  }
+
+  .burgerButton {
+    border: 1px solid var(--color-scheme-2-border);
+    border-radius: 6px;
+    padding: 4px;
+    width: 32px;
+    height: 32px;
+    background: var(--opacity-neutral-darkest-5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .burgerIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .authBtn {
+    padding: 4px 10px;
+  }
+
+  .closeButton {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: transparent;
+    outline: transparent;
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 64px;
+    max-width: 1440px;
+  }
+
+  .headerContainer {
+    background: var(--color-scheme-2-background);
+  }
+
+  .svg {
+    width: 124px;
+    height: 40px;
+  }
+
+  .navLink {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--color-scheme-2-text);
+    text-decoration: none;
+  }
+
+  .navigation {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .tabletContainer {
+    display: none;
+  }
+
+  .modalTablet {
+    display: none;
+  }
+}

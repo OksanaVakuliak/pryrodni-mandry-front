@@ -1,0 +1,93 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  gap: 8px;
+
+  border: 1px solid transparent;
+  transition: all var(--transition-default);
+  width: 100%;
+}
+/* --- */
+.primary {
+  background: var(--color-mantis-dark);
+  color: var(--color-white);
+  border-color: var(--color-mantis-dark);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--color-mantis-lighter);
+  color: var(--color-scheme-2-text);
+}
+.primary:active:not(:disabled) {
+  background: var(--color-mantis-dark);
+  border-color: var(--color-mantis-dark);
+  color: var(--color-white);
+}
+.primary:disabled {
+  border-color: var(--color-mantis-dark);
+  color: var(--color-white);
+  background: var(--color-mantis-dark);
+  opacity: 0.3;
+}
+
+/* --- */
+.secondary {
+  background: var(--opacity-neutral-darkest-5);
+  color: var(--color-scheme-2-text);
+  border-color: var(--color-scheme-2-border);
+}
+
+.secondary:hover:not(:disabled) {
+  border-color: var(--opacity-neutral-darkest-5);
+  background: var(--color-mantis-dark);
+  color: var(--color-white);
+}
+.secondary:active:not(:disabled) {
+  background: var(--color-mantis-darker);
+  color: var(--color-white);
+  border-color: var(--opacity-transparent);
+}
+
+.secondary:disabled {
+  background: var(--opacity-neutral-darkest-5);
+  opacity: 0.3;
+  color: var(--color-scheme-2-text);
+  border-color: var(--opacity-transparent);
+}
+
+/* ---- */
+.tertiary {
+  background: var(--opacity-neutral-darkest-5);
+  color: var(--color-scheme-2-text);
+  line-height: 150%;
+  border: var(--color-scheme-2-border);
+}
+.tertiary:hover:not(:disabled) {
+  background: var(--color-mantis-lighter);
+  border-color: var(--color-mantis-dark);
+}
+.tertiary:active:not(:disabled) {
+  background: var(--color-mantis-light);
+  transform: translateY(1px);
+}
+
+.tertiary:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 1440px) {
+  .button {
+    font-size: 20px;
+  }
+}
