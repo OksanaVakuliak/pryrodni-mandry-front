@@ -6,27 +6,27 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
-import { getTravellers } from '@/lib/api/clientApi';
+import { clientApi } from '@/lib/api/clientApi';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { CustomLink } from '@/components/ui/Link/Link';
 
 import 'swiper/css';
-import css from './OurTravellers.module.css';
+import css from './OurTravelers.module.css';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 
-const OurTravellers = () => {
+const OurTravelers = () => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
   const {
-    data: travellers,
+    data: travelers,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ['travellers'],
-    queryFn: () => getTravellers(),
+    queryKey: ['travelers'],
+    queryFn: () => clientApi.travelers.getAll(),
   });
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const OurTravellers = () => {
         <div className={css.header}>
           <PageTitle className={css.title}>Наші Мандрівники</PageTitle>
           <CustomLink
-            href="/travellers"
+            href="/travelers"
             variant="primary"
             className={css.allLink}
           >
@@ -80,9 +80,9 @@ const OurTravellers = () => {
             }}
             className={css.swiper}
           >
-            {travellers?.map((traveller) => (
-              <SwiperSlide key={traveller._id}>
-                {/* <TravellerCard traveller={traveller} /> */}
+            {travelers?.map((traveler) => (
+              <SwiperSlide key={traveler._id}>
+                {/* <TravelerCard traveler={traveler} /> */}
               </SwiperSlide>
             ))}
           </Swiper>
@@ -108,7 +108,7 @@ const OurTravellers = () => {
         </div>
 
         <CustomLink
-          href="/travellers"
+          href="/travelers"
           variant="primary"
           className={css.mobileAllLink}
         >
@@ -119,4 +119,4 @@ const OurTravellers = () => {
   );
 };
 
-export default OurTravellers;
+export default OurTravelers;
