@@ -1,13 +1,13 @@
 'use client';
 
-import css from './RegistrationForm.module.css';
+import css from './LoginForm.module.css';
 import { useRouter } from 'next/navigation';
 import { Formik, Form } from 'formik';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
-import { register } from '@/lib/api/clientApi';
+import { login } from '@/lib/api/clientApi';
 import { useAuthStore } from '@/lib/store/useAuthStore';
-import { registerSchema } from '@/schemas/authValidation';
+import { loginSchema } from '@/schemas/authValidation';
 import { Input } from '@/components/ui/Input/Input';
 import { PasswordInput } from '@/components/ui/PasswordInput/PasswordInput';
 import { Button } from '@/components/ui/Button/Button';
@@ -15,38 +15,39 @@ import { Loader } from '@/components/ui/Loader/Loader';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { CustomLink } from '@/components/ui/Link/Link';
 
-export default function RegistrationForm() {
+export default function LoginForm() {
   const router = useRouter();
   const setUser = useAuthStore((state) => state.setUser);
 
   return (
     <section className={css.formCard}>
       <div className={css.tabs}>
-        <div className={`${css.tab} ${css.activeTab}`}>Реєстрація</div>
-        <CustomLink className={css.tab} href="/login" variant="nav">
-          Вхід
+        <CustomLink className={css.tab} href="/register" variant="nav">
+          Реєстрація
         </CustomLink>
+        <div className={`${css.tab} ${css.activeTab}`}>Вхід</div>
       </div>
-      <PageTitle className={css.title}>Реєстрація</PageTitle>
-      <p className={css.subtitle}>Раді вас бачити у спільноті мандрівників!</p>
+
+      <PageTitle className={css.title}>Вхід</PageTitle>
+      <p className={css.subtitle}>Вітаємо знову у спільноті мандрівників!</p>
 
       <Formik
-        initialValues={{ name: '', email: '', password: '' }}
-        validationSchema={registerSchema}
+        initialValues={{ email: '', password: '' }}
+        validationSchema={loginSchema}
         onSubmit={async (values, { setSubmitting }) => {
           try {
-            const userData = await register(values);
+            const userData = await login(values);
 
             setUser(userData);
 
-            toast.success('Вітаємо! Реєстрація успішна.');
+            toast.success('З поверненням!');
 
             router.push('/');
             router.refresh();
           } catch (error: unknown) {
             if (axios.isAxiosError(error)) {
               const errorMsg =
-                error.response?.data?.message || 'Помилка реєстрації';
+                error.response?.data?.message || 'Невірний email або пароль';
               toast.error(errorMsg);
             } else {
               toast.error('Сталася непередбачувана помилка');
@@ -58,13 +59,6 @@ export default function RegistrationForm() {
       >
         {({ isSubmitting, getFieldProps, touched, errors }) => (
           <Form className={css.form}>
-            <Input
-              {...getFieldProps('name')}
-              label="Ім’я та Прізвище*"
-              placeholder="Ваше імʼя та прізвище"
-              error={touched.name && errors.name ? errors.name : undefined}
-            />
-
             <Input
               {...getFieldProps('email')}
               type="email"
@@ -89,7 +83,7 @@ export default function RegistrationForm() {
               className={css.submitBtn}
               isLoading={isSubmitting}
             >
-              {isSubmitting ? <Loader /> : 'Зареєструватись'}
+              {isSubmitting ? <Loader /> : 'Увійти'}
             </Button>
           </Form>
         )}

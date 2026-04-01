@@ -13,6 +13,11 @@ export const register = async (credentials: AuthRequest): Promise<User> => {
   return res.data;
 };
 
+export const login = async (credentials: AuthRequest): Promise<User> => {
+  const res = await instance.post<User>('/auth/login', credentials);
+  return res.data;
+};
+
 export const getPopularStories = async (): Promise<Story[]> => {
   const res = await instance.get<Story[]>('/stories/popular');
   return res.data;
