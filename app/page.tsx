@@ -3,7 +3,7 @@ import About from '@/components/HomePage/About/about';
 import Hero from '@/components/HomePage/Hero/hero';
 import Join from '@/components/HomePage/Join/join';
 import PopularStories from '@/components/HomePage/PopularStories/PopularStories';
-import OurTravellers from '@/components/HomePage/OurTravellers/OurTravellers';
+import OurTravelers from '@/components/HomePage/OurTravelers/OurTravelers';
 
 export const metadata: Metadata = {
   title: 'Головна',
@@ -32,7 +32,7 @@ const HomePage = () => {
       <Hero />
       <PopularStories />
       <About />
-      <OurTravellers />
+      <OurTravelers />
       <Join />
     </>
   );
