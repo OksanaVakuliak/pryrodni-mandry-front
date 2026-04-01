@@ -14,14 +14,14 @@ src/app/api/
 │   ├── recommended/route.ts   # GET: Рекомендовані історії (RecomendedStories)
 │   └── saved/route.ts         # POST/DELETE: Додати/видалити зі збережених (StoryCard/SaveStory)
 │
-├── travellers/
+├── travelers/
 │   ├── route.ts               # GET: Список усіх мандрівників (TravallersPage)
-│   └── [travellerId]/
-│       ├── route.ts           # GET: Профіль конкретного мандрівника (TravellerPage)
+│   └── [travelerId]/
+│       ├── route.ts           # GET: Профіль конкретного мандрівника (TravelerPage)
 │       └── stories/route.ts   # GET: Історії конкретного мандрівника
 │
 ├── profile/
-│   ├── route.ts               # GET: Дані профілю авторизованого юзера (TravellerInfo)
+│   ├── route.ts               # GET: Дані профілю авторизованого юзера (TravelerInfo)
 │   ├── edit/route.ts          # PATCH: Редагування профілю (PersonalPage - Дод. завдання)
 │   ├── my-stories/route.ts    # GET: Список власних опублікованих історій (ProfileTabs)
 │   └── saved-stories/route.ts # GET: Список збережених історій користувача (ProfileTabs)
