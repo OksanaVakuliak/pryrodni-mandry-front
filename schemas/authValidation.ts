@@ -11,3 +11,12 @@ export const registerSchema = Yup.object().shape({
     .min(8, 'Пароль має бути не менше 8 символів')
     .required('Пароль обов’язковий'),
 });
+
+export const loginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('Невірний формат email')
+    .required('Email обов’язковий'),
+  password: Yup.string()
+    .min(8, 'Пароль має бути не менше 8 символів')
+    .required('Пароль обов’язковий'),
+});
