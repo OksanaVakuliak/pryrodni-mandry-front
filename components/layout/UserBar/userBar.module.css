@@ -1,0 +1,37 @@
+@media screen and (min-width: 375px) {
+  .authContainer {
+    flex-direction: column;
+    display: flex;
+  }
+  .authBtn {
+    margin-right: 0;
+    padding: 8px 15px;
+    margin-bottom: 30px;
+  }
+  .stateContainer {
+    justify-content: center;
+    display: flex;
+  }
+  .avatarContaner {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    margin-right: 16px;
+  }
+
+  .logoutBtn {
+    background: transparent;
+    display: flex;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .authContainer {
+    flex-direction: row;
+  }
+  .authBtn {
+    margin-right: 16px;
+    padding: 4px 10px;
+    margin-bottom: 0;
+  }
+}

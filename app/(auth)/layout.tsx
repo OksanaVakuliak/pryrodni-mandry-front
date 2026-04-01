@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import AuthHeader from '@/components/Auth/AuthHeader/AuthHeader';
-import AuthFooter from '@/components/Auth/AuthFooter/AuthFooter';
+import AuthHeader from '@/components/layout/AuthHeader/AuthHeader';
+import AuthFooter from '@/components/layout/AuthFooter/AuthFooter';
 
 export const metadata: Metadata = {
   title: {
