@@ -8,3 +8,8 @@ export interface Story {
   rate?: number;
   date?: string;
 }
+
+export interface SaveResponse {
+  rate: number;
+  savedArticles: string[];
+}
