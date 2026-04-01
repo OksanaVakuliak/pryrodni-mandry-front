@@ -20,10 +20,9 @@ export const StoryCard = ({ story }: StoryCardProps) => {
           blurDataURL={story.img}
           src={story.img}
           alt={story.title}
-          width={420}
-          height={420}
+          fill
           className={css.image}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 767px) 100vw, (max-width: 1439px) 50vw, 33vw"
         />
       </div>
       <div className={css.content}>
