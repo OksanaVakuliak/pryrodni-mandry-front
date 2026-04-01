@@ -96,7 +96,7 @@ const StoriesPage = () => {
   return (
     <div className={css.pageWrapper}>
       <div className="container">
-        <PageTitle>Статті</PageTitle>
+        <PageTitle className={css.title}>Статті</PageTitle>
 
         {isLoading && <p>Завантаження...</p>}
         {isError && <p>Помилка завантаження статей.</p>}
