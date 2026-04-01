@@ -13,8 +13,8 @@
 .modal {
   background: #e6f2e8;
   border-radius: 16px;
-  padding: 24px;
-  width: 440px;
+  padding: 64px;
+  width: 768px;
   position: relative;
   text-align: center;
 }
@@ -23,7 +23,7 @@
   position: absolute;
   top: 12px;
   right: 12px;
-
+  color: var(--color-neutral-darkest);
   background: transparent;
   border: none;
   font-size: 18px;
@@ -31,13 +31,13 @@
 }
 
 .title {
-  font-size: 22px;
+  font-size: 48px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
 .subtitle {
-  font-size: 14px;
+  font-size: 20px;
   color: #6b7280;
   margin-bottom: 20px;
   line-height: 1.4;

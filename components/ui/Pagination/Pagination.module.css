@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 40px 0;
+}
+
+.loadMoreBtn {
+  height: 48px;
+  padding: 6px 12px !important;
+  border-radius: 6px !important;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-white);
+  width: 335px;
+}
+
+@media only screen and (min-width: 768px) {
+  .loadMoreBtn {
+    min-width: 133px;
+    height: 48px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .loadMoreBtn {
+    width: 160px;
+  }
+}
+
+.loadMoreBtn {
+  background-color: var(--color-mantis-dark) !important;
+  border: 1px solid var(--color-mantis-dark) !important;
+  color: var(--color-white) !important;
+}
+
+.loadMoreBtn:hover {
+  filter: brightness(1.1);
+}

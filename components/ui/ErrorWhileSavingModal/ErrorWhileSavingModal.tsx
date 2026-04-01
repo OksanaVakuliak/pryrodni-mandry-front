@@ -1,5 +1,7 @@
 'use client';
 
+import { Button } from '@/components/ui/Button/Button';
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import styles from './ErrorWhilesavingModal.module.css';
 
 type Props = {
@@ -20,11 +22,13 @@ export default function ErrorWhileSavingModal({
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <button className={styles.close} onClick={onClose}>
-          ✕
-        </button>
+        <Button onClick={onClose} className={styles.close}>
+          X
+        </Button>
 
-        <h2 className={styles.title}>Помилка під час збереження</h2>
+        <PageTitle className={styles.title} tag="h2">
+          Помилка під час збереження
+        </PageTitle>
 
         <p className={styles.subtitle}>
           Щоб зберегти статтю вам треба увійти, якщо ще немає облікового запису
@@ -32,13 +36,13 @@ export default function ErrorWhileSavingModal({
         </p>
 
         <div className={styles.actions}>
-          <button onClick={onLogin} className={styles.login}>
+          <Button onClick={onLogin} variant="secondary">
             Увійти
-          </button>
+          </Button>
 
-          <button onClick={onRegister} className={styles.register}>
+          <Button onClick={onRegister} variant="primary">
             Зареєструватись
-          </button>
+          </Button>
         </div>
       </div>
     </div>

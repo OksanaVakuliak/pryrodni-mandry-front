@@ -1,5 +1,7 @@
 'use client';
 
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
+import { Button } from '@/components/ui/Button/Button';
 import styles from './ConfirmModal.module.css';
 
 type Props = {
@@ -14,22 +16,32 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <button className={styles.close} onClick={onCancel}>
+        <Button className={styles.close} onClick={onCancel}>
           ✕
-        </button>
+        </Button>
 
-        <h2 className={styles.title}>Ви точно хочете вийти?</h2>
+        <PageTitle className={styles.title} tag="h2">
+          Ви точно хочете вийти?
+        </PageTitle>
 
         <p className={styles.subtitle}>Ми будемо сумувати за вами!</p>
 
         <div className={styles.actions}>
-          <button onClick={onCancel} className={styles.cancel}>
+          <Button
+            onClick={onCancel}
+            className={styles.cancel}
+            variant="secondary"
+          >
             Відмінити
-          </button>
+          </Button>
 
-          <button onClick={onConfirm} className={styles.confirm}>
+          <Button
+            onClick={onConfirm}
+            className={styles.confirm}
+            variant="primary"
+          >
             Вийти
-          </button>
+          </Button>
         </div>
       </div>
     </div>

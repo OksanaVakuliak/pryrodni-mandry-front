@@ -1,5 +1,6 @@
-import Image from 'next/image';
 import styles from './TravellrInfo.module.css';
+import { Avatar } from '@/components/ui/Avatar/Avatar';
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 
 type Props = {
   name: string;
@@ -11,11 +12,11 @@ export default function TravellerInfo({ name, avatar, storiesCount }: Props) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatarWrapper}>
-        <Image src={avatar} alt={name} fill className={styles.avatar} />
+        <Avatar src={avatar} alt={name} size={48} />
       </div>
 
       <div>
-        <h2 className={styles.name}>{name}</h2>
+        <PageTitle tag="h2">{name}</PageTitle>
         <p className={styles.meta}>Статей: {storiesCount}</p>
       </div>
     </div>
