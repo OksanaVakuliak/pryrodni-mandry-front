@@ -18,6 +18,7 @@
   }
   .authBtn {
     padding: 4px 10px;
+    min-height: 38px;
   }
   .authContainer {
     gap: 16px;
