@@ -2,7 +2,7 @@
 
 import css from './RegistrationForm.module.css';
 import { useRouter } from 'next/navigation';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import { register } from '@/lib/api/clientApi';
