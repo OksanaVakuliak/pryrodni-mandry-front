@@ -3,24 +3,16 @@ import { Icon } from '@/components/ui/Icon/Icon';
 import { Button } from '@/components/ui/Button/Button';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import styles from '@/components/ui/StoryCard/StoryCard.module.css';
+import { Story } from '@/types/story';
 
 type Props = {
-  title: string;
-  img: string;
-  author: string;
-  createdAt: string;
+  story: Story;
   onOpen?: () => void;
   onSave?: () => void;
 };
 
-export default function StoryCard({
-  title,
-  img,
-  author,
-  createdAt,
-  onOpen,
-  onSave,
-}: Props) {
+export default function StoryCard({ story, onOpen, onSave }: Props) {
+  const { title, img, ownerId } = story;
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
@@ -29,16 +21,20 @@ export default function StoryCard({
 
       <div className={styles.content}>
         <p className={styles.meta}>
-          {author} • {createdAt}
+          {ownerId.name}
+          <span className={styles.metaSeparator}>·</span>
+          {story.rate}
           <Icon
             name="icon-bookmark"
             width={16}
             height={16}
             className={styles.svg}
-          ></Icon>
+          />
         </p>
 
-        <PageTitle className={styles.title}>{title}</PageTitle>
+        <PageTitle className={styles.title} tag="h3">
+          {title}
+        </PageTitle>
 
         <div className={styles.actions}>
           <Button
