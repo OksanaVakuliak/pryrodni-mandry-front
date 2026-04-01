@@ -5,7 +5,7 @@ import css from './authHeader.module.css';
 const AuthHeader = () => {
   return (
     <header className={css.headerContainer}>
-      <div className={css.container}>
+      <div className="container">
         <Link href="/" className={css.link}>
           <Icon name={'icon-Logo'} className={css.svgLogo} />
         </Link>

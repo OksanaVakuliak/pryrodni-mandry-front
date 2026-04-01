@@ -6,7 +6,7 @@ const AuthFooter = () => {
 
   return (
     <footer className={css.footerContainer}>
-      <div className={css.container}>
+      <div className="container">
         <p className={css.text}>{`© ${dateYear} Природні Мандри`}</p>
       </div>
     </footer>

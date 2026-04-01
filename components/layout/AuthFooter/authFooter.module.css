@@ -1,40 +1,21 @@
 @media screen and (min-width: 375px) {
-  .container {
-    display: flex;
-    justify-content: center;
-    padding: 0 20px;
-  }
-
   .footerContainer {
-    margin: 0 auto;
-    max-width: 375px;
+    width: 100%;
   }
 
   .text {
     padding-top: 24px;
     padding-bottom: 24px;
+    text-align: center;
   }
 }
 @media screen and (min-width: 768px) {
-  .container {
-    padding: 0 32px;
-  }
-
-  .footerContainer {
-    margin: 0 auto;
-    max-width: 768px;
+  .text {
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 }
 @media screen and (min-width: 1440px) {
-  .footerContainer {
-    margin: 0 auto;
-    max-width: 1440px;
-  }
-
-  .container {
-    padding: 0 64px;
-  }
-
   .text {
     padding-top: 24px;
     padding-bottom: 24px;
