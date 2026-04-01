@@ -13,6 +13,7 @@ import { PasswordInput } from '@/components/ui/PasswordInput/PasswordInput';
 import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
+import { CustomLink } from '@/components/ui/Link/Link';
 
 export default function RegistrationForm() {
   const router = useRouter();
@@ -22,9 +23,9 @@ export default function RegistrationForm() {
     <section className={css.formCard}>
       <div className={css.tabs}>
         <div className={`${css.tab} ${css.activeTab}`}>Реєстрація</div>
-        <Link className={css.tab} href="/login">
+        <CustomLink className={css.tab} href="/login" variant="nav">
           Вхід
-        </Link>
+        </CustomLink>
       </div>
       <PageTitle className={css.title}>Реєстрація</PageTitle>
       <p className={css.subtitle}>Раді вас бачити у спільноті мандрівників!</p>

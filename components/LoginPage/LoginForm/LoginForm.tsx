@@ -13,6 +13,7 @@ import { PasswordInput } from '@/components/ui/PasswordInput/PasswordInput';
 import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
+import { CustomLink } from '@/components/ui/Link/Link';
 
 export default function LoginForm() {
   const router = useRouter();
@@ -21,9 +22,9 @@ export default function LoginForm() {
   return (
     <section className={css.formCard}>
       <div className={css.tabs}>
-        <div className={css.tab} onClick={() => router.push('/register')}>
+        <CustomLink className={css.tab} href="/register" variant="nav">
           Реєстрація
-        </div>
+        </CustomLink>
         <div className={`${css.tab} ${css.activeTab}`}>Вхід</div>
       </div>
 
