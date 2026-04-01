@@ -15,6 +15,7 @@ import { CustomLink } from '@/components/ui/Link/Link';
 import 'swiper/css';
 import css from './OurTravellers.module.css';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
+import TravellerCard from '@/components/ui/TrevallerCard/TrevallerCard';
 
 const OurTravellers = () => {
   const [isBeginning, setIsBeginning] = useState(true);
@@ -82,7 +83,7 @@ const OurTravellers = () => {
           >
             {travellers?.map((traveller) => (
               <SwiperSlide key={traveller._id}>
-                {/* <TravellerCard traveller={traveller} /> */}
+                <TravellerCard traveller={traveller} />
               </SwiperSlide>
             ))}
           </Swiper>

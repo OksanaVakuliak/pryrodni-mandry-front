@@ -1,23 +1,25 @@
 import Image from 'next/image';
-import styles from './TravellerCard.module.css';
+import styles from './TrevallerCard.module.css';
+import { Traveller } from '@/types/traveller';
 
 type Props = {
-  name: string;
-  avatar: string;
-  storiesCount: number;
+  traveller: Traveller;
   onOpen?: () => void;
 };
 
-export default function TravellerCard({
-  name,
-  avatar,
-  storiesCount,
-  onOpen,
-}: Props) {
+export default function TravellerCard({ traveller, onOpen }: Props) {
+  const name = traveller.name;
+  const avatar = traveller.avatarUrl || '';
+  const storiesCount = traveller.storiesCount ?? traveller.articlesAmount ?? 0;
+
   return (
     <div className={styles.card}>
       <div className={styles.avatarWrapper}>
-        <Image src={avatar} alt={name} fill className={styles.avatar} />
+        {avatar ? (
+          <Image src={avatar} alt={name} fill className={styles.avatar} />
+        ) : (
+          <div className={styles.avatar} />
+        )}
       </div>
 
       <h3 className={styles.name}>{name}</h3>
