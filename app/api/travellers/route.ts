@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
     const page = searchParams.get('page');
     const limit = searchParams.get('limit');
 
-    const { data } = await serverApi.get('/travellers', {
+    const { data } = await serverApi.get('/travelers', {
       headers,
       params: {
         page,
@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(data);
   } catch {
     return NextResponse.json(
-      { message: 'Failed to fetch travellers' },
+      { message: 'Failed to fetch travelers' },
       { status: 500 },
     );
   }
