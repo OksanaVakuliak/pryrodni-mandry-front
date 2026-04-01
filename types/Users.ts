@@ -2,6 +2,9 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  avatar: string;
-  storiesCount: number;
+  avatarUrl: string;
+  articlesAmount: number;
+  savedArticles: string[];
+  createdAt: string;
+  updatedAt: string;
 }

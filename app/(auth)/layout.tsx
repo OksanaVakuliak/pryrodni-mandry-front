@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import AuthHeader from '@/components/Auth/AuthHeader/AuthHeader';
-import AuthFooter from '@/components/Auth/AuthFooter/AuthFooter';
+// import AuthHeader from '@/components/Auth/AuthHeader/AuthHeader';
+// import AuthFooter from '@/components/Auth/AuthFooter/AuthFooter';
 
 export const metadata: Metadata = {
   title: {
@@ -32,11 +32,11 @@ export default function AuthLayout({
 }) {
   return (
     <>
-      <AuthHeader />
+      {/* <AuthHeader /> */}
 
       <main>{children}</main>
 
-      <AuthFooter />
+      {/* <AuthFooter /> */}
     </>
   );
 }

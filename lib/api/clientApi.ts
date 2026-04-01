@@ -1,0 +1,30 @@
+import instance from './api';
+import { User } from '@/types/Users';
+import { Story } from '@/types/story';
+import { Traveller, TravellersResponse } from '@/types/traveller';
+
+export interface AuthRequest {
+  email: string;
+  password: string;
+}
+
+export const register = async (credentials: AuthRequest): Promise<User> => {
+  const res = await instance.post<User>('/auth/register', credentials);
+  return res.data;
+};
+
+export const getPopularStories = async (): Promise<Story[]> => {
+  const res = await instance.get<Story[]>('/stories/popular');
+  return res.data;
+};
+
+export const getTravellers = async (
+  perPage: number = 10,
+  page: number = 1,
+): Promise<Traveller[]> => {
+  const { data } = await instance.get<TravellersResponse>('/travellers', {
+    params: { perPage, page },
+  });
+
+  return data.data.users;
+};

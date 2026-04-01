@@ -22,9 +22,9 @@ export default function ErrorWhileSavingModal({
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <Button onClick={onClose} className={styles.close}>
+        <button onClick={onClose} className={styles.close}>
           X
-        </Button>
+        </button>
 
         <PageTitle className={styles.title} tag="h2">
           Помилка під час збереження
@@ -36,11 +36,19 @@ export default function ErrorWhileSavingModal({
         </p>
 
         <div className={styles.actions}>
-          <Button onClick={onLogin} variant="secondary">
+          <Button
+            onClick={onLogin}
+            className={styles.bottom}
+            variant="secondary"
+          >
             Увійти
           </Button>
 
-          <Button onClick={onRegister} variant="primary">
+          <Button
+            onClick={onRegister}
+            className={styles.bottom}
+            variant="primary"
+          >
             Зареєструватись
           </Button>
         </div>

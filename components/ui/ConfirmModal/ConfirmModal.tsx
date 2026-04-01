@@ -16,9 +16,9 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        <Button className={styles.close} onClick={onCancel}>
+        <button className={styles.close} onClick={onCancel}>
           ✕
-        </Button>
+        </button>
 
         <PageTitle className={styles.title} tag="h2">
           Ви точно хочете вийти?
@@ -29,7 +29,7 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
         <div className={styles.actions}>
           <Button
             onClick={onCancel}
-            className={styles.cancel}
+            className={styles.bottom}
             variant="secondary"
           >
             Відмінити
@@ -37,7 +37,7 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
 
           <Button
             onClick={onConfirm}
-            className={styles.confirm}
+            className={styles.bottom}
             variant="primary"
           >
             Вийти

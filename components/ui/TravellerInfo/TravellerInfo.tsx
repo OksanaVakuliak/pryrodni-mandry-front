@@ -16,7 +16,7 @@ export default function TravellerInfo({ name, avatar, storiesCount }: Props) {
       </div>
 
       <div>
-        <PageTitle tag="h2">{name}</PageTitle>
+        <PageTitle tag="h3">{name}</PageTitle>
         <p className={styles.meta}>Статей: {storiesCount}</p>
       </div>
     </div>
