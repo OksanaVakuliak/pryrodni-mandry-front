@@ -9,6 +9,7 @@
   font-size: 16px;
   cursor: pointer;
   gap: 8px;
+
   border: 1px solid transparent;
   transition: all var(--transition-default);
   width: 100%;
@@ -59,6 +60,27 @@
   opacity: 0.3;
   color: var(--color-scheme-2-text);
   border-color: var(--opacity-transparent);
+}
+
+/* ---- */
+.tertiary {
+  background: var(--opacity-neutral-darkest-5);
+  color: var(--color-scheme-2-text);
+  line-height: 150%;
+  border: var(--color-scheme-2-border);
+}
+.tertiary:hover:not(:disabled) {
+  background: var(--color-mantis-lighter);
+  border-color: var(--color-mantis-dark);
+}
+.tertiary:active:not(:disabled) {
+  background: var(--color-mantis-light);
+  transform: translateY(1px);
+}
+
+.tertiary:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 @media only screen and (min-width: 768px) {
