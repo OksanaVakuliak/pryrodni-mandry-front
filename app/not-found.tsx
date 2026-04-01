@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import styles from './problem.module.css';
 
 export default function NotFound() {
   const [seconds, setSeconds] = useState(5);
@@ -26,19 +25,19 @@ export default function NotFound() {
   }, [seconds, router]);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.inner}>
-        <h1 className={styles.code}>404</h1>
+    <div className="problem-wrapper">
+      <div className="problem-inner">
+        <h1 className="problem-code">404</h1>
 
-        <p className={styles.text}>
+        <p className="problem-text">
           Сторінку не знайдено або вона більше не існує
         </p>
 
-        <Link href="/" className={styles.button}>
+        <Link href="/" className="problem-button">
           На головну
         </Link>
 
-        <p className={styles.redirect}>
+        <p className="problem-redirect">
           Перенаправлення через {seconds} сек...
         </p>
       </div>
