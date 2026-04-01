@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { useQuery } from '@tanstack/react-query';
-import { getPopularStories } from '@/lib/api/clientApi';
+import { clientApi } from '@/lib/api/clientApi';
 // import StoryCard from '@/components/ui/StoryCard/StoryCard';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { useEffect, useState } from 'react';
@@ -25,7 +25,7 @@ export default function PopularStories() {
     isError,
   } = useQuery({
     queryKey: ['popular-stories'],
-    queryFn: () => getPopularStories(),
+    queryFn: () => clientApi.stories.getPopular(),
   });
 
   useEffect(() => {
