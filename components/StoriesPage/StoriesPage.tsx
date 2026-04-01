@@ -1,6 +1,6 @@
 'use client';
 import { StoriesFilters } from '@/types/Stories';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { clientApi } from '@/lib/api/clientApi';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
@@ -10,15 +10,35 @@ import { StoryCard } from '@/components/ui/StoryCard/StoryCard';
 import { Button } from '@/components/ui/Button/Button';
 import css from './StoriesPage.module.css';
 
-const PER_PAGE = 9;
-
 const StoriesPage = () => {
   const [filters, setFilters] = useState<StoriesFilters>({
     sort: 'rate',
     page: 1,
-    perPage: PER_PAGE,
+    perPage: 9,
     category: undefined,
   });
+
+  useEffect(() => {
+    const handleResize = () => {
+      let newPerPage = 9; 
+      if (window.innerWidth < 1440 && window.innerWidth >= 768) {
+        newPerPage = 8; 
+      } else if (window.innerWidth < 768) {
+        newPerPage = 8; 
+      }
+      
+      setFilters((prev) => {
+        if (prev.perPage !== newPerPage) {
+          return { ...prev, perPage: newPerPage, page: 1 };
+        }
+        return prev;
+      });
+    };
+
+    handleResize(); 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const {
     data: stories,
@@ -55,9 +75,9 @@ const StoriesPage = () => {
   }, [stories, filters.category]);
 
   const paginatedStories = useMemo(() => {
-    const limit = filters.page * PER_PAGE;
+    const limit = filters.page * filters.perPage;
     return filteredStories.slice(0, limit);
-  }, [filteredStories, filters.page]);
+  }, [filteredStories, filters.page, filters.perPage]);
 
   const hasMore = paginatedStories.length < filteredStories.length;
 
