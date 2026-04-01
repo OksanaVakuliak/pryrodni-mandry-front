@@ -14,7 +14,7 @@ const UserBar = () => {
       </CustomLink>
       <div className={css.stateContainer}>
         <div className={css.avatarContaner}>
-          <Avatar src={user?.avatar} alt={user?.name} size={32}></Avatar>
+          <Avatar src={user?.avatarUrl} alt={user?.name} size={32}></Avatar>
           <span className={css.userName}>{user?.name || "Ім'я"}</span>
         </div>
         <button className={css.logoutBtn}>
