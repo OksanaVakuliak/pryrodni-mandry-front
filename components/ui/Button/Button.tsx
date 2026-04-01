@@ -1,36 +1,26 @@
-import React from 'react';
-import Link from 'next/link';
-import css from './Button.module.css';
+'use client';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
+import styles from './Button.module.css';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'outline' | 'secondary';
-  size?: 'sm' | 'md' | 'lg';
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
+  variant?: 'primary' | 'secondary';
+  isLoading?: boolean;
 }
 
 export const Button = ({
   children,
   variant = 'primary',
-  size = 'md',
+  isLoading,
   className = '',
-  href,
+  disabled,
   ...props
-}: ButtonProps & { href?: string }) => {
-  const classes = `${css.button} ${css[variant]} ${css[size]} ${className}`;
-
-  if (href) {
-    return (
-      <Link href={href} className={classes}>
-        {children}
-      </Link>
-    );
-  }
+}: ButtonProps) => {
+  const buttonClass = `${styles.button} ${styles[variant]} ${className}`;
 
   return (
-    <button
-      className={classes}
-      {...props}
-    >
-      {children}
+    <button className={buttonClass} disabled={isLoading || disabled} {...props}>
+      {isLoading ? 'Завантаження...' : children}
     </button>
   );
 };

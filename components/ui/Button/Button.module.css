@@ -2,59 +2,73 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
   font-family: var(--font-family);
   font-weight: 500;
+  font-size: 16px;
   cursor: pointer;
-  transition: var(--transition-default);
-  border: none;
   gap: 8px;
+  border: 1px solid transparent;
+  transition: all var(--transition-default);
+  width: 100%;
+}
+/* --- */
+.primary {
+  background: var(--color-mantis-dark);
+  color: var(--color-white);
+  border-color: var(--color-mantis-dark);
 }
 
-.primary {
-  background-color: var(--color-mantis);
+.primary:hover:not(:disabled) {
+  background: var(--color-mantis-lighter);
+  color: var(--color-scheme-2-text);
+}
+.primary:active:not(:disabled) {
+  background: var(--color-mantis-dark);
+  border-color: var(--color-mantis-dark);
   color: var(--color-white);
 }
-
-.primary:hover {
-  background-color: var(--color-mantis-dark);
+.primary:disabled {
+  border-color: var(--color-mantis-dark);
+  color: var(--color-white);
+  background: var(--color-mantis-dark);
+  opacity: 0.3;
 }
 
-.outline {
-  background-color: transparent;
-  border: 1px solid var(--color-scheme-1-border);
-  color: var(--color-neutral-darkest);
-}
-
-.outline:hover {
-  background-color: var(--opacity-neutral-darkest-5);
-}
-
+/* --- */
 .secondary {
-  background-color: var(--color-scheme-2-foreground);
-  color: var(--color-mantis-darkest);
+  background: var(--opacity-neutral-darkest-5);
+  color: var(--color-scheme-2-text);
+  border-color: var(--color-scheme-2-border);
 }
 
-.secondary:hover {
-  background-color: var(--color-mantis-light);
+.secondary:hover:not(:disabled) {
+  border-color: var(--opacity-neutral-darkest-5);
+  background: var(--color-mantis-dark);
+  color: var(--color-white);
+}
+.secondary:active:not(:disabled) {
+  background: var(--color-mantis-darker);
+  color: var(--color-white);
+  border-color: var(--opacity-transparent);
 }
 
-.sm {
-  padding: 8px 16px;
-  font-size: 14px;
+.secondary:disabled {
+  background: var(--opacity-neutral-darkest-5);
+  opacity: 0.3;
+  color: var(--color-scheme-2-text);
+  border-color: var(--opacity-transparent);
 }
 
-.md {
-  padding: 12px 24px;
-  font-size: 16px;
+@media only screen and (min-width: 768px) {
+  .button {
+    width: auto;
+  }
 }
 
-.lg {
-  padding: 16px 32px;
-  font-size: 18px;
-}
-
-.button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+@media only screen and (min-width: 1440px) {
+  .button {
+    font-size: 20px;
+  }
 }
