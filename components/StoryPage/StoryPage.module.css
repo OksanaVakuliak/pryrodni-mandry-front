@@ -1,0 +1,261 @@
+.pageWrapper {
+  background-color: var(--color-scheme-2-background);
+  min-height: 100vh;
+  padding-top: 24px;
+  padding-bottom: 64px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-mantis-darkest);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color var(--transition-default);
+}
+
+.backLink:hover {
+  color: var(--color-mantis-dark);
+}
+
+.backIcon {
+  stroke: currentColor;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--color-scheme-2-foreground);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.headerContent {
+  padding: 24px 24px 0;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: var(--color-scheme-2-text);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metaItem {
+  font-size: 14px;
+  color: var(--color-mantis-darkest);
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.metaLabel {
+  font-weight: 600;
+  color: var(--color-scheme-2-text);
+}
+
+.categoryBadge {
+  display: inline-block;
+  background: var(--color-mantis-lighter);
+  color: var(--color-mantis-darkest);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 100px;
+}
+
+.heroImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.content {
+  background: var(--color-scheme-2-foreground);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.articleText {
+  font-size: 16px;
+  line-height: 180%;
+  color: var(--color-scheme-2-text);
+  white-space: pre-line;
+}
+
+.saveSection {
+  background: var(--color-scheme-2-foreground);
+  border-radius: 16px;
+  padding: 32px 24px;
+}
+
+.saveSectionInner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saveTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-scheme-2-text);
+}
+
+.saveSubtitle {
+  font-size: 14px;
+  color: var(--color-mantis-darkest);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.saveButton {
+  align-self: flex-start;
+  min-width: 140px;
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.skeletonTitle,
+.skeletonMeta,
+.skeletonImage,
+.skeletonText {
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    var(--color-scheme-2-foreground) 25%,
+    var(--color-scheme-1-border) 50%,
+    var(--color-scheme-2-foreground) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeletonTitle {
+  height: 80px;
+}
+
+.skeletonMeta {
+  height: 48px;
+}
+
+.skeletonImage {
+  height: 300px;
+}
+
+.skeletonText {
+  height: 200px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.error {
+  color: var(--color-scheme-2-text);
+  font-size: 16px;
+  padding: 48px 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .pageWrapper {
+    padding-top: 32px;
+    padding-bottom: 80px;
+  }
+
+  .headerContent {
+    padding: 32px 32px 0;
+  }
+
+  .content {
+    padding: 32px;
+  }
+
+  .articleText {
+    font-size: 17px;
+  }
+
+  .saveSection {
+    padding: 40px 32px;
+  }
+
+  .saveTitle {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .pageWrapper {
+    padding-top: 48px;
+    padding-bottom: 96px;
+  }
+
+  .header {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .headerContent {
+    flex: 1;
+    padding: 48px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .heroImageWrapper {
+    width: 50%;
+    aspect-ratio: unset;
+    min-height: 400px;
+    flex-shrink: 0;
+  }
+
+  .content {
+    padding: 48px 64px;
+  }
+
+  .articleText {
+    font-size: 18px;
+  }
+
+  .saveSection {
+    padding: 48px 64px;
+  }
+
+  .saveSectionInner {
+    max-width: 600px;
+  }
+}
