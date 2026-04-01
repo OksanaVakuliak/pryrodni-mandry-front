@@ -1,6 +1,6 @@
 import instance from './api';
 import { User } from '@/types/Users';
-import { Story } from '@/types/story';
+import { SaveResponse, Story } from '@/types/story';
 import { Traveller, TravellersResponse } from '@/types/traveller';
 
 export interface AuthRequest {
@@ -26,18 +26,20 @@ export const getTravellers = async (
     params: { perPage, page },
   });
 
-
-  
-  return data.data.users;
+  return data.users;
 };
 
 export const storiesApi = {
-    saveStory: async (storyId: string) => {
-        const response = await instance.patch(`/stories/${storyId}/save`);
-        return response.data;
-    },
-    deleteStory: async (storyId: string) => {
-        const response = await instance.patch(`/stories/${storyId}/delete`);
-        return response.data;
-    },
+  saveStory: async (storyId: string): Promise<SaveResponse> => {
+    const response = await instance.patch<SaveResponse>(
+      `/stories/${storyId}/save`,
+    );
+    return response.data;
+  },
+  deleteStory: async (storyId: string): Promise<SaveResponse> => {
+    const response = await instance.patch<SaveResponse>(
+      `/stories/${storyId}/delete`,
+    );
+    return response.data;
+  },
 };
