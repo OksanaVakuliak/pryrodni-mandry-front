@@ -1,4 +1,5 @@
-import styles from './MessageNoStories.module.css';
+import styles from '@/components/ui/MessageNoStories/MessageNoStories.module.css';
+import { Button } from '@/components/ui/Button/Button';
 
 type Props = {
   onBack?: () => void;
@@ -9,9 +10,9 @@ export default function MessageNoStories({ onBack }: Props) {
     <div className={styles.wrapper}>
       <p className={styles.text}>Цей користувач ще не публікував історій</p>
 
-      <button onClick={onBack} className={styles.button}>
+      <Button onClick={onBack} className={styles.button}>
         Назад до історій
-      </button>
+      </Button>
     </div>
   );
 }

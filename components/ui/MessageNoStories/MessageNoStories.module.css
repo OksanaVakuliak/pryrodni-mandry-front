@@ -1,26 +1,61 @@
 .wrapper {
-  background: #e6f2e8;
+  background: var(--color-scheme-2-foreground);
   padding: 24px;
   border-radius: 16px;
-  max-width: 420px;
+  width: 335px;
 }
 
 .text {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 16px;
-  color: #1f2937;
+  margin-bottom: 32px;
+  color: var(--color-scheme-1-text);
 }
 
 .button {
-  background: #3b7d3f;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 10px;
-  cursor: pointer;
+  width: 303px;
+  height: 48px;
 }
 
-.button:hover {
-  background: #2f6a33;
+@media only screen and (min-width: 767px) {
+  .wrapper {
+    width: 533px;
+    padding: 32px;
+  }
+
+  .text {
+    max-width: 400px;
+    margin-bottom: 32px;
+    line-height: 140%;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .wrapper .button {
+    max-width: 163px;
+    height: 48px;
+    padding: 1px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .wrapper {
+    width: 553px;
+    padding: 32px;
+  }
+
+  .text {
+    font-size: 26px;
+    max-width: 400px;
+    margin-bottom: 32px;
+    line-height: 140%;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .wrapper .button {
+    max-width: 198px;
+    height: 48px;
+    padding: 1px;
+  }
 }

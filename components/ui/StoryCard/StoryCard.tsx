@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { Icon } from '@/components/ui/Icon/Icon';
-import { Button } from '../Button/Button';
-import { PageTitle } from '../PageTitle/PageTitle';
-import styles from './StoryCard.module.css';
+import { Button } from '@/components/ui/Button/Button';
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
+import styles from '@/components/ui/StoryCard/StoryCard.module.css';
 
 type Props = {
   title: string;
@@ -41,11 +41,19 @@ export default function StoryCard({
         <PageTitle className={styles.title}>{title}</PageTitle>
 
         <div className={styles.actions}>
-          <Button onClick={onOpen} className={styles.button}>
+          <Button
+            onClick={onOpen}
+            className={styles.infoBtn}
+            variant="tertiary"
+          >
             Переглянути статтю
           </Button>
 
-          <Button onClick={onSave} className={styles.iconBtn}>
+          <Button
+            onClick={onSave}
+            className={styles.iconBtn}
+            variant="tertiary"
+          >
             <Icon name="icon-bookmark"></Icon>
           </Button>
         </div>
