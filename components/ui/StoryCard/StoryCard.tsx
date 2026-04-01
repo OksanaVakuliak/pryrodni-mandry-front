@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import { Story } from '@/types/Stories';
 import { Icon } from '../Icon/Icon';
-import { Button } from '../Button/Button';
+import Link from 'next/link';
+import buttonCss from '../Button/Button.module.css';
 import css from './StoryCard.module.css';
 
 interface StoryCardProps {
@@ -41,9 +42,9 @@ export const StoryCard = ({ story }: StoryCardProps) => {
         </div>
         <h3 className={css.title}>{story.title}</h3>
         <div className={css.footer}>
-          <Button variant="secondary" className={css.viewButton} href={`/stories/${story._id}`}>
+          <Link href={`/stories/${story._id}`} className={`${buttonCss.button} ${buttonCss.secondary} ${css.viewButton}`}>
             Переглянути статтю
-          </Button>
+          </Link>
           <button className={css.bookmarkButton} aria-label="Add to bookmarks">
             <Icon
               name="icon-bookmark"
