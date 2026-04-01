@@ -1,0 +1,44 @@
+@media screen and (min-width: 375px) {
+  .headerContainer {
+    max-width: 375px;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .svgLogo {
+    width: 124px;
+    height: 40px;
+  }
+
+  .container {
+    padding: 18px 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 18px 32px;
+  }
+
+  .svgLogo {
+    width: 128px;
+    height: 40px;
+  }
+
+  .headerContainer {
+    max-width: 768px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container {
+    padding: 18px 64px;
+  }
+
+  .headerContainer {
+    max-width: 1440px;
+  }
+
+  .svgLogo {
+    width: 124px;
+    height: 40px;
+  }
+}

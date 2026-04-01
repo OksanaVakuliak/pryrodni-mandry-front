@@ -12,8 +12,6 @@ import css from './header.module.css';
 const Header = () => {
   const { isAuthenticated, checkAuth } = useAuthStore();
 
-  const iconId = 'icon-Logo';
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -40,9 +38,7 @@ const Header = () => {
       <div className={css.container}>
         <Link href="/" className={css.logoLink}>
           <div className={css.logoContainer}>
-            <svg className={css.svg}>
-              <use href={`/Icons/sprite.svg#${iconId}`} />
-            </svg>
+            <Icon name={'icon-Logo'} className={css.svg} />
           </div>
         </Link>
 

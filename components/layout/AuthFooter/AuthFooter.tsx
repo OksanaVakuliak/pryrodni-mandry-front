@@ -4,7 +4,13 @@ const AuthFooter = () => {
   const date = new Date();
   const dateYear = date.getFullYear();
 
-  return <p className={css.text}>{`© ${dateYear} Природні Мандри`}</p>;
+  return (
+    <footer className={css.footerContainer}>
+      <div className={css.container}>
+        <p className={css.text}>{`© ${dateYear} Природні Мандри`}</p>
+      </div>
+    </footer>
+  );
 };
 
 export default AuthFooter;
