@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 import QueryProvider from '@/components/layout/QueryProvider/QueryProvider';
-
+import AppLayout from '@/components/layout/AppLayout/AppLayout';
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -22,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="uk">
       <body className={montserrat.className}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <AppLayout>{children}</AppLayout>
+        </QueryProvider>
       </body>
     </html>
   );
