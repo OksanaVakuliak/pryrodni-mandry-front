@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './Button.module.css';
+import Link from 'next/link';
+import css from './Button.module.css';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'outline' | 'secondary';
@@ -11,11 +12,22 @@ export const Button = ({
   variant = 'primary',
   size = 'md',
   className = '',
+  href,
   ...props
-}: ButtonProps) => {
+}: ButtonProps & { href?: string }) => {
+  const classes = `${css.button} ${css[variant]} ${css[size]} ${className}`;
+
+  if (href) {
+    return (
+      <Link href={href} className={classes}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <button
-      className={`${styles.button} ${styles[variant]} ${styles[size]} ${className}`}
+      className={classes}
       {...props}
     >
       {children}

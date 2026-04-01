@@ -6,15 +6,20 @@
 .showMoreContainer {
   display: flex;
   justify-content: center;
-  padding-bottom: 72px;
+  padding-bottom: 48px;
 }
 
 .showMoreButton {
-  min-width: 200px;
+  width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .showMoreContainer {
-    padding-bottom: 48px;
+    padding-bottom: 72px;
+  }
+
+  .showMoreButton {
+    min-width: 200px;
+    width: auto;
   }
 }

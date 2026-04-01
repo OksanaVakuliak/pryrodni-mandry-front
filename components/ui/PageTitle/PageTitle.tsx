@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './PageTitle.module.css';
+import css from './PageTitle.module.css';
 
 interface PageTitleProps {
   children: React.ReactNode;
 }
 
 export const PageTitle = ({ children }: PageTitleProps) => {
-  return <h1 className={styles.title}>{children}</h1>;
+  return <h1 className={css.title}>{children}</h1>;
 };

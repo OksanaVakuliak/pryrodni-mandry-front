@@ -1,10 +1,10 @@
-import React from 'react';
-import styles from './StoriesCategories.module.css';
+import css from './StoriesCategories.module.css';
+import { Category } from '@/types/Category';
 
 interface StoriesCategoriesProps {
-  categories: string[];
+  categories: Category[];
   activeCategory: string | undefined;
-  onCategoryChange: (category: string | undefined) => void;
+  onCategoryChange: (categoryId: string | undefined) => void;
 }
 
 export const StoriesCategories = ({
@@ -13,21 +13,26 @@ export const StoriesCategories = ({
   onCategoryChange,
 }: StoriesCategoriesProps) => {
   return (
-    <div className={styles.container}>
-      <ul className={styles.list}>
-        {categories.map((category) => {
-          const isActive =
-            category === 'Всі статті' ? !activeCategory : activeCategory === category;
+    <div className={css.container}>
+      <ul className={css.list}>
+        <li>
+          <button
+            className={`${css.categoryButton} ${!activeCategory ? css.active : ''}`}
+            onClick={() => onCategoryChange(undefined)}
+          >
+            Всі статті
+          </button>
+        </li>
+        {categories.map((cat) => {
+          const isActive = activeCategory === cat._id;
 
           return (
-            <li key={category}>
+            <li key={cat._id}>
               <button
-                className={`${styles.categoryButton} ${isActive ? styles.active : ''}`}
-                onClick={() =>
-                  onCategoryChange(category === 'Всі статті' ? undefined : category)
-                }
+                className={`${css.categoryButton} ${isActive ? css.active : ''}`}
+                onClick={() => onCategoryChange(cat._id)}
               >
-                {category}
+                {cat.category}
               </button>
             </li>
           );

@@ -1,5 +1,10 @@
 import { Category } from './Category';
-import { User } from './Users';
+
+export interface Author {
+  _id: string;
+  name: string;
+  avatarUrl: string;
+}
 
 export interface Story {
   _id: string;
@@ -7,17 +12,18 @@ export interface Story {
   article: string;
   img: string;
   category: Category;
-  ownerId: User;
+  ownerId: Author;
   rate: number;
   date: string;
-  saveByUsers: string[];
-  createdAt: string;
 }
 
 export interface StoriesResponse {
   page: number;
   perPage: number;
-  category: Category;
+  totalPages: number;
+  totalStories: number;
+  hasNextPage: boolean;
+  stories: Story[];
 }
 
 export interface StoriesFilters {

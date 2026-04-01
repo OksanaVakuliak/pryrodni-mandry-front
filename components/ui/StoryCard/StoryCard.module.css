@@ -1,10 +1,12 @@
 .card {
-  background-color: var(--color-scheme-2-background);
+  background: var(--color-scheme-2-foreground);
+  border: 0px solid var(--color-scheme-1-border);
   border-radius: 12px;
+  min-width: 420px;
+  max-height: 633px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 100%;
   transition: transform var(--transition-default);
 }
 
@@ -14,8 +16,7 @@
 
 .imageWrapper {
   position: relative;
-  width: 100%;
-  padding-top: 66.66%;
+  flex-shrink: 0;
 }
 
 .image {
@@ -23,39 +24,55 @@
 }
 
 .content {
-  padding: 20px;
+  padding: 16px;
+  min-width: 421px;
+  max-height: 212px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
 .info {
+  min-width: 389px;
+  max-height: 30px;
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  color: var(--color-neutral-dark);
-  margin-bottom: 12px;
+  color: var(--color-mantis-darkest);
+  margin-bottom: 16px;
 }
 
 .author {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .dot {
-  color: var(--color-neutral-light);
+  color: var(--color-mantis-darkest);
 }
 
-.date {
-  color: var(--color-neutral-light);
+.savedCount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+}
+
+.smallBookmarkIcon {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
 }
 
 .title {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: var(--color-neutral-darkest);
-  margin-bottom: 20px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 150%;
+  color: var(--color-scheme-2-text);
+  width: 389px;
+  height: 78px;
+  margin-bottom: 24px;
   display: -webkit-box;
   line-clamp: 2;
   -webkit-line-clamp: 2;
@@ -65,13 +82,20 @@
 }
 
 .footer {
+  min-width: 389px;
+  max-height: 48px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
 .viewButton {
-  flex-grow: 1;
+  border: 1px solid var(--color-scheme-2-border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  min-width: 325px;
+  min-height: 48px;
+  background: var(--opacity-neutral-darkest-5);
   justify-content: center;
   font-size: 14px !important;
   white-space: nowrap;
@@ -81,10 +105,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background-color: var(--color-scheme-2-foreground);
+  border: 1px solid var(--color-scheme-2-border);
+  border-radius: 6px;
+  padding: 6px;
+  min-width: 48px;
+  min-height: 48px;
+  background: var(--opacity-neutral-darkest-5);
   color: var(--color-mantis-darkest);
   transition: var(--transition-default);
 }

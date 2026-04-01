@@ -1,5 +1,4 @@
 'use client';
-
 import { StoriesFilters } from '@/types/Stories';
 import { useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -9,18 +8,9 @@ import { StoriesCategories } from './CategoriesFilter/StoriesCategories';
 import { StoriesGrid } from './CategoriesFilter/StoriesGrid';
 import { StoryCard } from '@/components/ui/StoryCard/StoryCard';
 import { Button } from '@/components/ui/Button/Button';
-import styles from './StoriesPage.module.css';
+import css from './StoriesPage.module.css';
 
 const PER_PAGE = 9;
-
-const CATEGORIES = [
-  'Всі статті',
-  'Маршрути',
-  'Еко-поради',
-  'Природа',
-  'Культура',
-  'Локальні продукти',
-];
 
 const StoriesPage = () => {
   const [filters, setFilters] = useState<StoriesFilters>({
@@ -32,12 +22,23 @@ const StoriesPage = () => {
 
   const {
     data: stories,
-    isLoading,
-    isError,
+    isLoading: isLoadingStories,
+    isError: isErrorStories,
   } = useQuery({
     queryKey: ['stories'],
     queryFn: clientApi.stories.getAll,
   });
+
+  const {
+    data: categories = [],
+    isLoading: isLoadingCategories,
+  } = useQuery({
+    queryKey: ['categories'],
+    queryFn: clientApi.categories.getAll,
+  });
+
+  const isLoading = isLoadingStories || isLoadingCategories;
+  const isError = isErrorStories;
 
   const filteredStories = useMemo(() => {
     if (!stories) return [];
@@ -66,10 +67,14 @@ const StoriesPage = () => {
 
   const handleShowMore = () => {
     setFilters((prev) => ({ ...prev, page: prev.page + 1 }));
+    const element = document.getElementById('stories-grid');
+    setTimeout(() => {
+      element?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+    }, 100);
   };
 
   return (
-    <div className={styles.pageWrapper}>
+    <div className={css.pageWrapper}>
       <div className="container">
         <PageTitle>Статті</PageTitle>
 
@@ -79,7 +84,7 @@ const StoriesPage = () => {
         {!isLoading && !isError && (
           <>
             <StoriesCategories
-              categories={CATEGORIES}
+              categories={categories}
               activeCategory={filters.category}
               onCategoryChange={handleCategoryChange}
             />
@@ -91,11 +96,11 @@ const StoriesPage = () => {
             </StoriesGrid>
 
             {hasMore && (
-              <div className={styles.showMoreContainer}>
+              <div className={css.showMoreContainer}>
                 <Button
                   variant="primary"
                   onClick={handleShowMore}
-                  className={styles.showMoreButton}
+                  className={css.showMoreButton}
                 >
                   Показати ще
                 </Button>
