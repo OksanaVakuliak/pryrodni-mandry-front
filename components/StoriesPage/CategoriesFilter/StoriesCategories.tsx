@@ -14,6 +14,26 @@ export const StoriesCategories = ({
 }: StoriesCategoriesProps) => {
   return (
     <div className={css.container}>
+      <div className={css.mobileSelectWrapper}>        
+        <div className={css.selectContainer}>
+          <select
+            id="category-select"
+            className={css.mobileSelect}
+            value={activeCategory || ''}
+            onChange={(e) =>
+              onCategoryChange(e.target.value === '' ? undefined : e.target.value)
+            }
+          >
+            <option value="">Всі статті</option>
+            {categories.map((cat) => (
+              <option key={cat._id} value={cat._id}>
+                {cat.category}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       <ul className={css.list}>
         <li>
           <button
