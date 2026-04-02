@@ -6,6 +6,9 @@ import { useQuery } from '@tanstack/react-query';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { Button } from '@/components/ui/Button/Button';
 import { Icon } from '@/components/ui/Icon/Icon';
+import { Loader } from '@/components/ui/Loader/Loader';
+// import { Skeleton } from '@/components/ui/Skeleton/Skeleton';
+// import { Error } from '@/components/ui/Error/Error';
 import { Story } from '@/types/Stories';
 import instance from '@/lib/api/api';
 import { RecommendedStories } from './RecomendedStories/RecommendedStories';
@@ -57,11 +60,14 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
     return (
       <div className={css.pageWrapper}>
         <div className="container">
+          <Loader />
           <div className={css.skeleton}>
-            <div className={css.skeletonTitle} />
-            <div className={css.skeletonMeta} />
-            <div className={css.skeletonImage} />
-            <div className={css.skeletonText} />
+            {/* <Skeleton width="100%" height="40px" />
+            <Skeleton width="80%" height="20px" />
+            <Skeleton width="100%" height="300px" />
+            <Skeleton width="100%" height="20px" />
+            <Skeleton width="100%" height="20px" />
+            <Skeleton width="100%" height="20px" /> */}
           </div>
         </div>
       </div>
@@ -72,7 +78,7 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
     return (
       <div className={css.pageWrapper}>
         <div className="container">
-          <p className={css.error}>Не вдалося завантажити статтю.</p>
+          <Error message="Не вдалося завантажити статтю. Спробуйте пізніше." />
         </div>
       </div>
     );
