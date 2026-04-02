@@ -15,7 +15,7 @@ import { CustomLink } from '@/components/ui/Link/Link';
 import 'swiper/css';
 import css from './OurTravellers.module.css';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
-import TravellerCard from '@/components/ui/TrevallerCard/TrevallerCard';
+import TravellerCard from '@/components/ui/TravallerCard/TravallerCard';
 
 const OurTravellers = () => {
   const [isBeginning, setIsBeginning] = useState(true);

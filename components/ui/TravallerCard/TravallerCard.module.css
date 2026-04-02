@@ -1,11 +1,17 @@
 .card {
+  display: block;
   background: #e6f2e8;
   border-radius: 16px;
-  padding: 16px;
+  padding: 24px 16px;
   text-align: center;
-  max-width: 220px;
+  height: 100%;
+  width: 100%;
+  max-width: 335px;
+  overflow: hidden;
 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform var(--transition-default),
+    box-shadow var(--transition-default);
 }
 
 .card:hover {
@@ -15,9 +21,9 @@
 
 .avatarWrapper {
   position: relative;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 12px;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 24px;
 }
 
 .avatar {
@@ -38,7 +44,7 @@
 .meta {
   font-size: 14px;
   color: #6b7280;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .button {
