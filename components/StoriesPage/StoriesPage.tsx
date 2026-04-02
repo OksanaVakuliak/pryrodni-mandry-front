@@ -6,9 +6,9 @@ import { clientApi } from '@/lib/api/clientApi';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { StoriesCategories } from './CategoriesFilter/StoriesCategories';
 import { StoriesGrid } from './CategoriesFilter/StoriesGrid';
-import { StoryCard } from '@/components/ui/StoryCard/StoryCard';
 import { Button } from '@/components/ui/Button/Button';
 import css from './StoriesPage.module.css';
+import StoryCard from '../ui/StoryCard/StoryCard';
 
 const StoriesPage = () => {
   const [filters, setFilters] = useState<StoriesFilters>({
