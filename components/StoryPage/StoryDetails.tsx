@@ -6,9 +6,6 @@ import { useQuery } from '@tanstack/react-query';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { Button } from '@/components/ui/Button/Button';
 import { Icon } from '@/components/ui/Icon/Icon';
-import { Loader } from '@/components/ui/Loader/Loader';
-// import { Skeleton } from '@/components/ui/Skeleton/Skeleton';
-// import { Error } from '@/components/ui/Error/Error';
 import { Story } from '@/types/Stories';
 import instance from '@/lib/api/api';
 import { RecommendedStories } from './RecomendedStories/RecommendedStories';
@@ -47,42 +44,10 @@ const formatArticle = (text: string): string[] => {
 };
 
 export const StoryDetails = ({ storyId }: StoryPageProps) => {
-  const {
-    data: story,
-    isLoading,
-    isError,
-  } = useQuery({
+  const { data: story } = useQuery({
     queryKey: ['story', storyId],
     queryFn: () => getStoryById(storyId),
   });
-
-  if (isLoading) {
-    return (
-      <div className={css.pageWrapper}>
-        <div className="container">
-          <Loader />
-          <div className={css.skeleton}>
-            {/* <Skeleton width="100%" height="40px" />
-            <Skeleton width="80%" height="20px" />
-            <Skeleton width="100%" height="300px" />
-            <Skeleton width="100%" height="20px" />
-            <Skeleton width="100%" height="20px" />
-            <Skeleton width="100%" height="20px" /> */}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (isError || !story) {
-    return (
-      <div className={css.pageWrapper}>
-        <div className="container">
-          <Error message="Не вдалося завантажити статтю. Спробуйте пізніше." />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <section className={css.pageWrapper}>
@@ -91,8 +56,8 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
           <div className={css.header}>
             <div className={css.heroImageWrapper}>
               <Image
-                src={story.img}
-                alt={story.title}
+                src={story?.img || ''}
+                alt={story?.title || ''}
                 fill
                 className={css.heroImage}
                 sizes="(max-width: 767px) 100vw, (max-width: 1439px) 100vw, 700px"
@@ -111,17 +76,17 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
                 Всі статті
               </Link>
               <PageTitle tag="h1" className={css.title}>
-                {story.title}
+                {story?.title}
               </PageTitle>
 
               <div className={css.meta}>
                 <p className={css.metaItem}>
                   <span className={css.metaLabel}>Автор статті</span>{' '}
-                  {story.ownerId.name}
+                  {story?.ownerId?.name}
                 </p>
                 <p className={css.metaItem}>
                   <span className={css.metaLabel}>Опубліковано</span>{' '}
-                  {formatDate(story.date)}
+                  {formatDate(story?.date || '')}
                 </p>
                 <p className={css.metaItem}>
                   <span className={css.metaLabel}>Маршрути</span>
@@ -131,7 +96,7 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
           </div>
           <div className={css.contentBox}>
             <div className={css.content}>
-              {formatArticle(story.article).map((paragraph, idx) => (
+              {formatArticle(story?.article || '').map((paragraph, idx) => (
                 <p key={idx} className={css.articleText}>
                   {paragraph}
                 </p>
