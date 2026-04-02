@@ -1,6 +1,8 @@
 import Image from 'next/image';
-import styles from './TrevallerCard.module.css';
+import styles from './TravallerCard.module.css';
 import { Traveller } from '@/types/traveller';
+import { Button } from '@/components/ui/Button/Button';
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 
 type Props = {
   traveller: Traveller;
@@ -22,13 +24,15 @@ export default function TravellerCard({ traveller, onOpen }: Props) {
         )}
       </div>
 
-      <h3 className={styles.name}>{name}</h3>
+      <PageTitle className={styles.name} tag="h3">
+        {name}
+      </PageTitle>
 
       <p className={styles.meta}>Статей: {storiesCount}</p>
 
-      <button onClick={onOpen} className={styles.button}>
+      <Button onClick={onOpen} className={styles.button} variant="tertiary">
         Переглянути профіль
-      </button>
+      </Button>
     </div>
   );
 }
