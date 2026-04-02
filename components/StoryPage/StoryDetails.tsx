@@ -9,13 +9,13 @@ import { Icon } from '@/components/ui/Icon/Icon';
 import { Story } from '@/types/Stories';
 import instance from '@/lib/api/api';
 import { RecommendedStories } from './RecommendedStories/RecommendedStories';
-import css from './StoryPage.module.css';
+import css from './StoryDetails.module.css';
 
 interface StoryPageProps {
   storyId: string;
 }
 
-const fetchStory = async (id: string): Promise<Story> => {
+const getStoryById = async (id: string): Promise<Story> => {
   const { data } = await instance.get<Story>(`/stories/${id}`);
   return data;
 };
@@ -29,10 +29,10 @@ const formatDate = (dateStr: string) => {
   });
 };
 
-export const StoryPage = ({ storyId }: StoryPageProps) => {
+export const StoryDetails = ({ storyId }: StoryPageProps) => {
   const { data: story, isLoading, isError } = useQuery({
     queryKey: ['story', storyId],
-    queryFn: () => fetchStory(storyId),
+    queryFn: () => getStoryById(storyId),
   });
 
   if (isLoading) {
@@ -61,14 +61,14 @@ export const StoryPage = ({ storyId }: StoryPageProps) => {
   }
 
   return (
-    <div className={css.pageWrapper}>
+    <section className={css.pageWrapper}>
       <div className="container">
         <Link href="/stories" className={css.backLink}>
           <Icon name="icon-strelka_left" width={16} height={16} className={css.backIcon} />
           Всі статті
         </Link>
 
-        <article className={css.article}>
+        <div className={css.article}>
           <div className={css.header}>
             <div className={css.headerContent}>
               <PageTitle tag="h1" className={css.title}>
@@ -122,10 +122,10 @@ export const StoryPage = ({ storyId }: StoryPageProps) => {
               </Button>
             </div>
           </div>
-        </article>
+        </div>
 
         <RecommendedStories currentStoryId={storyId} />
       </div>
-    </div>
+    </section>
   );
 };

@@ -1,4 +1,4 @@
-import { StoryPage } from '@/components/StoryPage/StoryPage';
+import { StoryDetails } from '@/components/StoryPage/StoryDetails';
 
 interface PageProps {
   params: Promise<{ storyId: string }>;
@@ -6,5 +6,5 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
   const { storyId } = await params;
-  return <StoryPage storyId={storyId} />;
+  return <StoryDetails storyId={storyId} />;
 }
