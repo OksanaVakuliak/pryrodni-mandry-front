@@ -6,7 +6,7 @@ import { clientApi } from '@/lib/api/clientApi';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { StoriesCategories } from './CategoriesFilter/StoriesCategories';
 import { StoriesGrid } from './CategoriesFilter/StoriesGrid';
-import { StoryCard } from '@/components/ui/StoryCard/StoryCard';
+import StoryCard from '../ui/StoryCard/StoryCard';
 import { Button } from '@/components/ui/Button/Button';
 import css from './StoriesPage.module.css';
 
@@ -20,13 +20,13 @@ const StoriesPage = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      let newPerPage = 9; 
+      let newPerPage = 9;
       if (window.innerWidth < 1440 && window.innerWidth >= 768) {
-        newPerPage = 8; 
+        newPerPage = 8;
       } else if (window.innerWidth < 768) {
-        newPerPage = 8; 
+        newPerPage = 8;
       }
-      
+
       setFilters((prev) => {
         if (prev.perPage !== newPerPage) {
           return { ...prev, perPage: newPerPage, page: 1 };
@@ -35,7 +35,7 @@ const StoriesPage = () => {
       });
     };
 
-    handleResize(); 
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -49,10 +49,7 @@ const StoriesPage = () => {
     queryFn: clientApi.stories.getAll,
   });
 
-  const {
-    data: categories = [],
-    isLoading: isLoadingCategories,
-  } = useQuery({
+  const { data: categories = [], isLoading: isLoadingCategories } = useQuery({
     queryKey: ['categories'],
     queryFn: clientApi.categories.getAll,
   });
@@ -89,7 +86,11 @@ const StoriesPage = () => {
     setFilters((prev) => ({ ...prev, page: prev.page + 1 }));
     const element = document.getElementById('stories-grid');
     setTimeout(() => {
-      element?.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+      element?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+        inline: 'nearest',
+      });
     }, 100);
   };
 

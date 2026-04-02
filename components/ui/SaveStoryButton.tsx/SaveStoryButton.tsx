@@ -7,22 +7,24 @@ import { Button } from '@/components/ui/Button/Button';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { storiesApi } from '@/lib/api/clientApi';
 import { useStoriesStore } from '@/lib/store/useStoriesStore';
+import { useAuthModal } from '@/components/providers/AuthModalProvider';
 
 interface SaveStoryButtonProps {
   storyId: string;
   initialIsSaved: boolean;
   isAuthenticated: boolean;
-  onOpenAuthModal: () => void;
   variant?: 'text' | 'icon';
+  className?: string;
 }
 
 export const SaveStoryButton = ({
   storyId,
   initialIsSaved,
   isAuthenticated,
-  onOpenAuthModal,
   variant = 'text',
+  className = '',
 }: SaveStoryButtonProps) => {
+  const { openAuthModal } = useAuthModal();
   const isSaved = useStoriesStore(
     (state) => state.savedStories[storyId] ?? initialIsSaved,
   );
@@ -32,7 +34,7 @@ export const SaveStoryButton = ({
 
   const handleToggleSave = async () => {
     if (!isAuthenticated) {
-      onOpenAuthModal();
+      openAuthModal();
       return;
     }
 
@@ -56,7 +58,7 @@ export const SaveStoryButton = ({
 
         if (status === 401) {
           toast.error('Потрібно увійти, щоб зберігати історії');
-          onOpenAuthModal();
+          openAuthModal();
           return;
         }
 
@@ -76,8 +78,19 @@ export const SaveStoryButton = ({
     }
   };
 
+  const savedIconStyle =
+    variant === 'icon' && isSaved
+      ? {
+          background: 'var(--color-mantis-darker)',
+          fill: 'var(--color-white)',
+          borderColor: 'var(--opacity-transparent)',
+        }
+      : undefined;
+
   return (
     <Button
+      className={className}
+      style={savedIconStyle}
       onClick={handleToggleSave}
       isLoading={variant === 'icon' ? false : isRequesting}
       disabled={isRequesting}
