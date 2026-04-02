@@ -29,6 +29,15 @@ const formatDate = (dateStr: string) => {
   });
 };
 
+const formatArticle = (text: string): string[] => {
+  const sentences = text.match(/[^.!?]+[.!?]+[\s]*/g) ?? [text];
+  const groups: string[] = [];
+  for (let i = 0; i < sentences.length; i += 3) {
+    groups.push(sentences.slice(i, i + 3).join('').trim());
+  }
+  return groups;
+};
+
 export const StoryDetails = ({ storyId }: StoryPageProps) => {
   const { data: story, isLoading, isError } = useQuery({
     queryKey: ['story', storyId],
@@ -77,20 +86,20 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
 
               <div className={css.meta}>
                 <p className={css.metaItem}>
-                  <span className={css.metaLabel}>Автор статті:</span>{' '}
+                  <span className={css.metaLabel}>Автор статті</span>{' '}
                   {story.ownerId.name}
                 </p>
                 <p className={css.metaItem}>
-                  <span className={css.metaLabel}>Опубліковано:</span>{' '}
+                  <span className={css.metaLabel}>Опубліковано</span>{' '}
                   {formatDate(story.date)}
                 </p>
                 <p className={css.metaItem}>
                   <span className={css.metaLabel}>Маршрути</span>
-                  {story.category?.category && (
+                  {/* {story.category?.category && (
                     <span className={css.categoryBadge}>
                       {story.category.category}
                     </span>
-                  )}
+                  )} */}
                 </p>
               </div>
             </div>
@@ -108,7 +117,11 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
           </div>
 
           <div className={css.content}>
-            <p className={css.articleText}>{story.article}</p>
+            {formatArticle(story.article).map((paragraph, idx) => (
+              <p key={idx} className={css.articleText}>
+                {paragraph}
+              </p>
+            ))}
           </div>
 
           <div className={css.saveSection}>
