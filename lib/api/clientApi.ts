@@ -1,7 +1,13 @@
 import instance from './api';
-import { Story } from '@/types/Stories';
 import { Category } from '@/types/Category';
 import { Traveller, TravellersResponse } from '@/types/traveller';
+import { User } from '@/types/Users';
+import { SaveResponse, Story } from '@/types/story';
+
+export interface AuthRequest {
+  email: string;
+  password: string;
+}
 
 export const clientApi = {
   stories: {
@@ -18,6 +24,15 @@ export const clientApi = {
   },
 };
 
+export const register = async (credentials: AuthRequest): Promise<User> => {
+  const res = await instance.post<User>('/auth/register', credentials);
+  return res.data;
+};
+
+export const login = async (credentials: AuthRequest): Promise<User> => {
+  const res = await instance.post<User>('/auth/login', credentials);
+  return res.data;
+};
 
 export const getPopularStories = async (): Promise<Story[]> => {
   const res = await instance.get<Story[]>('/stories/popular');
@@ -32,5 +47,20 @@ export const getTravellers = async (
     params: { perPage, page },
   });
 
-  return data.data.users;
+  return data.users;
+};
+
+export const storiesApi = {
+  saveStory: async (storyId: string): Promise<SaveResponse> => {
+    const response = await instance.patch<SaveResponse>(
+      `/stories/${storyId}/save`,
+    );
+    return response.data;
+  },
+  deleteStory: async (storyId: string): Promise<SaveResponse> => {
+    const response = await instance.patch<SaveResponse>(
+      `/stories/${storyId}/delete`,
+    );
+    return response.data;
+  },
 };

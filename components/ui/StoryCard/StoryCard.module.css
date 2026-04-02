@@ -1,23 +1,26 @@
 .card {
-  background: var(--color-scheme-2-foreground);
-  border: 0px solid var(--color-scheme-1-border);
-  border-radius: 12px;
-  width: 100%;
+  background: var(--color-mantis-lightest);
+  border-radius: 16px;
   overflow: hidden;
+  width: 100%;
+  height: 560px;
   display: flex;
   flex-direction: column;
-  transition: transform var(--transition-default);
+  transition:
+    transform var(--transition-default),
+    box-shadow var(--transition-default);
 }
 
 .card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
 .imageWrapper {
   position: relative;
-  flex-shrink: 0;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 335px;
+  flex-shrink: 0;
 }
 
 .image {
@@ -26,109 +29,61 @@
 
 .content {
   padding: 16px;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  justify-content: space-between;
 }
 
-.info {
+.meta {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-size: 14px;
-  color: var(--color-mantis-darkest);
-  margin-bottom: 16px;
-}
-
-.author {
-  font-weight: 600;
-}
-
-.dot {
-  color: var(--color-mantis-darkest);
-}
-
-.savedCount {
-  display: flex;
+  color: var(--color-scheme-2-text);
+  margin-bottom: 8px;
   align-items: center;
-  gap: 4px;
-  font-weight: 500;
 }
 
-.smallBookmarkIcon {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
+.metaSeparator {
+  color: var(--color-neutral-light);
 }
 
 .title {
-  font-size: 26px;
-  line-height: 150%;
   color: var(--color-scheme-2-text);
-  margin-bottom: 24px;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  flex-grow: 1;
+  margin-bottom: 12px;
 }
 
-.footer {
+.actions {
   display: flex;
   align-items: center;
-  gap: 12px;
-  width: 100%;
+  gap: 16px;
 }
 
-.viewButton {
-  border: 1px solid var(--color-scheme-2-border);
-  border-radius: 6px;
-  padding: 6px 12px;
-  flex-grow: 1;
-  min-height: 48px;
-  background: var(--opacity-neutral-darkest-5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px !important;
-  white-space: normal;
-  text-align: center;
+.card .infoBtn {
+  flex: 1;
+  height: 48px;
+  font-size: 14px;
 }
 
-.bookmarkButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-scheme-2-border);
-  border-radius: 6px;
-  padding: 6px;
+.svg {
+  flex-shrink: 0;
+}
+
+.card .iconBtn {
+  flex-shrink: 0;
   width: 48px;
   height: 48px;
-  flex-shrink: 0;
-  background: var(--opacity-neutral-darkest-5);
-  color: var(--color-mantis-darkest);
-  transition: var(--transition-default);
+  padding: 0;
 }
 
-.bookmarkButton:hover {
-  background-color: var(--color-mantis-light);
-}
-
-.bookmarkIcon {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-}
-
-@media (min-width: 768px) {
-  .title {
-    font-size: 24px;
+@media only screen and (min-width: 767px) {
+  .card {
+    width: 100%;
   }
 }
 
-@media (min-width: 1440px) {
-  .title {
-    font-size: 26px;
+@media only screen and (min-width: 1440px) {
+  .card {
+    width: 100%;
   }
 }
