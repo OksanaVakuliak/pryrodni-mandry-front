@@ -1,58 +1,57 @@
 import Image from 'next/image';
-import { Story } from '@/types/Stories';
-import { Icon } from '../Icon/Icon';
-import Link from 'next/link';
-import buttonCss from '../Button/Button.module.css';
-import css from './StoryCard.module.css';
+import { Icon } from '@/components/ui/Icon/Icon';
+import { Button } from '@/components/ui/Button/Button';
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
+import styles from '@/components/ui/StoryCard/StoryCard.module.css';
+import { Story } from '@/types/story';
 
-interface StoryCardProps {
+type Props = {
   story: Story;
-}
+  onOpen?: () => void;
+  onSave?: () => void;
+};
 
-export const StoryCard = ({ story }: StoryCardProps) => {
-  const authorName = story.ownerId.name;
-
+export default function StoryCard({ story, onOpen, onSave }: Props) {
+  const { title, img, ownerId } = story;
   return (
-    <div className={css.card}>
-      <div className={css.imageWrapper}>
-        <Image
-          loading="lazy"
-          placeholder="blur"
-          blurDataURL={story.img}
-          src={story.img}
-          alt={story.title}
-          fill
-          className={css.image}
-          sizes="(max-width: 767px) 100vw, (max-width: 1439px) 50vw, 33vw"
-        />
+    <div className={styles.card}>
+      <div className={styles.imageWrapper}>
+        <Image src={img} alt={title} fill className={styles.image} />
       </div>
-      <div className={css.content}>
-        <div className={css.info}>
-          <span className={css.author}>{authorName}</span>
-          <span className={css.dot}>•</span>
-          <span className={css.savedCount}>
-            {story.rate}
-            <Icon
-              name="icon-bookmark"
-              width={14}
-              height={14}
-              className={css.smallBookmarkIcon}
-            />
-          </span>
-        </div>
-        <h3 className={css.title}>{story.title}</h3>
-        <div className={css.footer}>
-          <Link href={`/stories/${story._id}`} className={`${buttonCss.button} ${buttonCss.secondary} ${css.viewButton}`}>
+
+      <div className={styles.content}>
+        <p className={styles.meta}>
+          {ownerId.name}
+          <span className={styles.metaSeparator}>·</span>
+          {story.rate}
+          <Icon
+            name="icon-bookmark"
+            width={16}
+            height={16}
+            className={styles.svg}
+          />
+        </p>
+
+        <PageTitle className={styles.title} tag="h3">
+          {title}
+        </PageTitle>
+
+        <div className={styles.actions}>
+          <Button
+            onClick={onOpen}
+            className={styles.infoBtn}
+            variant="tertiary"
+          >
             Переглянути статтю
-          </Link>
-          <button className={css.bookmarkButton} aria-label="Add to bookmarks">
-            <Icon
-              name="icon-bookmark"
-              width={24}
-              height={24}
-              className={css.bookmarkIcon}
-            />
-          </button>
+          </Button>
+
+          <Button
+            onClick={onSave}
+            className={styles.iconBtn}
+            variant="tertiary"
+          >
+            <Icon name="icon-bookmark"></Icon>
+          </Button>
         </div>
       </div>
     </div>

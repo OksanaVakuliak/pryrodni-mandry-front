@@ -8,13 +8,11 @@ export interface Traveller {
 }
 
 export interface TravellersResponse {
-  data: {
-    users: Traveller[];
-    page: number;
-    perPage: number;
-    totalItems: number;
-    totalPages: number;
-    hasNextPage: boolean;
-    hasPreviousPage: boolean;
-  };
+  users: Traveller[];
+  page: number;
+  perPage: number;
+  totalItems: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
 }

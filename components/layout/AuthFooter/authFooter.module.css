@@ -1,0 +1,23 @@
+@media screen and (min-width: 375px) {
+  .footerContainer {
+    width: 100%;
+  }
+
+  .text {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .text {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .text {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
