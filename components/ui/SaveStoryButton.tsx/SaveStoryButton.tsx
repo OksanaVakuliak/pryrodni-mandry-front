@@ -8,6 +8,7 @@ import { Icon } from '@/components/ui/Icon/Icon';
 import { storiesApi } from '@/lib/api/clientApi';
 import { useStoriesStore } from '@/lib/store/useStoriesStore';
 import { useAuthModal } from '@/components/providers/AuthModalProvider';
+import styles from './SaveStoryButton.module.css';
 
 interface SaveStoryButtonProps {
   storyId: string;
@@ -78,19 +79,12 @@ export const SaveStoryButton = ({
     }
   };
 
-  const savedIconStyle =
-    variant === 'icon' && isSaved
-      ? {
-          background: 'var(--color-mantis-darker)',
-          fill: 'var(--color-white)',
-          borderColor: 'var(--opacity-transparent)',
-        }
-      : undefined;
+  const savedClass = variant === 'icon' && isSaved ? styles.savedIcon : '';
+  const buttonClassName = `${className} ${savedClass}`.trim();
 
   return (
     <Button
-      className={className}
-      style={savedIconStyle}
+      className={buttonClassName}
       onClick={handleToggleSave}
       isLoading={variant === 'icon' ? false : isRequesting}
       disabled={isRequesting}
