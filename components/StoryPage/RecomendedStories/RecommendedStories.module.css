@@ -1,7 +1,3 @@
-.section {
-  padding-top: 40px;
-}
-
 .sectionTitle {
   margin-bottom: 24px;
   color: var(--color-scheme-2-text);
@@ -210,6 +206,10 @@
 }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
