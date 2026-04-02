@@ -62,19 +62,73 @@ const Header = () => {
           </div>
         </nav>
         <div className={css.tabletContainer}>
-          <CustomLink
-            href="/stories/new"
-            variant="primary"
-            className={css.authBtn}
-          >
-            Опублікувати статтю
-          </CustomLink>
+          {isAuthenticated && (
+            <CustomLink
+              href="/stories/new"
+              variant="primary"
+              className={css.authBtn}
+            >
+              Опублікувати статтю
+            </CustomLink>
+          )}
+          {!isAuthenticated && (
+            <div className={css.authContainer}>
+              <CustomLink
+                href="/login"
+                variant="secondary"
+                className={css.authBtn}
+              >
+                Вхід
+              </CustomLink>
+              <CustomLink
+                href="/register"
+                variant="primary"
+                className={css.authBtn}
+              >
+                Реєстрація
+              </CustomLink>
+            </div>
+          )}
           <button onClick={toggleMenu} className={css.burgerButton}>
             <Icon className={css.burgerIcon} name="icon-burger_menu" />
           </button>
         </div>
       </div>
       <div className={`${css.modalTablet} ${isMenuOpen ? css.isOpen : ''}`}>
+        <Link href="/" className={css.logoLinkTablet}>
+          <div className={css.logoContainer}>
+            <Icon name={'icon-Logo'} className={css.svg} />
+          </div>
+        </Link>
+        <div className={css.tabletContainerModal}>
+          {isAuthenticated && (
+            <CustomLink
+              href="/stories/new"
+              variant="primary"
+              className={css.authBtn}
+            >
+              Опублікувати статтю
+            </CustomLink>
+          )}
+          {!isAuthenticated && (
+            <div className={css.authContainer}>
+              <CustomLink
+                href="/login"
+                variant="secondary"
+                className={css.authBtn}
+              >
+                Вхід
+              </CustomLink>
+              <CustomLink
+                href="/register"
+                variant="primary"
+                className={css.authBtn}
+              >
+                Реєстрація
+              </CustomLink>
+            </div>
+          )}
+        </div>
         <button onClick={toggleMenu} className={css.closeButton}>
           <Icon name="icon-close" />
         </button>
@@ -88,12 +142,7 @@ const Header = () => {
           <Link href="/travellers" className={css.navLinkTablet}>
             Еко-мандрівники
           </Link>
-          {isAuthenticated && (
-            <Link href="/profile" className={css.navLinkTablet}>
-              Мій профіль
-            </Link>
-          )}
-          <div className={css.auth}>
+          <div className={css.authTablet}>
             {isAuthenticated ? <UserBar /> : <AuthBar />}
           </div>
         </nav>

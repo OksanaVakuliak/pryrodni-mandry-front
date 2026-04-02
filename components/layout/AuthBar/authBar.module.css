@@ -3,12 +3,15 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
+    margin-top: 266px;
   }
   .authBtn {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 20px;
+    padding: 4px 10px;
+    width: 335px;
+    height: 32px;
   }
 }
 
@@ -21,7 +24,19 @@
     min-height: 38px;
   }
   .authContainer {
-    gap: 16px;
-    align-items: baseline;
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .authContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+  }
+
+  .authBtn {
+    width: auto;
+    height: auto;
   }
 }
