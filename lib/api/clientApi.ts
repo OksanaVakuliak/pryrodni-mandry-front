@@ -2,6 +2,8 @@ import instance from './api';
 import { Story } from '@/types/Stories';
 import { Category } from '@/types/Category';
 import { Traveller, TravellersResponse } from '@/types/traveller';
+import { User } from '@/types/Users';
+import { SaveResponse } from '@/types/story';
 
 export interface AuthRequest {
   email: string;
