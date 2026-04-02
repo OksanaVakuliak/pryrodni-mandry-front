@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { useQuery } from '@tanstack/react-query';
 import { getPopularStories } from '@/lib/api/clientApi';
-// import StoryCard from '@/components/ui/StoryCard/StoryCard';
+import StoryCard from '@/components/ui/StoryCard/StoryCard';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -72,7 +72,7 @@ export default function PopularStories() {
           >
             {stories?.slice(0, 10).map((story) => (
               <SwiperSlide key={story._id} className={css.slide}>
-                {/* <StoryCard story={story} /> */}
+                <StoryCard story={story} />
               </SwiperSlide>
             ))}
           </Swiper>

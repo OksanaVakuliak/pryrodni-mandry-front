@@ -40,8 +40,17 @@
 }
 
 .mobileAllLink {
-  display: block;
+  display: flex;
   margin-top: 48px;
+  justify-content: center;
+}
+
+.icon {
+  stroke: var(--color-mantis-darkest);
+}
+
+.swiperSlide {
+  height: auto;
 }
 
 @media (min-width: 768px) {

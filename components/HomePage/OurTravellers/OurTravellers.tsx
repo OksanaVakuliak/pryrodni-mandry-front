@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules';
+import { Autoplay, Grid, Navigation } from 'swiper/modules';
 import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
@@ -13,8 +13,10 @@ import { Loader } from '@/components/ui/Loader/Loader';
 import { CustomLink } from '@/components/ui/Link/Link';
 
 import 'swiper/css';
+import 'swiper/css/grid';
 import css from './OurTravellers.module.css';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
+import TravellerCard from '@/components/ui/TravallerCard/TravallerCard';
 
 const OurTravellers = () => {
   const [isBeginning, setIsBeginning] = useState(true);
@@ -53,14 +55,9 @@ const OurTravellers = () => {
 
         <div className={css.sliderWrapper}>
           <Swiper
-            modules={[Navigation, Autoplay]}
+            modules={[Navigation, Autoplay, Grid]}
             spaceBetween={20}
-            loop={true}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
+            loop={false}
             navigation={{
               prevEl: `.${css.prevBtn}`,
               nextEl: `.${css.nextBtn}`,
@@ -74,15 +71,32 @@ const OurTravellers = () => {
               setIsEnd(swiper.isEnd);
             }}
             breakpoints={{
-              320: { slidesPerView: 3 },
-              768: { slidesPerView: 4 },
-              1440: { slidesPerView: 4 },
+              320: {
+                slidesPerView: 1,
+                grid: {
+                  rows: 3,
+                  fill: 'row',
+                },
+              },
+              768: {
+                slidesPerView: 2,
+                grid: {
+                  rows: 2,
+                  fill: 'row',
+                },
+              },
+              1440: {
+                slidesPerView: 4,
+                grid: {
+                  rows: 1,
+                },
+              },
             }}
             className={css.swiper}
           >
             {travellers?.map((traveller) => (
-              <SwiperSlide key={traveller._id}>
-                {/* <TravellerCard traveller={traveller} /> */}
+              <SwiperSlide key={traveller._id} className={css.swiperSlide}>
+                <TravellerCard traveller={traveller} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -94,7 +108,7 @@ const OurTravellers = () => {
               variant="secondary"
               disabled={isBeginning}
             >
-              <Icon name={'icon-strelka_left'} />
+              <Icon name={'icon-strelka_left'} className={css.icon} />
             </Button>
             <Button
               className={css.nextBtn}
@@ -102,7 +116,7 @@ const OurTravellers = () => {
               variant="secondary"
               disabled={isEnd}
             >
-              <Icon name={'icon-strelka_right'} />
+              <Icon name={'icon-strelka_right'} className={css.icon} />
             </Button>
           </div>
         </div>
