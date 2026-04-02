@@ -16,11 +16,7 @@
 }
 
 @media (min-width: 1440px) {
-  .section {
-    padding-top: 56px;
-  }
-
-  .sectionTitle {
+    .sectionTitle {
     margin-bottom: 32px;
   }
 
