@@ -102,21 +102,24 @@ li {
 
 .container {
   max-width: 375px;
-  padding: 64px 20px;
+  padding-right: 20px;
+  padding-left: 20px;
   margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
   .container {
     max-width: 768px;
-    padding: 64px 32px;
+    padding-right: 32px;
+    padding-left: 32px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
-    padding: 72px 64px;
+    padding-right: 64px;
+    padding-left: 64px;
   }
 }
 

@@ -1,0 +1,27 @@
+@media screen and (min-width: 375px) {
+  .authContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  .authBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .authContainer {
+    flex-direction: row;
+  }
+  .authBtn {
+    padding: 4px 10px;
+    min-height: 38px;
+  }
+  .authContainer {
+    gap: 16px;
+    align-items: baseline;
+  }
+}
