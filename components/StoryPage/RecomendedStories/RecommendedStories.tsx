@@ -1,29 +1,65 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
+import { useEffect, useState } from 'react';
 import { Story } from '@/types/Stories';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
-import { Icon } from '@/components/ui/Icon/Icon';
+import StoryCard from '@/components/ui/StoryCard/StoryCard';
 import instance from '@/lib/api/api';
 import css from './RecommendedStories.module.css';
 
 interface RecommendedStoriesProps {
   currentStoryId: string;
+  categoryId?: string;
 }
 
-const fetchRecommended = async (storyId: string): Promise<Story[]> => {
+type Breakpoint = 'mobile' | 'tablet' | 'desktop';
+
+const getBreakpoint = (): Breakpoint => {
+  if (window.innerWidth >= 1440) return 'desktop';
+  if (window.innerWidth >= 768) return 'tablet';
+  return 'mobile';
+};
+
+const LIMIT_MAP: Record<Breakpoint, number> = {
+  mobile: 1,
+  tablet: 2,
+  desktop: 3,
+};
+
+const fetchRecommended = async (
+  storyId: string,
+  categoryId: string | undefined,
+  limit: number,
+): Promise<Story[]> => {
   const { data } = await instance.get<Story[]>('/stories/recommended', {
-    params: { storyId },
+    params: {
+      storyId,
+      ...(categoryId ? { categoryId } : {}),
+      limit,
+    },
   });
   return data;
 };
 
-export const RecommendedStories = ({ currentStoryId }: RecommendedStoriesProps) => {
+export const RecommendedStories = ({
+  currentStoryId,
+  categoryId,
+}: RecommendedStoriesProps) => {
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>('desktop');
+
+  useEffect(() => {
+    const update = () => setBreakpoint(getBreakpoint());
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  const limit = LIMIT_MAP[breakpoint];
+
   const { data: stories = [], isLoading } = useQuery({
-    queryKey: ['recommended', currentStoryId],
-    queryFn: () => fetchRecommended(currentStoryId),
+    queryKey: ['recommended', currentStoryId, categoryId, limit],
+    queryFn: () => fetchRecommended(currentStoryId, categoryId, limit),
   });
 
   if (isLoading) {
@@ -33,7 +69,7 @@ export const RecommendedStories = ({ currentStoryId }: RecommendedStoriesProps) 
           Вам також сподобається
         </PageTitle>
         <div className={css.grid}>
-          {[1, 2, 3].map((i) => (
+          {Array.from({ length: limit }).map((_, i) => (
             <div key={i} className={css.skeletonCard}>
               <div className={css.skeletonImage} />
               <div className={css.skeletonContent}>
@@ -58,42 +94,12 @@ export const RecommendedStories = ({ currentStoryId }: RecommendedStoriesProps) 
 
       <div className={css.grid}>
         {stories.map((story) => (
-          <article key={story._id} className={css.card}>
-            <div className={css.imageWrapper}>
-              <Image
-                src={story.img}
-                alt={story.title}
-                fill
-                className={css.image}
-                sizes="(max-width: 767px) 100vw, (max-width: 1439px) 50vw, 33vw"
-                loading="lazy"
-              />
-            </div>
-
-            <div className={css.cardContent}>
-              <div className={css.cardMeta}>
-                <span className={css.author}>{story.ownerId.name}</span>
-                <span className={css.dot}>•</span>
-                <span className={css.rate}>
-                  {story.rate}
-                  <Icon name="icon-bookmark" width={13} height={13} className={css.rateIcon} />
-                </span>
-              </div>
-
-              <PageTitle tag="h3" className={css.cardTitle}>
-                {story.title}
-              </PageTitle>
-
-              <div className={css.cardFooter}>
-                <Link href={`/stories/${story._id}`} className={css.viewButton}>
-                  Переглянути статтю
-                </Link>
-                <button className={css.bookmarkButton} aria-label="Зберегти">
-                  <Icon name="icon-bookmark" width={22} height={22} className={css.bookmarkIcon} />
-                </button>
-              </div>
-            </div>
-          </article>
+          <StoryCard
+            key={story._id}
+            story={story}
+            sizes="(max-width: 767px) 100vw, (max-width: 1439px) 50vw, 33vw"
+            priority={true}
+          />
         ))}
       </div>
     </section>
