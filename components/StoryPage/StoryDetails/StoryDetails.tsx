@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/Button/Button';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { Story } from '@/types/Stories';
 import instance from '@/lib/api/api';
-import { RecommendedStories } from './RecomendedStories/RecommendedStories';
+import { RecommendedStories } from '../RecomendedStories/RecommendedStories';
 import css from './StoryDetails.module.css';
 
 interface StoryPageProps {
@@ -55,14 +55,16 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
         <div className={css.article}>
           <div className={css.header}>
             <div className={css.heroImageWrapper}>
-              <Image
-                src={story?.img || ''}
-                alt={story?.title || ''}
-                fill
-                className={css.heroImage}
-                sizes="(max-width: 767px) 100vw, (max-width: 1439px) 100vw, 700px"
-                priority
-              />
+              {story?.img && (
+                <Image
+                  priority
+                  src={story.img}
+                  alt={story.title || ''}
+                  fill
+                  className={css.heroImage}
+                  sizes="(max-width: 767px) 100vw, (max-width: 1439px) 100vw, 700px"
+                />
+              )}
             </div>
 
             <div className={css.headerContent}>
@@ -119,7 +121,10 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
           </div>
         </div>
         <div className={css.recommendedBox}>
-          <RecommendedStories currentStoryId={storyId} />
+          <RecommendedStories
+            currentStoryId={storyId}
+            categoryId={story?.category?._id}
+          />
         </div>
       </div>
     </section>
