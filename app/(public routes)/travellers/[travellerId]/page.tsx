@@ -1,16 +1,15 @@
-import { Metadata } from 'next';
+import TravellerPublicProfile from '@/components/TravelerPage/TravellerPublicProfile/TravellerPublicProfile';
 import { getTravellerByIdServer } from '@/lib/api/serverApi';
-import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
-import { TravellerStoriesList } from '@/components/TravelerPage/TravellerStoriesList/TravellerStoriesList';
-import TravellerInfo from '@/components/ui/TravellerInfo/TravellerInfo';
+import { Metadata } from 'next';
 
 interface Props {
-  params: { travellerId: string };
+  params: Promise<{ travellerId: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { travellerId } = await params;
   try {
-    const traveller = await getTravellerByIdServer(params.travellerId);
+    const traveller = await getTravellerByIdServer(travellerId);
     return { title: `Мандрівник ${traveller.name} | Природні Мандри` };
   } catch {
     return { title: 'Мандрівник | Природні Мандри' };
@@ -18,24 +17,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function TravellerPage({ params }: Props) {
-  const { travellerId } = params;
+  const { travellerId } = await params;
+
   const traveller = await getTravellerByIdServer(travellerId);
 
   return (
-    <main>
-      <div>
-        <TravellerInfo
-          name={traveller.name}
-          avatar={traveller.avatarUrl}
-          storiesCount={traveller.articlesAmount}
-        />
-
-        <div>
-          <PageTitle tag="h2">Статті Мандрівника</PageTitle>
-
-          <TravellerStoriesList travellerId={travellerId} />
-        </div>
-      </div>
-    </main>
+    <TravellerPublicProfile traveller={traveller} travellerId={travellerId} />
   );
 }

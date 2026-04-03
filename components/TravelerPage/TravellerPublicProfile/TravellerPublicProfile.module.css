@@ -1,0 +1,39 @@
+.main {
+  padding: 32px 0 64px;
+}
+
+.container {
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.storiesSection {
+  margin-top: 32px;
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .main {
+    padding: 48px 0 72px;
+  }
+
+  .container {
+    max-width: 1440px;
+    padding: 0 64px;
+  }
+
+  .storiesSection {
+    margin-top: 48px;
+  }
+}
