@@ -8,6 +8,11 @@ export interface AuthRequest {
   password: string;
 }
 
+export const getMe = async (): Promise<User> => {
+  const res = await instance.get<User>('/auth/me');
+  return res.data;
+};
+
 export const register = async (credentials: AuthRequest): Promise<User> => {
   const res = await instance.post<User>('/auth/register', credentials);
   return res.data;
