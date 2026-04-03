@@ -123,46 +123,6 @@
   padding: 64px 0;
 }
 
-/* .skeleton {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.skeletonTitle,
-.skeletonMeta,
-.skeletonImage,
-.skeletonText {
-  border-radius: 12px;
-  background: linear-gradient(
-    90deg,
-    var(--color-scheme-2-foreground) 25%,
-    var(--color-scheme-1-border) 50%,
-    var(--color-scheme-2-foreground) 75%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-.skeletonTitle {
-  height: 80px;
-}
-.skeletonMeta {
-  height: 48px;
-}
-.skeletonImage {
-  height: 300px;
-}
-.skeletonText {
-  height: 200px;
-}
-@keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
-} */
-
 .error {
   color: var(--color-scheme-2-text);
   font-size: 16px;
@@ -189,7 +149,7 @@
     max-width: 1312px;
     min-height: 502px;
     padding: 48px 0;
-  }   
+  }
 
   .headerContent {
     min-width: 533px;
@@ -204,7 +164,7 @@
     height: auto;
     box-sizing: border-box;
     margin-bottom: 24px;
-  } 
+  }
 
   .heroImageWrapper {
     flex: 1;
@@ -233,10 +193,9 @@
   .saveSection {
     padding: 32px;
     min-width: 866px;
-    
   }
 
-    .recommendedBox{
-      padding:72px 0;
-    }
+  .recommendedBox {
+    padding: 72px 0;
+  }
 }
