@@ -56,6 +56,7 @@ const TravellersList = () => {
 
   return (
     <section className={styles.section}>
+      <h1 className={styles.title}>Мандрівники</h1>
       {isLoading && travellers.length === 0 && (
         <div className={styles.loaderWrapper}>
           <Loader />
