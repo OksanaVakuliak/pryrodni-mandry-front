@@ -3,7 +3,7 @@
   width: 100%;
 }
 
-.spinnerOverlay {
+.wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -25,15 +25,11 @@
 .loader {
   width: 80px;
   height: 80px;
-
   fill: none;
   stroke: #22c55e;
-
   stroke-width: 2;
-
   stroke-dasharray: 150;
   stroke-dashoffset: 150;
-
   animation: draw 1.5s ease-in-out infinite;
 }
 
