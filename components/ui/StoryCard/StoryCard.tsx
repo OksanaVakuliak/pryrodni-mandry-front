@@ -1,29 +1,27 @@
+'use client';
+import { useAuthStore } from '@/lib/store/useAuthStore';
+import { useStoriesStore } from '@/lib/store/useStoriesStore';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Icon } from '@/components/ui/Icon/Icon';
-import { Button } from '@/components/ui/Button/Button';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
-import styles from '@/components/ui/StoryCard/StoryCard.module.css';
 import { Story } from '@/types/story';
+import { CustomLink } from '../Link/Link';
+import { SaveStoryButton } from '../SaveStoryButton.tsx/SaveStoryButton';
+import styles from '@/components/ui/StoryCard/StoryCard.module.css';
 
 type Props = {
   story: Story;
-  href?: string;
   onSave?: () => void;
-  priority?: boolean;
-  sizes?: string;
+  onOpenAuthModal?: () => void;
 };
 
-export default function StoryCard({
-  story,
-  href,
-  onSave,
-  priority = false,
-  sizes = '(max-width: 767px) 100vw, (max-width: 1439px) 50vw, 33vw',
-}: Props) {
-  const { title, img, ownerId, rate, _id } = story;
-  const storyHref = href ?? `/stories/${_id}`;
+export default function StoryCard({ story }: Props) {
+  const { title, img, ownerId } = story;
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
+  const initialIsSaved = useStoriesStore(
+    (s) => s.savedStories[story._id] ?? false,
+  );
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper} tabIndex={-1} aria-hidden="true">
@@ -32,9 +30,7 @@ export default function StoryCard({
           alt={title}
           fill
           className={styles.image}
-          sizes={sizes}
-          priority={priority}
-          loading={priority ? undefined : 'lazy'}
+          loading="lazy"
         />
       </div>
 
@@ -42,8 +38,13 @@ export default function StoryCard({
         <p className={styles.meta}>
           {ownerId.name}
           <span className={styles.metaSeparator}>·</span>
-          {rate}
-          <Icon name="icon-bookmark" width={16} height={16} className={styles.svg} />
+          {story.rate}
+          <Icon
+            name="icon-bookmark"
+            width={16}
+            height={16}
+            className={styles.svg}
+          />
         </p>
 
         <PageTitle className={styles.title} tag="h3">
@@ -51,18 +52,20 @@ export default function StoryCard({
         </PageTitle>
 
         <div className={styles.actions}>
-          <Link href={storyHref} className={styles.linkBtn}>
-            Переглянути статтю
-          </Link>
-
-          <Button
-            onClick={onSave}
-            className={styles.iconBtn}
-            variant="tertiary"
-            aria-label="Зберегти статтю"
+          <CustomLink
+            href={`/stories/${story._id}`}
+            variant="secondary"
+            className={styles.infoBtn}
           >
-            <Icon name="icon-bookmark" />
-          </Button>
+            Переглянути статтю
+          </CustomLink>
+          <SaveStoryButton
+            storyId={story._id}
+            initialIsSaved={initialIsSaved}
+            isAuthenticated={isAuthenticated}
+            variant="icon"
+            className={styles.iconBtn}
+          />
         </div>
       </div>
     </div>

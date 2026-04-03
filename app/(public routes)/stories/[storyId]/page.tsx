@@ -16,7 +16,9 @@ const getStory = async (id: string): Promise<Story | null> => {
   }
 };
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { storyId } = await params;
   const story = await getStory(storyId);
 
