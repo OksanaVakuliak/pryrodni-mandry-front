@@ -16,7 +16,7 @@
 }
 
 @media (min-width: 1440px) {
-    .sectionTitle {
+  .sectionTitle {
     margin-bottom: 32px;
   }
 
@@ -159,7 +159,7 @@
   background: var(--color-scheme-2-foreground);
 }
 
-.skeletonImage,
+/* .skeletonImage,
 .skeletonMeta,
 .skeletonTitle,
 .skeletonButton {
@@ -208,4 +208,4 @@
   100% {
     background-position: -200% 0;
   }
-}
+} */

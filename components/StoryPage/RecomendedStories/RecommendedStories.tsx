@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Story } from '@/types/Stories';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import StoryCard from '@/components/ui/StoryCard/StoryCard';
+import { Loader } from '@/components/ui/Loader/Loader';
 import instance from '@/lib/api/api';
 import css from './RecommendedStories.module.css';
 
@@ -57,7 +58,11 @@ export const RecommendedStories = ({
 
   const limit = LIMIT_MAP[breakpoint];
 
-  const { data: stories = [], isLoading } = useQuery({
+  const {
+    data: stories = [],
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ['recommended', currentStoryId, categoryId, limit],
     queryFn: () => fetchRecommended(currentStoryId, categoryId, limit),
   });
@@ -68,23 +73,21 @@ export const RecommendedStories = ({
         <PageTitle tag="h2" className={css.sectionTitle}>
           Вам також сподобається
         </PageTitle>
-        <div className={css.grid}>
-          {Array.from({ length: limit }).map((_, i) => (
-            <div key={i} className={css.skeletonCard}>
-              <div className={css.skeletonImage} />
-              <div className={css.skeletonContent}>
-                <div className={css.skeletonMeta} />
-                <div className={css.skeletonTitle} />
-                <div className={css.skeletonButton} />
-              </div>
-            </div>
-          ))}
-        </div>
+        <Loader />
       </section>
     );
   }
 
-  if (!stories.length) return null;
+  if (isError) {
+    return (
+      <section className={css.section}>
+        <PageTitle tag="h2" className={css.sectionTitle}>
+          Вам також сподобається
+        </PageTitle>
+        <p>Не вдалося завантажити рекомендовані історії.</p>
+      </section>
+    );
+  }
 
   return (
     <section className={css.section}>
