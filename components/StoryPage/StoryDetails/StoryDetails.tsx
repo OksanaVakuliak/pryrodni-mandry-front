@@ -4,13 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
-import { Button } from '@/components/ui/Button/Button';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { Story } from '@/types/Stories';
 import instance from '@/lib/api/api';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { RecommendedStories } from '../RecomendedStories/RecommendedStories';
 import css from './StoryDetails.module.css';
+import { SaveStoryButton } from '@/components/ui/SaveStoryButton.tsx/SaveStoryButton';
+import { useAuthStore } from '@/lib/store/useAuthStore';
+import { useStoriesStore } from '@/lib/store/useStoriesStore';
 
 interface StoryPageProps {
   storyId: string;
@@ -45,10 +47,20 @@ const formatArticle = (text: string): string[] => {
 };
 
 export const StoryDetails = ({ storyId }: StoryPageProps) => {
-  const { data: story, isLoading, isError } = useQuery({
+  const {
+    data: story,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ['story', storyId],
     queryFn: () => getStoryById(storyId),
   });
+
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+
+  const initialIsSaved = useStoriesStore(
+    (s) => s.savedStories[storyId] ?? false,
+  );
 
   if (isLoading) {
     return (
@@ -135,9 +147,13 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
                 <p className={css.saveSubtitle}>
                   Вона буде доступна у вашому профілі у розділі «Збережено»
                 </p>
-                <Button variant="primary" className={css.saveButton}>
-                  Зберегти
-                </Button>
+                <SaveStoryButton
+                  storyId={story._id}
+                  initialIsSaved={initialIsSaved}
+                  isAuthenticated={isAuthenticated}
+                  variant="text"
+                  className={css.saveButton}
+                />
               </div>
             </div>
           </div>
