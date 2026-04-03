@@ -12,7 +12,7 @@ type Props = {
 export default function TravellerCard({ traveller, onOpen }: Props) {
   const name = traveller.name;
   const avatar = traveller.avatarUrl || '';
-  const storiesCount = traveller.storiesCount ?? traveller.articlesAmount ?? 0;
+  const storiesCount = traveller.articlesAmount ?? 0;
 
   return (
     <div className={styles.card}>
