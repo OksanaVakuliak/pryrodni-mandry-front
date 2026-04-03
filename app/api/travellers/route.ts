@@ -9,13 +9,13 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
 
     const page = searchParams.get('page');
-    const limit = searchParams.get('limit');
+    const perPage = searchParams.get('perPage');
 
     const { data } = await serverApi.get('/travellers', {
       headers,
       params: {
         page,
-        limit,
+        perPage,
       },
     });
 
