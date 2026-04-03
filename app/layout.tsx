@@ -3,6 +3,7 @@ import { Montserrat } from 'next/font/google';
 import './globals.css';
 import QueryProvider from '@/components/layout/QueryProvider/QueryProvider';
 import AppLayout from '@/components/layout/AppLayout/AppLayout';
+import AuthProvider from '@/components/providers/AuthProvider';
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -41,7 +42,9 @@ export default function RootLayout({
     <html lang="uk">
       <body className={montserrat.className}>
         <QueryProvider>
-          <AppLayout>{children}</AppLayout>
+          <AppLayout>
+            <AuthProvider>{children}</AuthProvider>
+          </AppLayout>
         </QueryProvider>
       </body>
     </html>
