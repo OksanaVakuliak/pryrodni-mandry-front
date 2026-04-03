@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button/Button';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { Story } from '@/types/Stories';
 import instance from '@/lib/api/api';
+import { Loader } from '@/components/ui/Loader/Loader';
 import { RecommendedStories } from '../RecomendedStories/RecommendedStories';
 import css from './StoryDetails.module.css';
 
@@ -44,10 +45,31 @@ const formatArticle = (text: string): string[] => {
 };
 
 export const StoryDetails = ({ storyId }: StoryPageProps) => {
-  const { data: story } = useQuery({
+  const { data: story, isLoading, isError } = useQuery({
     queryKey: ['story', storyId],
     queryFn: () => getStoryById(storyId),
   });
+
+  if (isLoading) {
+    return (
+      <section className={css.pageWrapper}>
+        <div className="container">
+          <Loader />
+        </div>
+      </section>
+    );
+  }
+
+  if (isError || !story) {
+    return (
+      <section className={css.pageWrapper}>
+        <div className="container">
+          <PageTitle className={css.title}>Помилка</PageTitle>
+          <p>Не вдалося завантажити деталі історії. Спробуйте пізніше.</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={css.pageWrapper}>
