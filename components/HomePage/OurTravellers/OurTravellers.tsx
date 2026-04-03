@@ -103,7 +103,7 @@ const OurTravellers = () => {
 
           <div className={css.controls}>
             <Button
-              className={css.prevBtn}
+              className={`${css.navButton} ${css.prevBtn}`}
               aria-label="Попередні"
               variant="secondary"
               disabled={isBeginning}
@@ -111,7 +111,7 @@ const OurTravellers = () => {
               <Icon name={'icon-strelka_left'} className={css.icon} />
             </Button>
             <Button
-              className={css.nextBtn}
+              className={`${css.navButton} ${css.nextBtn}`}
               aria-label="Наступні"
               variant="secondary"
               disabled={isEnd}
