@@ -15,7 +15,7 @@ const TravellersList = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(true);
 
-  const PER_PAGE = 8;
+  const PER_PAGE = 12;
   const scrollAnchorRef = useRef<HTMLDivElement>(null);
 
   const loadData = async (currentPage: number) => {
