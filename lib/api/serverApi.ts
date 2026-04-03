@@ -11,6 +11,11 @@ export const getAuthHeaders = async (): Promise<Record<string, string>> => {
   return cookieString ? { Cookie: cookieString } : {};
 };
 
+export const checkServerSession = async (): Promise<AxiosResponse> => {
+  const headers = await getAuthHeaders();
+  return serverApi.get('/auth/refresh', { headers });
+};
+
 export const getTravellerByIdServer = async (
   id: string,
 ): Promise<Traveller> => {
@@ -19,9 +24,4 @@ export const getTravellerByIdServer = async (
     headers,
   });
   return data;
-};
-
-export const checkServerSession = async (): Promise<AxiosResponse> => {
-  const headers = await getAuthHeaders();
-  return serverApi.get('/auth/refresh', { headers });
 };
