@@ -7,6 +7,7 @@ import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { StoriesCategories } from './CategoriesFilter/StoriesCategories';
 import { StoriesGrid } from './CategoriesFilter/StoriesGrid';
 import { Button } from '@/components/ui/Button/Button';
+import { Loader } from '@/components/ui/Loader/Loader';
 import css from './StoriesPage.module.css';
 import StoryCard from '../ui/StoryCard/StoryCard';
 
@@ -98,7 +99,7 @@ const StoriesPage = () => {
       <div className="container">
         <PageTitle className={css.title}>Статті</PageTitle>
 
-        {isLoading && <p>Завантаження...</p>}
+        {isLoading && <Loader />}
         {isError && <p>Помилка завантаження статей.</p>}
 
         {!isLoading && !isError && (
