@@ -1,35 +1,40 @@
 .pageWrapper {
+  padding: 32px 0 64px;
   min-height: 100vh;
 }
 
 .title {
   text-align: center;
-  margin-bottom: 24px;
-}
-
-@media (min-width: 768px) {
-  .title {
-    margin-bottom: 40px;
-  }
+  margin-bottom: 40px;
 }
 
 .showMoreContainer {
+  margin-bottom: 48px;
+}
+.showMoreButtonContainer {
   display: flex;
   justify-content: center;
-  padding-bottom: 48px;
 }
 
 .showMoreButton {
-  width: 100%;
+  max-width: 335px;
+  min-height: 48px;
 }
 
 @media (min-width: 768px) {
-  .showMoreContainer {
-    padding-bottom: 72px;
-  }
-
   .showMoreButton {
-    min-width: 200px;
-    width: auto;
+    max-width: 136px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .pageWrapper {
+    padding: 48px 0 72px;
+  }
+  .showMoreContainer {
+    margin-bottom: 40px;
+  }
+  .showMoreButton {
+    max-width: 162px;
   }
 }

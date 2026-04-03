@@ -110,15 +110,16 @@ const StoriesPage = () => {
               activeCategory={filters.category}
               onCategoryChange={handleCategoryChange}
             />
-
-            <StoriesGrid>
-              {paginatedStories.map((story) => (
-                <StoryCard key={story._id} story={story} />
-              ))}
-            </StoriesGrid>
+            <div className={css.showMoreContainer}>
+              <StoriesGrid>
+                {paginatedStories.map((story) => (
+                  <StoryCard key={story._id} story={story} />
+                ))}
+              </StoriesGrid>
+            </div>
 
             {hasMore && (
-              <div className={css.showMoreContainer}>
+              <div className={css.showMoreButtonContainer}>
                 <Button
                   variant="primary"
                   onClick={handleShowMore}
