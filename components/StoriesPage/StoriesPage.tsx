@@ -94,7 +94,7 @@ const StoriesPage = () => {
   };
 
   return (
-    <div className={css.pageWrapper}>
+    <section className={css.pageWrapper}>
       <div className="container">
         <PageTitle className={css.title}>Статті</PageTitle>
 
@@ -129,7 +129,7 @@ const StoriesPage = () => {
           </>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
