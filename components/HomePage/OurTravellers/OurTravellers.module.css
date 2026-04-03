@@ -37,6 +37,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all var(--transition-default);
+  border: 1px solid var(--color-scheme-1-border);
+  background: var(--color-mantis-lighter);
+}
+
+.navButton:hover:not(:disabled),
+.navButton:focus:not(:disabled) {
+  background: var(--color-neutral-lightest);
+  border: 1px solid var(--color-mantis-light);
+}
+
+.navButton:active:not(:disabled) {
+  border: 1px solid var(--color-mantis-light);
+  background: var(--color-mantis-light);
+}
+
+.navButton:disabled {
+  background: var(--color-scheme-1-foreground);
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .mobileAllLink {
