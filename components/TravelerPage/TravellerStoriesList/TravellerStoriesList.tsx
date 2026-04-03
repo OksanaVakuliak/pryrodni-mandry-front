@@ -33,9 +33,9 @@ export const TravellerStoriesList = ({
   return (
     <>
       <div className={css.grid}>
-        {allStories.map((story) => (
-          <StoryCard key={story._id} story={story} />
-        ))}
+        {allStories.map(
+          (story) => story?._id && <StoryCard key={story._id} story={story} />,
+        )}
       </div>
 
       <Pagination
