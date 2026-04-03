@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { StoryDetails } from '@/components/StoryPage/StoryDetails';
+import { StoryDetails } from '@/components/StoryPage/StoryDetails/StoryDetails';
 import { Story } from '@/types/Stories';
 import { serverInstance } from '@/lib/api/serverApi';
 
