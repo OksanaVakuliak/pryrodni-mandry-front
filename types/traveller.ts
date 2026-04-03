@@ -3,7 +3,6 @@ export interface Traveller {
   name: string;
   avatarUrl: string;
   articlesAmount: number;
-  storiesCount?: number;
   savedArticles: string[];
 }
 

@@ -1,6 +1,6 @@
 import instance from './api';
 import { User } from '@/types/Users';
-import { SaveResponse, Story } from '@/types/story';
+import { SaveResponse, StoriesResponse, Story } from '@/types/story';
 import { Traveller, TravellersResponse } from '@/types/traveller';
 
 export interface AuthRequest {
@@ -52,4 +52,18 @@ export const storiesApi = {
     );
     return response.data;
   },
+};
+
+export const getTravellerStories = async (
+  id: string,
+  page: number = 1,
+  perPage: number = 6,
+): Promise<StoriesResponse> => {
+  const { data } = await instance.get<StoriesResponse>(
+    `/travellers/${id}/stories`,
+    {
+      params: { page, perPage },
+    },
+  );
+  return data;
 };
