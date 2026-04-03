@@ -59,10 +59,32 @@
   gap: 16px;
 }
 
-.card .infoBtn {
+.card .linkBtn {
   flex: 1;
   height: 48px;
   font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  text-decoration: none;
+  background: var(--opacity-neutral-darkest-5);
+  color: var(--color-scheme-2-text);
+  border: 1px solid var(--color-scheme-2-border);
+  transition: background var(--transition-default), color var(--transition-default);
+}
+
+.card .linkBtn:hover {
+  background: var(--color-mantis-lighter);
+  border-color: var(--color-mantis-dark);
+}
+
+.card .linkBtn:active {
+  background: var(--color-mantis-light);
+  transform: translateY(1px);
 }
 
 .svg {
