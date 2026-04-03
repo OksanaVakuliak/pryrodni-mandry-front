@@ -2,6 +2,15 @@
   display: flex;
   flex-direction: column;
   row-gap: 40px;
+  padding-bottom: 64px;
+  padding-top: 64px;
+}
+
+@media only screen and (min-width: 1440px) {
+  .popularStories {
+    padding-bottom: 72px;
+    padding-top: 72px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -57,6 +66,14 @@
     opasity var(--transition-default);
 }
 
+@media only screen and (min-width: 1440px) {
+  .link {
+    padding: 9px 12px;
+
+    font-size: 20px;
+  }
+}
+
 .link:hover,
 .link:focus {
   background: var(--color-mantis-lighter);
@@ -98,10 +115,12 @@
 .navButtons .navButton:hover,
 .navButtons .navButton:focus {
   background: var(--color-neutral-lightest);
+  border: 1px solid var(--color-mantis-light);
 }
 
 .navButtons .navButton:active {
   background: var(--color-mantis-light);
+  border: 1px solid var(--color-mantis-light);
 }
 
 .navButtons .navButton:disabled {
