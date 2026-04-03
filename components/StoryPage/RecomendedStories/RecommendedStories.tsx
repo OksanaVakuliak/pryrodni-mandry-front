@@ -97,12 +97,7 @@ export const RecommendedStories = ({
 
       <div className={css.grid}>
         {stories.map((story) => (
-          <StoryCard
-            key={story._id}
-            story={story}
-            sizes="(max-width: 767px) 100vw, (max-width: 1439px) 50vw, 33vw"
-            priority={true}
-          />
+          <StoryCard key={story._id} story={story} />
         ))}
       </div>
     </section>
