@@ -13,6 +13,7 @@ export async function POST() {
     const cookieStore = await cookies();
     cookieStore.delete('accessToken');
     cookieStore.delete('refreshToken');
+    cookieStore.delete('sessionId');
 
     return new NextResponse(null, { status: 204 });
   } catch (error) {

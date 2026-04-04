@@ -25,6 +25,10 @@ export async function POST(req: NextRequest) {
         if (parsed.refreshToken) {
           cookieStore.set('refreshToken', parsed.refreshToken);
         }
+
+        if (parsed.sessionId) {
+          cookieStore.set('sessionId', parsed.sessionId);
+        }
       }
     }
 

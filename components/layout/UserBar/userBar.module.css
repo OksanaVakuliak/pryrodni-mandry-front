@@ -1,12 +1,18 @@
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 300px) {
   .authContainer {
     flex-direction: column;
     display: flex;
+    gap: 24px;
   }
   .authBtn {
     margin-right: 0;
-    padding: 8px 15px;
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid var(--color-mantis-dark);
+    border-radius: 6px;
+    padding: 4px 10px;
+    width: 335px;
+    height: 32px;
   }
   .stateContainer {
     justify-content: center;
@@ -30,8 +36,21 @@
     flex-direction: row;
   }
   .authBtn {
-    margin-right: 16px;
-    padding: 4px 10px;
-    margin-bottom: 0;
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .authContainer {
+    margin-top: 0;
+  }
+
+  .authBtn {
+    display: flex;
+    max-width: 240px;
+    min-height: 38px;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
   }
 }
