@@ -1,6 +1,6 @@
 .card {
   display: block;
-  background: #e6f2e8;
+  background: var(--color-mantis-lightest);
   border-radius: 16px;
   padding: 24px 16px;
   text-align: center;
@@ -19,43 +19,16 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
-.avatarWrapper {
-  position: relative;
-  width: 130px;
-  height: 130px;
-  margin: 0 auto 24px;
-}
-
-.avatar {
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.name {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 4px;
-
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.meta {
-  font-size: 14px;
-  color: #6b7280;
-  margin-bottom: 16px;
-}
-
-.button {
-  width: 100%;
-  padding: 8px;
+.link {
+  display: inline-block;
+  margin-top: auto;
+  padding: 8px 12px;
   border-radius: 10px;
-  border: none;
   background: #d9eadf;
-  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
-.button:hover {
+.link:hover {
   background: #cde5d3;
 }
