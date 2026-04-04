@@ -70,10 +70,7 @@ const TravellersList = () => {
               index === travellers.length - PER_PAGE ? scrollAnchorRef : null
             }
           >
-            <TravellerCard
-              traveller={traveller}
-              onOpen={() => console.log('Відкриття профілю:', traveller._id)}
-            />
+            <TravellerCard traveller={traveller} />
           </div>
         ))}
       </div>
