@@ -1,5 +1,9 @@
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 300px) {
   .authBtn {
+    display: none;
+  }
+
+  .tabletContainerModal {
     display: none;
   }
 
@@ -21,15 +25,18 @@
     height: 36px;
   }
 
-  .navTablet {
+  .navLinkTablet1 {
     display: flex;
     flex-direction: column;
     gap: 40px;
     align-items: center;
   }
-  .auth {
-    margin-top: 60px;
-    align-items: center;
+
+  .navTablet {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
   }
 
   .navLinkTablet {
@@ -63,16 +70,15 @@
 
   .modalTablet {
     background: var(--color-scheme-2-background);
-    border: 2px solid var(--color-scheme-2-text);
-    border-radius: 15px;
+
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 350px;
-    height: 630px;
-    padding: 80px 65px;
+    width: 100%;
+    height: 100%;
+    padding: 72px 20px;
     justify-content: center;
     z-index: 100;
   }
@@ -84,12 +90,26 @@
   .closeButton {
     position: absolute;
     right: 20px;
-    top: 20px;
-    background-color: transparent;
-    outline: transparent;
-    width: 24px;
-    height: 24px;
-    display: block;
+    top: 16px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--color-scheme-2-border);
+    border-radius: 6px;
+    padding: 4px;
+    background: var(--opacity-neutral-darkest-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .authContainer {
+    display: none;
+  }
+
+  .logoLinkTablet {
+    position: absolute;
+    top: 16px;
+    left: 20px;
   }
 }
 
@@ -102,20 +122,33 @@
     max-width: 768px;
   }
 
-  .navTablet {
+  .navLinkTablet1 {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 32px;
     align-items: center;
+  }
+
+  .navTablet {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .logoLinkTablet {
+    left: 32px;
+  }
+
+  .tabletContainerModal {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 80px;
   }
 
   .authBtn {
     display: block;
-  }
-
-  .auth {
-    margin-top: 0;
-    align-items: center;
+    max-height: 32px;
   }
 
   .navLinkTablet {
@@ -128,16 +161,14 @@
 
   .modalTablet {
     background: var(--color-scheme-2-background);
-    border: 2px solid var(--color-scheme-2-text);
-    border-radius: 15px;
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
-    height: 450px;
-    padding: 80px;
+    width: 100%;
+    height: 100%;
+    padding: 96px 32px;
     justify-content: center;
     z-index: 100;
   }
@@ -174,13 +205,14 @@
 
   .closeButton {
     position: absolute;
-    right: 20px;
+    right: 32px;
     top: 20px;
-    background-color: transparent;
-    outline: transparent;
-    width: 24px;
-    height: 24px;
     display: block;
+  }
+
+  .authContainer {
+    display: flex;
+    gap: 16px;
   }
 }
 @media screen and (min-width: 1440px) {
