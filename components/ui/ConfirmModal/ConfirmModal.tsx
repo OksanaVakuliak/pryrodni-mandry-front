@@ -1,7 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { Button } from '@/components/ui/Button/Button';
+import toast from 'react-hot-toast';
+import { logout } from '@/lib/api/clientApi';
+
 import styles from './ConfirmModal.module.css';
 import { Icon } from '@/components/ui/Icon/Icon';
 
@@ -12,7 +16,23 @@ type Props = {
 };
 
 export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
+  const [isLoading, setIsLoading] = useState(false);
+
   if (!isOpen) return null;
+
+  const handleConfirm = async () => {
+    setIsLoading(true);
+    try {
+      await logout();
+      toast.success('Ви вийшли');
+      onConfirm?.();
+    } catch (error: unknown) {
+      console.error('Logout error', error);
+      toast.error('Не вдалося вийти');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className={styles.overlay}>
@@ -37,16 +57,18 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
             onClick={onCancel}
             className={styles.bottom}
             variant="secondary"
+            disabled={isLoading}
           >
             Відмінити
           </Button>
 
           <Button
-            onClick={onConfirm}
+            onClick={handleConfirm}
             className={styles.bottom}
             variant="primary"
+            disabled={isLoading}
           >
-            Вийти
+            {isLoading ? 'Вихід...' : 'Вийти'}
           </Button>
         </div>
       </div>

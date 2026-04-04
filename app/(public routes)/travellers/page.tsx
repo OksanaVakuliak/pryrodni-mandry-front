@@ -3,7 +3,22 @@ import TravellersList from '@/components/TravellersPage/TravellersList/Traveller
 
 export const metadata: Metadata = {
   title: 'Мандрівники',
-  description: 'Список свідомих мандрівників нашої спільноти',
+  description:
+    'Познайомтеся зі спільнотою "Природні Мандри". Відкривайте нові обличчя, читайте історії успіху та надихайтеся досвідом інших дослідників природи.',
+  openGraph: {
+    title: 'Мандрівники спільноти "Природні Мандри"',
+    description:
+      'Знайдіть однодумців для нових подорожей та дізнайтеся більше про активних учасників нашої спільноти.',
+    images: [
+      {
+        url: '/public/Image/Hero.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Спільнота мандрівників',
+      },
+    ],
+    type: 'website',
+  },
 };
 
 const TravellersPage = () => {

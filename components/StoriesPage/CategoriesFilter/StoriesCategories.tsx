@@ -20,7 +20,7 @@ export const StoriesCategories = ({
 
   return (
     <div className={css.container}>
-      <div className={css.mobileSelectWrapper}>        
+      <div className={css.mobileSelectWrapper}>
         <div className={css.selectContainer}>
           <Select
             className={css.mobileSelect}
@@ -29,6 +29,7 @@ export const StoriesCategories = ({
               onCategoryChange(value === '' ? undefined : String(value))
             }
             options={selectOptions}
+            label="Категорії"
           />
         </div>
       </div>
