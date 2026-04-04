@@ -7,6 +7,7 @@ type Props = {
   avatar: string;
   storiesCount: number;
   children?: React.ReactNode;
+  variant?: 'card' | 'profile';
 };
 
 export default function TravellerInfo({
@@ -14,9 +15,10 @@ export default function TravellerInfo({
   avatar,
   storiesCount,
   children,
+  variant = 'profile',
 }: Props) {
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${styles[variant]}`}>
       <div className={styles.avatarWrapper}>
         <Avatar src={avatar} alt={name} size={130} className={styles.avatar} />
       </div>

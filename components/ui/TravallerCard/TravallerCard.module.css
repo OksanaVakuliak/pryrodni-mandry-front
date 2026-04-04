@@ -19,7 +19,7 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
-.link {
+.profileLink {
   display: inline-block;
   margin-top: auto;
   padding: 8px 12px;
@@ -29,6 +29,6 @@
   color: inherit;
 }
 
-.link:hover {
+.profileLink:hover {
   background: #cde5d3;
 }

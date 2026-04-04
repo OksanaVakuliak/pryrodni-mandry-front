@@ -1,7 +1,7 @@
 import styles from './TravallerCard.module.css';
 import { Traveller } from '@/types/traveller';
 import TravellerInfo from '@/components/ui/TravellerInfo/TravellerInfo';
-import Link from 'next/link';
+import { CustomLink } from '@/components/ui/Link/Link';
 
 type Props = {
   traveller: Traveller;
@@ -14,10 +14,15 @@ export default function TravellerCard({ traveller }: Props) {
         name={traveller.name}
         avatar={traveller.avatarUrl}
         storiesCount={traveller.articlesAmount}
+        variant="card"
       >
-        <Link href={`/travellers/${traveller._id}`} className={styles.link}>
+        <CustomLink
+          href={`/travellers/${traveller._id}`}
+          variant="tertiary"
+          className={styles.profileLink}
+        >
           Переглянути профіль
-        </Link>
+        </CustomLink>
       </TravellerInfo>
     </div>
   );
