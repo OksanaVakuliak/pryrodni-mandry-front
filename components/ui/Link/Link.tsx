@@ -14,7 +14,9 @@ interface CustomLinkProps
     | 'nav'
     | 'textWithBorder'
     | 'iconButton'
-    | 'button';
+    | 'button'
+    | 'tertiary';
+
   iconId?: string;
   className?: string;
   isDisabled?: boolean;
