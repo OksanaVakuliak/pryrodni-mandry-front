@@ -20,7 +20,8 @@ export const StoriesCategories = ({
 
   return (
     <div className={css.container}>
-      <div className={css.mobileSelectWrapper}>        
+      <div className={css.mobileSelectWrapper}>
+        <label className={css.selectLabel}>Категорії</label>
         <div className={css.selectContainer}>
           <Select
             className={css.mobileSelect}

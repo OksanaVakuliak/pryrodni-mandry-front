@@ -9,13 +9,10 @@
   width: 100%;
 }
 
-.mobileSelectLabel {
-  font-family: var(--font-family);
-  font-size: 10px;
-  color: var(--color-neutral-dark);
-  text-transform: uppercase;
+.selectLabel {
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.05em;
+  margin-bottom: 8px;
 }
 
 .selectContainer {
@@ -59,7 +56,9 @@
   .mobileSelectWrapper {
     display: none;
   }
-
+  .selectContainer {
+    display: none;
+  }
   .list {
     display: flex;
     justify-content: center;
@@ -68,7 +67,6 @@
     list-style: none;
     margin: 0 auto;
   }
-
   .categoryButton {
     font-size: 16px;
   }
@@ -77,5 +75,8 @@
 @media (min-width: 1440px) {
   .container {
     margin-bottom: 40px;
+  }
+  .selectContainer {
+    display: none;
   }
 }
