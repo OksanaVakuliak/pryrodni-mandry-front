@@ -1,12 +1,28 @@
 import instance from './api';
+import { Category } from '@/types/Category';
+import { Traveller, TravellersResponse } from '@/types/traveller';
 import { User } from '@/types/Users';
 import { SaveResponse, StoriesResponse, Story } from '@/types/story';
-import { Traveller, TravellersResponse } from '@/types/traveller';
 
 export interface AuthRequest {
   email: string;
   password: string;
 }
+
+export const clientApi = {
+  stories: {
+    getAll: async () => {
+      const { data } = await instance.get<Story[]>('/stories');
+      return data;
+    },
+  },
+  categories: {
+    getAll: async () => {
+      const { data } = await instance.get<Category[]>('/categories');
+      return data;
+    },
+  },
+};
 
 export const getMe = async (): Promise<User> => {
   const res = await instance.get<User>('/auth/me');
