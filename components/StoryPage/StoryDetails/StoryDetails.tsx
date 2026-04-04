@@ -104,9 +104,9 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
             <div className={css.headerContent}>
               <Link href="/stories" className={css.backLink}>
                 <Icon
-                  name="icon-strelka_left"
-                  width={16}
-                  height={16}
+                  name="icon-chevron_left"
+                  width={24}
+                  height={24}
                   className={css.backIcon}
                 />
                 Всі статті
