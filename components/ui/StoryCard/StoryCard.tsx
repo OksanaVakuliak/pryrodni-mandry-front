@@ -1,22 +1,35 @@
+'use client';
+import { useAuthStore } from '@/lib/store/useAuthStore';
+import { useStoriesStore } from '@/lib/store/useStoriesStore';
 import Image from 'next/image';
 import { Icon } from '@/components/ui/Icon/Icon';
-import { Button } from '@/components/ui/Button/Button';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
-import styles from '@/components/ui/StoryCard/StoryCard.module.css';
 import { Story } from '@/types/story';
+import { CustomLink } from '../Link/Link';
+import { SaveStoryButton } from '../SaveStoryButton.tsx/SaveStoryButton';
+import styles from '@/components/ui/StoryCard/StoryCard.module.css';
 
 type Props = {
   story: Story;
-  onOpen?: () => void;
-  onSave?: () => void;
 };
 
-export default function StoryCard({ story, onOpen, onSave }: Props) {
+export default function StoryCard({ story }: Props) {
   const { title, img, ownerId } = story;
+  const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+
+  const initialIsSaved = useStoriesStore(
+    (s) => s.savedStories[story._id] ?? false,
+  );
   return (
     <div className={styles.card}>
-      <div className={styles.imageWrapper}>
-        <Image src={img} alt={title} fill className={styles.image} />
+      <div className={styles.imageWrapper} tabIndex={-1} aria-hidden="true">
+        <Image
+          src={img}
+          alt={title}
+          fill
+          className={styles.image}
+          loading="lazy"
+        />
       </div>
 
       <div className={styles.content}>
@@ -37,21 +50,20 @@ export default function StoryCard({ story, onOpen, onSave }: Props) {
         </PageTitle>
 
         <div className={styles.actions}>
-          <Button
-            onClick={onOpen}
+          <CustomLink
+            href={`/stories/${story._id}`}
+            variant="secondary"
             className={styles.infoBtn}
-            variant="tertiary"
           >
             Переглянути статтю
-          </Button>
-
-          <Button
-            onClick={onSave}
+          </CustomLink>
+          <SaveStoryButton
+            storyId={story._id}
+            initialIsSaved={initialIsSaved}
+            isAuthenticated={isAuthenticated}
+            variant="icon"
             className={styles.iconBtn}
-            variant="tertiary"
-          >
-            <Icon name="icon-bookmark"></Icon>
-          </Button>
+          />
         </div>
       </div>
     </div>
