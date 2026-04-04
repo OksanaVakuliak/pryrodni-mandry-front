@@ -45,7 +45,8 @@
   justify-content: center;
 }
 
-.categoryButton:hover {
+.categoryButton:hover,
+.categoryButton:focus {
   color: var(--color-neutral-darkest);
 }
 
@@ -67,7 +68,7 @@
     list-style: none;
     margin: 0 auto;
   }
-  
+
   .categoryButton {
     font-size: 16px;
   }

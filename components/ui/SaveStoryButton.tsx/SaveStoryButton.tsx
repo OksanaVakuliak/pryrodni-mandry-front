@@ -26,9 +26,10 @@ export const SaveStoryButton = ({
   className = '',
 }: SaveStoryButtonProps) => {
   const { openAuthModal } = useAuthModal();
-  const isSaved = useStoriesStore(
+  const savedFromStore = useStoriesStore(
     (state) => state.savedStories[storyId] ?? initialIsSaved,
   );
+  const isSaved = isAuthenticated ? savedFromStore : false;
   const setStorySaved = useStoriesStore((state) => state.setStorySaved);
 
   const [isRequesting, setIsRequesting] = useState<boolean>(false);

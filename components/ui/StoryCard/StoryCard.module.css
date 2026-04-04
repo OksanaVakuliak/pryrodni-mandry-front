@@ -1,5 +1,5 @@
 .card {
-  background: var(--color-mantis-lightest);
+  background-color: var(--color-mantis-lighter);
   border-radius: 16px;
   overflow: hidden;
   width: 100%;

@@ -1,5 +1,4 @@
 .pageWrapper {
-  background-color: var(--color-scheme-2-background);
   min-height: 100vh;
 }
 .article {
@@ -78,6 +77,7 @@
 }
 .content {
   box-sizing: border-box;
+  margin-bottom: 24px;
 }
 .articleText {
   font-size: 16px;

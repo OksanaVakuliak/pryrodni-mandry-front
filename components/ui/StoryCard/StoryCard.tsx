@@ -11,8 +11,6 @@ import styles from '@/components/ui/StoryCard/StoryCard.module.css';
 
 type Props = {
   story: Story;
-  onSave?: () => void;
-  onOpenAuthModal?: () => void;
 };
 
 export default function StoryCard({ story }: Props) {
