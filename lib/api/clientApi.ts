@@ -39,6 +39,10 @@ export const login = async (credentials: AuthRequest): Promise<User> => {
   return res.data;
 };
 
+export const logout = async (): Promise<void> => {
+  await instance.post('/auth/logout');
+};
+
 export const getPopularStories = async (): Promise<Story[]> => {
   const res = await instance.get<Story[]>('/stories/popular');
   return res.data;
