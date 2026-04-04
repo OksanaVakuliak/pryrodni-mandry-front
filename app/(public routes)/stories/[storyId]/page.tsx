@@ -1,20 +1,10 @@
 import { Metadata } from 'next';
 import { StoryDetails } from '@/components/StoryPage/StoryDetails/StoryDetails';
-import { Story } from '@/types/Stories';
-import { serverInstance } from '@/lib/api/serverApi';
+import { getStory } from '@/lib/api/serverApi';
 
 interface PageProps {
   params: Promise<{ storyId: string }>;
 }
-
-const getStory = async (id: string): Promise<Story | null> => {
-  try {
-    const { data } = await serverInstance.get<Story>(`/stories/${id}`);
-    return data;
-  } catch {
-    return null;
-  }
-};
 
 export async function generateMetadata({
   params,

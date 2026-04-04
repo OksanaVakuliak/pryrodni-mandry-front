@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import instance from './api';
 import { AxiosResponse } from 'axios';
 import { serverApi } from '@/app/api/api';
+import { Story } from '@/types/story';
 
 export const getAuthHeaders = async (): Promise<Record<string, string>> => {
   const cookieStore = await cookies();
@@ -23,5 +24,10 @@ export const getTravellerByIdServer = async (
   const { data } = await instance.get<Traveller>(`/travellers/${id}`, {
     headers,
   });
+  return data;
+};
+
+export const getStory = async (id: string): Promise<Story | null> => {
+  const { data } = await instance.get<Story>(`/stories/${id}`);
   return data;
 };
