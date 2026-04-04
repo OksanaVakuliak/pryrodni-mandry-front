@@ -7,32 +7,36 @@ import { Button } from '@/components/ui/Button/Button';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { storiesApi } from '@/lib/api/clientApi';
 import { useStoriesStore } from '@/lib/store/useStoriesStore';
+import { useAuthModal } from '@/components/providers/AuthModalProvider';
+import styles from './SaveStoryButton.module.css';
 
 interface SaveStoryButtonProps {
   storyId: string;
   initialIsSaved: boolean;
   isAuthenticated: boolean;
-  onOpenAuthModal: () => void;
   variant?: 'text' | 'icon';
+  className?: string;
 }
 
 export const SaveStoryButton = ({
   storyId,
   initialIsSaved,
   isAuthenticated,
-  onOpenAuthModal,
   variant = 'text',
+  className = '',
 }: SaveStoryButtonProps) => {
-  const isSaved = useStoriesStore(
+  const { openAuthModal } = useAuthModal();
+  const savedFromStore = useStoriesStore(
     (state) => state.savedStories[storyId] ?? initialIsSaved,
   );
+  const isSaved = isAuthenticated ? savedFromStore : false;
   const setStorySaved = useStoriesStore((state) => state.setStorySaved);
 
   const [isRequesting, setIsRequesting] = useState<boolean>(false);
 
   const handleToggleSave = async () => {
     if (!isAuthenticated) {
-      onOpenAuthModal();
+      openAuthModal();
       return;
     }
 
@@ -56,7 +60,7 @@ export const SaveStoryButton = ({
 
         if (status === 401) {
           toast.error('Потрібно увійти, щоб зберігати історії');
-          onOpenAuthModal();
+          openAuthModal();
           return;
         }
 
@@ -76,8 +80,12 @@ export const SaveStoryButton = ({
     }
   };
 
+  const savedClass = variant === 'icon' && isSaved ? styles.savedIcon : '';
+  const buttonClassName = `${className} ${savedClass}`.trim();
+
   return (
     <Button
+      className={buttonClassName}
       onClick={handleToggleSave}
       isLoading={variant === 'icon' ? false : isRequesting}
       disabled={isRequesting}
