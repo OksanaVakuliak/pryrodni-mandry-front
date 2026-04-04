@@ -84,6 +84,11 @@ body {
   margin: 0 auto;
 }
 
+.white-page {
+  background-color: var(--color-white);
+  min-height: 100vh;
+}
+
 link {
   color: var(--color-neutral-darkest);
   text-decoration: none;

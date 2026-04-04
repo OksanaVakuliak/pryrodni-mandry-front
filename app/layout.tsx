@@ -40,7 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="uk" suppressHydrationWarning>
-      <body className={montserrat.className}>
+      <body className={`${montserrat.className} green-bg`}>
         <QueryProvider>
           <AppLayout>
             <AuthProvider>{children}</AuthProvider>

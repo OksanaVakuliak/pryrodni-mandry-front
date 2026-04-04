@@ -10,6 +10,16 @@
   z-index: 9999;
 }
 
+.overlay .modal .title {
+  font-weight: 700;
+}
+
+.closeIcon {
+  fill: black;
+  stroke: black;
+  stroke-width: 1;
+}
+
 .modal {
   background: #e6f2e8;
   border-radius: 16px;

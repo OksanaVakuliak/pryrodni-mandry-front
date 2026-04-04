@@ -1,6 +1,6 @@
 .card {
   display: block;
-  background: var(--color-mantis-lightest);
+  background: var(--color-scheme-2-foreground);
   border-radius: 16px;
   padding: 24px 16px;
   text-align: center;
@@ -22,11 +22,9 @@
 .profileLink {
   display: inline-block;
   margin-top: auto;
-  padding: 8px 12px;
+  padding: 12px 45px;
   border-radius: 10px;
-  background: #d9eadf;
   text-decoration: none;
-  color: inherit;
 }
 
 .profileLink:hover {

@@ -17,6 +17,7 @@
 
 .allLink {
   display: none;
+  padding: 12px;
 }
 
 .sliderWrapper {
@@ -79,7 +80,6 @@
 @media (min-width: 768px) {
   .allLink {
     display: inline-flex;
-    padding: 6px 12px;
     height: 48px;
     align-items: center;
   }

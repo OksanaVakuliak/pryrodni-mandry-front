@@ -3,6 +3,7 @@
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { Button } from '@/components/ui/Button/Button';
 import styles from './ConfirmModal.module.css';
+import { Icon } from '@/components/ui/Icon/Icon';
 
 type Props = {
   isOpen: boolean;
@@ -17,7 +18,12 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <button className={styles.close} onClick={onCancel}>
-          ✕
+          <Icon
+            name="icon-close"
+            className={styles.closeIcon}
+            width={24}
+            height={24}
+          />
         </button>
 
         <PageTitle className={styles.title} tag="h2">
