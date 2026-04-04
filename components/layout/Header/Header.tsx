@@ -143,20 +143,22 @@ const Header = () => {
           <Icon name="icon-close" />
         </button>
         <nav className={css.navTablet}>
-          <Link href="/" className={css.navLinkTablet}>
-            Головна
-          </Link>
-          <Link href="/stories" className={css.navLinkTablet}>
-            Статті
-          </Link>
-          <Link href="/travellers" className={css.navLinkTablet}>
-            Еко-мандрівники
-          </Link>
-          {isAuthenticated && (
-            <Link href="/profile" className={css.navLinkTablet}>
-              Мій профіль
+          <div className={css.navLinkTablet1}>
+            <Link href="/" className={css.navLinkTablet}>
+              Головна
             </Link>
-          )}
+            <Link href="/stories" className={css.navLinkTablet}>
+              Статті
+            </Link>
+            <Link href="/travellers" className={css.navLinkTablet}>
+              Еко-мандрівники
+            </Link>
+            {isAuthenticated && (
+              <Link href="/profile" className={css.navLinkTablet}>
+                Мій профіль
+              </Link>
+            )}
+          </div>
           <div className={css.authTablet}>
             {isAuthenticated ? <UserBar /> : <AuthBar />}
           </div>

@@ -2,7 +2,6 @@
   .authContainer {
     flex-direction: column;
     display: flex;
-    margin-top: 226px;
     gap: 24px;
   }
   .authBtn {

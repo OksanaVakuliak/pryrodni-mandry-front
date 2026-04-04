@@ -25,12 +25,18 @@
     height: 36px;
   }
 
-  .navTablet {
+  .navLinkTablet1 {
     display: flex;
     flex-direction: column;
     gap: 40px;
     align-items: center;
-    margin-bottom: 266px;
+  }
+
+  .navTablet {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
   }
 
   .navLinkTablet {
@@ -116,11 +122,17 @@
     max-width: 768px;
   }
 
-  .navTablet {
+  .navLinkTablet1 {
     display: flex;
     flex-direction: column;
     gap: 32px;
     align-items: center;
+  }
+
+  .navTablet {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
   }
 
   .logoLinkTablet {
