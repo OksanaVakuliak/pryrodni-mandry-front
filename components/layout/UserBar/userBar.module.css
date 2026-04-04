@@ -1,4 +1,4 @@
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 300px) {
   .authContainer {
     flex-direction: column;
     display: flex;
@@ -44,5 +44,14 @@
 @media screen and (min-width: 1440px) {
   .authContainer {
     margin-top: 0;
+  }
+
+  .authBtn {
+    display: flex;
+    max-width: 240px;
+    min-height: 38px;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
   }
 }

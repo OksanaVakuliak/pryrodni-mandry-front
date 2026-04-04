@@ -33,6 +33,16 @@ const Header = () => {
     checkAuth();
   }, [checkAuth]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1440) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <header className={css.headerContainer}>
       <div className={css.container}>
@@ -142,6 +152,11 @@ const Header = () => {
           <Link href="/travellers" className={css.navLinkTablet}>
             Еко-мандрівники
           </Link>
+          {isAuthenticated && (
+            <Link href="/profile" className={css.navLinkTablet}>
+              Мій профіль
+            </Link>
+          )}
           <div className={css.authTablet}>
             {isAuthenticated ? <UserBar /> : <AuthBar />}
           </div>

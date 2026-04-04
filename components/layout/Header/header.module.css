@@ -1,4 +1,4 @@
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 300px) {
   .authBtn {
     display: none;
   }
@@ -136,6 +136,7 @@
 
   .authBtn {
     display: block;
+    max-height: 32px;
   }
 
   .navLinkTablet {
