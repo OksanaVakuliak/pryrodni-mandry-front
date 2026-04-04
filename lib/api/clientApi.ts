@@ -2,7 +2,8 @@ import instance from './api';
 import { Category } from '@/types/Category';
 import { Traveller, TravellersResponse } from '@/types/traveller';
 import { User } from '@/types/Users';
-import { SaveResponse, Story } from '@/types/story';
+import { SaveResponse, StoriesResponse, Story } from '@/types/story';
+import { Traveller, TravellersResponse } from '@/types/traveller';
 
 export interface AuthRequest {
   email: string;
@@ -22,6 +23,11 @@ export const clientApi = {
       return data;
     },
   },
+};
+
+export const getMe = async (): Promise<User> => {
+  const res = await instance.get<User>('/auth/me');
+  return res.data;
 };
 
 export const register = async (credentials: AuthRequest): Promise<User> => {
@@ -63,4 +69,18 @@ export const storiesApi = {
     );
     return response.data;
   },
+};
+
+export const getTravellerStories = async (
+  id: string,
+  page: number = 1,
+  perPage: number = 6,
+): Promise<StoriesResponse> => {
+  const { data } = await instance.get<StoriesResponse>(
+    `/travellers/${id}/stories`,
+    {
+      params: { page, perPage },
+    },
+  );
+  return data;
 };
