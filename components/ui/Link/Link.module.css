@@ -68,7 +68,7 @@
     background-color var(--transition-default),
     transform var(--transition-default);
   border: 1px solid transparent;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .primary:hover {
@@ -128,6 +128,7 @@
   line-height: 150%;
   border: var(--color-scheme-2-border);
 }
+
 .tertiary:hover:not(:disabled) {
   background: var(--color-mantis-lighter);
   border-color: var(--color-mantis-dark);

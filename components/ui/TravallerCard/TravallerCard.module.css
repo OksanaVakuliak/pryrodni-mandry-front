@@ -20,17 +20,30 @@
 }
 
 .profileLink {
-  display: flex;
-  justify-content: center;
   text-align: center;
   margin-top: auto;
   padding: 6px 12px;
-  border-radius: 10px;
+  border-radius: 6px;
   text-decoration: none;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 48px;
+  min-width: 287px;
 }
 
 .profileLink:hover {
   background: #cde5d3;
+}
+
+@media only screen and (min-width: 767px) {
+  .profileLink {
+    min-width: 292px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .card .profileLink {
+    min-width: 262px;
+  }
 }

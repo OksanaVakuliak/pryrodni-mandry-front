@@ -57,21 +57,29 @@
 
 .card .infoBtn {
   display: flex;
-  padding: 12px 30px;
+  padding: 6px 12px;
   font-size: 16px;
   align-items: center;
   justify-content: center;
   border-color: var(--opacity-neutral-darkest-15);
+  min-width: 239px;
+  min-height: 48px;
 }
 
 .card .actions .iconBtn {
   padding: 6px;
   min-height: 48px;
+  min-width: 48px;
 }
 
 @media only screen and (min-width: 767px) {
   .card {
     width: 100%;
+  }
+
+  .card .infoBtn {
+    min-width: 244px;
+    min-height: 48px;
   }
 }
 

@@ -47,7 +47,6 @@
   font-size: 16px;
   line-height: 150%;
   color: var(--color-white);
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,8 +54,10 @@
   border-radius: 6px;
   padding: 6px 12px;
   background: var(--color-mantis-dark);
-
+  min-height: 48px;
+  min-width: 101px;
   text-decoration: none;
+  letter-spacing: -1px;
 
   transition:
     background var(--transition-default),
@@ -67,6 +68,7 @@
 @media only screen and (min-width: 1440px) {
   .link {
     font-size: 20px;
+    min-width: 120px;
   }
 }
 

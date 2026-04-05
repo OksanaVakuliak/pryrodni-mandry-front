@@ -31,11 +31,13 @@
   padding: 6px 12px;
   background: var(--color-mantis-dark);
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 150%;
   color: var(--color-white);
   width: 100%;
   min-height: 48px;
+  min-width: 303px;
+  letter-spacing: -1px;
 }
 
 .link:hover,
@@ -52,6 +54,8 @@
   .link {
     display: inline-flex;
     width: auto;
+    min-width: 168px;
+    font-size: 16px;
   }
 }
 
@@ -74,6 +78,11 @@
   }
 
   .text {
+    font-size: 20px;
+  }
+
+  .link {
+    min-width: 204px;
     font-size: 20px;
   }
 }

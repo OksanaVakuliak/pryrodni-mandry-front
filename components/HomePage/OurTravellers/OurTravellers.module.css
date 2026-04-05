@@ -17,7 +17,7 @@
 
 .allLink {
   display: none;
-  padding: 12px;
+  padding: 6px 12px;
 }
 
 .sliderWrapper {
@@ -66,7 +66,7 @@
   margin-top: 48px;
   justify-content: center;
   align-items: center;
-  height: 48px;
+  min-height: 48px;
 }
 
 .icon {
@@ -80,12 +80,16 @@
 @media (min-width: 768px) {
   .allLink {
     display: inline-flex;
-    height: 48px;
+    min-height: 48px;
     align-items: center;
   }
   .mobileAllLink {
     display: none;
+    min-width: 166px;
+    letter-spacing: -1px;
+    padding: 6px 12px;
   }
+
   .container {
     max-width: 768px;
     padding: 0 32px;
