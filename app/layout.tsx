@@ -4,6 +4,7 @@ import './globals.css';
 import QueryProvider from '@/components/layout/QueryProvider/QueryProvider';
 import AppLayout from '@/components/layout/AppLayout/AppLayout';
 import AuthProvider from '@/components/providers/AuthProvider';
+import ToasterProvider from '@/components/providers/ToasterProvider';
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -42,6 +43,7 @@ export default function RootLayout({
     <html lang="uk" suppressHydrationWarning>
       <body className={montserrat.className}>
         <QueryProvider>
+          <ToasterProvider />
           <AppLayout>
             <AuthProvider>{children}</AuthProvider>
           </AppLayout>
