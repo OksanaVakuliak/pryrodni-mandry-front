@@ -107,6 +107,22 @@ li {
   margin: 0 auto;
 }
 
+.custom-toast::after {
+  content: '✕';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  opacity: 0.5;
+  font-weight: bold;
+}
+
+.custom-toast-error::after {
+  color: #cb2431;
+  opacity: 0.8;
+}
+
 @media only screen and (min-width: 768px) {
   .container {
     max-width: 768px;

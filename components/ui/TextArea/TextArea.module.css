@@ -22,14 +22,33 @@
   color: var(--color-scheme-2-text);
   font-family: inherit;
 
-  resize: vertical;
-  min-height: 80px;
+  resize: none;
+  min-height: 120px;
+  overflow-y: auto;
 
   transition:
     border-color var(--transition-default),
     box-shadow var(--transition-default);
+  scrollbar-width: thin;
+  scrollbar-color: var(--opacity-neutral-darkest-15) transparent;
 }
 
+.textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+  background-color: var(--opacity-neutral-darkest-15);
+  border-radius: 10px;
+}
+
+.textarea::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-neutral-dark);
+}
 .textarea:focus {
   border-color: var(--color-scheme-1-accent);
   box-shadow: 0 0 0 2px var(--color-mantis-lighter);
