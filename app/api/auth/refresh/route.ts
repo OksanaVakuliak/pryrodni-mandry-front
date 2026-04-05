@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import { parse } from 'cookie';
 import { isAxiosError } from 'axios';
 
-const handleRefresh = async () => {
+export async function POST() {
   try {
     const cookieStore = await cookies();
     const cookieString = cookieStore.toString();
@@ -29,16 +29,22 @@ const handleRefresh = async () => {
       for (const cookieStr of cookieArray) {
         const parsedCookie = parse(cookieStr);
 
+        const options = {
+          expires: parsed.Expires ? new Date(parsed.Expires) : undefined,
+          path: parsed.Path,
+          maxAge: Number(parsed['Max-Age']),
+        };
+
         if (parsedCookie.accessToken) {
-          cookieStore.set('accessToken', parsedCookie.accessToken);
+          cookieStore.set('accessToken', parsedCookie.accessToken, options);
         }
 
         if (parsedCookie.refreshToken) {
-          cookieStore.set('refreshToken', parsedCookie.refreshToken);
+          cookieStore.set('refreshToken', parsedCookie.refreshToken, options);
         }
 
         if (parsedCookie.sessionId) {
-          cookieStore.set('sessionId', parsedCookie.sessionId);
+          cookieStore.set('sessionId', parsedCookie.sessionId, options);
         }
       }
     }
@@ -57,8 +63,4 @@ const handleRefresh = async () => {
       { status: 500 },
     );
   }
-};
-
-export async function POST() {
-  return handleRefresh();
 }
