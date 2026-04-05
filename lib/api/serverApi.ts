@@ -14,7 +14,7 @@ export const getAuthHeaders = async (): Promise<Record<string, string>> => {
 
 export const checkServerSession = async (): Promise<AxiosResponse> => {
   const headers = await getAuthHeaders();
-  return serverApi.get('/auth/refresh', { headers });
+  return serverApi.post('/auth/refresh', {}, { headers });
 };
 
 export const getTravellerByIdServer = async (

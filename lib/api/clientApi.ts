@@ -29,6 +29,10 @@ export const getMe = async (): Promise<User> => {
   return res.data;
 };
 
+export const refresh = async (): Promise<void> => {
+  await instance.post('/auth/refresh');
+};
+
 export const register = async (credentials: AuthRequest): Promise<User> => {
   const res = await instance.post<User>('/auth/register', credentials);
   return res.data;
