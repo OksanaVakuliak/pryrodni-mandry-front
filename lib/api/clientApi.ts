@@ -67,7 +67,7 @@ export const storiesApi = {
     return response.data;
   },
   create: async (formData: FormData) => {
-    const { data } = await instance.post<Story>('/stories', formData);
+    const { data } = await instance.post<Story>('/stories/new', formData);
     return data;
   },
   deleteStory: async (storyId: string): Promise<SaveResponse> => {
