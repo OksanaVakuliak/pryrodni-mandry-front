@@ -8,8 +8,8 @@ src/app/api/
 │
 ├── stories/
 │   ├── route.ts               # GET: Отримання списку всіх історій (з пагінацією та фільтром)
-│   │                          # POST: Створення нової історії (AddStoryForm)
 │   ├── [storyId]/route.ts     # GET: Деталі однієї історії (StoryPage)
+│   ├── new/route.ts           # POST: Створення нової історії (AddStoryForm)
 │   ├── popular/route.ts       # GET: 10 найпопулярніших історій для слайдера (PopularStories)
 │   ├── recommended/route.ts   # GET: Рекомендовані історії (RecomendedStories)
 │   └── saved/route.ts         # POST/DELETE: Додати/видалити зі збережених (StoryCard/SaveStory)
