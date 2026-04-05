@@ -20,11 +20,15 @@
 }
 
 .profileLink {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  text-align: center;
   margin-top: auto;
-  padding: 12px 45px;
+  padding: 6px 12px;
   border-radius: 10px;
   text-decoration: none;
+  width: 100%;
+  min-height: 48px;
 }
 
 .profileLink:hover {

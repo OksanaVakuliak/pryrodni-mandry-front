@@ -10,7 +10,7 @@
   color: var(--color-scheme-2-text);
   font-size: 18px;
   font-weight: 400;
-  padding: 4px 12px;
+  padding: 6px 12px;
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
@@ -68,6 +68,7 @@
     background-color var(--transition-default),
     transform var(--transition-default);
   border: 1px solid transparent;
+  font-size: 20px;
 }
 
 .primary:hover {
@@ -92,7 +93,7 @@
   border-radius: 6px;
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   line-height: 150%;
   gap: 8px;
@@ -122,7 +123,7 @@
 .tertiary {
   background: var(--opacity-neutral-darkest-5);
   color: var(--color-scheme-2-text);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 150%;
   border: var(--color-scheme-2-border);

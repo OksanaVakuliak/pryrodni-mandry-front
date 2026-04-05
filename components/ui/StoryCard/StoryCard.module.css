@@ -65,7 +65,8 @@
 }
 
 .card .actions .iconBtn {
-  padding: 9px;
+  padding: 6px;
+  min-height: 48px;
 }
 
 @media only screen and (min-width: 767px) {
@@ -81,6 +82,8 @@
 
   .card .infoBtn {
     font-size: 20px;
-    padding: 12px 50px;
+    padding: 6px;
+    width: 100%;
+    min-height: 48px;
   }
 }
