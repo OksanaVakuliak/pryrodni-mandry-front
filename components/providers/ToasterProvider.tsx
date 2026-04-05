@@ -12,7 +12,7 @@ const ToasterProvider = () => {
         duration: 4000,
         style: {
           background: 'var(--color-scheme-2-background)',
-          color: 'var(--color-scheme-2-text);',
+          color: 'var(--color-scheme-2-text)',
           borderRadius: '12px',
           fontSize: '18px',
           fontWeight: 500,
