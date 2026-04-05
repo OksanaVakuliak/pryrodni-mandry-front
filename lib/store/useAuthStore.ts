@@ -32,7 +32,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   checkAuth: async () => {
     try {
-      const { data } = await instance.get<User>('/api/profile/me');
+      const { data } = await instance.get<User>('/auth/me');
 
       set({
         user: data,
