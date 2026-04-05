@@ -18,7 +18,7 @@ import css from './addStoryForm.module.css';
 import ErrorWhileSavingModal from '@/components/ui/ErrorWhileSavingModal/ErrorWhileSavingModal';
 import { AxiosError } from 'axios';
 
-export default function CreateStoryForm() {
+export default function AddStoryForm() {
   const router = useRouter();
 
   const [preview, setPreview] = useState<string | null>(null);
