@@ -203,7 +203,10 @@ const { getRootProps, getInputProps } = useDropzone({
                 value={formik.values.title}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                error={formik.touched.title ? formik.errors.title : undefined}
+                error={formik.touched.category && typeof formik.errors.category === 'string'
+                  ? formik.errors.category
+                  : undefined
+                }
             />
 
         <Select
@@ -217,8 +220,9 @@ const { getRootProps, getInputProps } = useDropzone({
                 formik.setFieldValue('category', value);
                 formik.setFieldTouched('category', true, false);
             }}
-            error={
-                formik.touched.category ? formik.errors.category : undefined
+            error={formik.touched.category && typeof formik.errors.category === 'string'
+              ? formik.errors.category
+              : undefined
             }
             placeholder={loadingCategories ? 'Завантаження...' : 'Оберіть категорію'}
         />
@@ -230,7 +234,10 @@ const { getRootProps, getInputProps } = useDropzone({
             value={formik.values.article}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.article ? formik.errors.article : undefined}
+            error={formik.touched.article && typeof formik.errors.article === 'string'
+              ? formik.errors.article
+              : undefined
+              }
             onInput={(e: React.FormEvent<HTMLTextAreaElement>) => {
                 const el = e.currentTarget;
                 el.style.height = 'auto';
