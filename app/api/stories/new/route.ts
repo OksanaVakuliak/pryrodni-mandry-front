@@ -9,15 +9,15 @@ export async function POST(req: Request) {
 
     const title = formData.get('title');
     const category = formData.get('category');
-    const content = formData.get('content');
+    const article = formData.get('article');
     const image = formData.get('image') as File | null;
       
     const backendFormData = new FormData();
 
     if (title) backendFormData.append('title', String(title));
     if (category) backendFormData.append('category', String(category));
-    if (content) backendFormData.append('content', String(content));
-    if (image) backendFormData.append('file', image);
+    if (article) backendFormData.append('article', String(article));
+    if (image) backendFormData.append('img', image);
 
     const headers = await getAuthHeaders();
 

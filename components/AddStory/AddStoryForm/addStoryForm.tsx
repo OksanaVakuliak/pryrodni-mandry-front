@@ -31,8 +31,8 @@ export default function AddStoryForm() {
   const file = acceptedFiles[0];
 
   if (file) {
-    formik.setFieldValue('image', file);
-    formik.setFieldTouched('image', true);
+    formik.setFieldValue('img', file);
+    formik.setFieldTouched('img', true);
     setPreview(URL.createObjectURL(file));
   }
 };
@@ -71,8 +71,8 @@ const { getRootProps, getInputProps } = useDropzone({
     initialValues: {
       title: '',
       category: '',
-      content: '',
-      image: null as File | null,
+      article: '',
+      img: null as File | null,
     },
     validateOnMount: true,
     validationSchema: Yup.object({
@@ -82,11 +82,11 @@ const { getRootProps, getInputProps } = useDropzone({
 
       category: Yup.string().required('Оберіть категорію'),
 
-      content: Yup.string()
+      article: Yup.string()
         .min(10, 'Мінімум 10 символів')
         .required('Обовʼязкове поле'),
 
-      image: Yup.mixed().test('fileRequired', 'Додайте зображення', (value) => {
+      img: Yup.mixed().test('fileRequired', 'Додайте зображення', (value) => {
     return value instanceof File;
   }),
     }),
@@ -97,10 +97,10 @@ const { getRootProps, getInputProps } = useDropzone({
 
         formData.append('title', values.title);
         formData.append('category', values.category);
-        formData.append('content', values.content);
+        formData.append('article', values.article);
 
-        if (values.image) {
-          formData.append('image', values.image);
+        if (values.img) {
+          formData.append('img', values.img);
         }
 
         const data = await storiesApi.create(formData);
@@ -183,12 +183,12 @@ const { getRootProps, getInputProps } = useDropzone({
                 
         <TextArea
             label="Текст історії"
-            name="content"
+            name="article"
             placeholder="Ваша історія тут"
-            value={formik.values.content}
+            value={formik.values.article}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.content ? formik.errors.content : undefined}
+            error={formik.touched.article ? formik.errors.article : undefined}
             onInput={(e: React.FormEvent<HTMLTextAreaElement>) => {
                 const el = e.currentTarget;
                 el.style.height = 'auto';
@@ -215,7 +215,7 @@ const { getRootProps, getInputProps } = useDropzone({
             className={css.btn}
             type="submit"
             isLoading={formik.isSubmitting}
-            disabled={!formik.isValid && !formik.dirty}
+            disabled={!formik.isValid || !formik.dirty}
         >
             Зберегти
         </Button>
