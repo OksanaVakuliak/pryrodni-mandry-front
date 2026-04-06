@@ -1,22 +1,45 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
-interface StoriesState {
+type StoriesState = {
   savedStories: Record<string, boolean>;
-  setStorySaved: (id: string, isSaved: boolean) => void;
-}
+  storiesRate: Record<string, number>;
 
-export const useStoriesStore = create<StoriesState>()(
-  persist(
-    (set) => ({
-      savedStories: {},
-      setStorySaved: (id, isSaved) =>
-        set((state) => ({
-          savedStories: { ...state.savedStories, [id]: isSaved },
-        })),
+  setStorySaved: (storyId: string, isSaved: boolean) => void;
+  initStoryRate: (storyId: string, rate: number) => void;
+};
+
+export const useStoriesStore = create<StoriesState>((set) => ({
+  savedStories: {},
+  storiesRate: {},
+
+  initStoryRate: (storyId, rate) =>
+    set((state) => ({
+      storiesRate: {
+        ...state.storiesRate,
+        [storyId]: state.storiesRate[storyId] ?? rate,
+      },
+    })),
+
+  setStorySaved: (storyId, isSaved) =>
+    set((state) => {
+      const prevSaved = state.savedStories[storyId];
+      const currentRate = state.storiesRate[storyId] ?? 0;
+
+      let newRate = currentRate;
+
+      if (prevSaved !== isSaved) {
+        newRate = isSaved ? currentRate + 1 : currentRate - 1;
+      }
+
+      return {
+        savedStories: {
+          ...state.savedStories,
+          [storyId]: isSaved,
+        },
+        storiesRate: {
+          ...state.storiesRate,
+          [storyId]: newRate,
+        },
+      };
     }),
-    {
-      name: 'saved-stories',
-    },
-  ),
-);
+}));

@@ -1,6 +1,8 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 .heroLink {
@@ -14,8 +16,8 @@
   border: 1px solid var(--color-mantis-dark);
   border-radius: 6px;
   padding: 6px 12px;
-  width: 335px;
-  height: 39px;
+  width: 100%;
+  min-height: 39px;
   background: var(--color-mantis-dark);
   transition:
     color var(--transition-default),
@@ -50,6 +52,7 @@
   height: 469px;
   margin-bottom: 24px;
   object-fit: cover;
+  border-radius: 12px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -65,6 +68,8 @@
 @media only screen and (min-width: 1440px) {
   .wrapper {
     flex-direction: row;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 
   .heroLink {

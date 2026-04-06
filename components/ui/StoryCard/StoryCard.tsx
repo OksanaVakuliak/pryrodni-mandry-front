@@ -8,6 +8,7 @@ import { Story } from '@/types/story';
 import { CustomLink } from '../Link/Link';
 import { SaveStoryButton } from '../SaveStoryButton.tsx/SaveStoryButton';
 import styles from '@/components/ui/StoryCard/StoryCard.module.css';
+import { useEffect } from 'react';
 
 type Props = {
   story: Story;
@@ -20,6 +21,18 @@ export default function StoryCard({ story }: Props) {
   const initialIsSaved = useStoriesStore(
     (s) => s.savedStories[story._id] ?? false,
   );
+
+  const storyRateFromStore = useStoriesStore((s) => s.storiesRate[story._id]);
+
+  const rate = storyRateFromStore ?? story.rate;
+
+  const initStoryRate = useStoriesStore((s) => s.initStoryRate);
+
+  // 👉 инициализируем rate
+  useEffect(() => {
+    initStoryRate(story._id, story.rate);
+  }, [story._id, story.rate, initStoryRate]);
+
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper} tabIndex={-1} aria-hidden="true">
@@ -36,7 +49,7 @@ export default function StoryCard({ story }: Props) {
         <p className={styles.meta}>
           {ownerId.name}
           <span className={styles.metaSeparator}>·</span>
-          {story.rate}
+          {rate}
           <Icon
             name="icon-bookmark"
             width={16}
