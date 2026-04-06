@@ -12,7 +12,7 @@ export async function GET() {
       },
     });
 
-    return NextResponse.json(data.stories || []);
+    return NextResponse.json({ stories: data.stories || [] });
   } catch (error) {
     return NextResponse.json(
       {
