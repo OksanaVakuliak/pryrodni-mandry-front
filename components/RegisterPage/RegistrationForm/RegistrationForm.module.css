@@ -1,5 +1,5 @@
 .formCard {
-  background: var(--color-white);
+  background: var(--color-scheme-1-background);
   width: 100%;
   max-width: 335px;
   margin: 0 auto;

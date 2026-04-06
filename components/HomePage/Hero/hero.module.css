@@ -16,7 +16,7 @@
   border: 1px solid var(--color-mantis-dark);
   border-radius: 6px;
   padding: 6px 12px;
-  width: 335px;
+  width: 100%;
   min-height: 39px;
   background: var(--color-mantis-dark);
   transition:
@@ -52,6 +52,7 @@
   height: 469px;
   margin-bottom: 24px;
   object-fit: cover;
+  border-radius: 12px;
 }
 
 @media only screen and (min-width: 768px) {

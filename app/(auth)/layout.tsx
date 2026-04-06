@@ -29,8 +29,8 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <body className="white-page">
       <main>{children}</main>
-    </>
+    </body>
   );
 }
