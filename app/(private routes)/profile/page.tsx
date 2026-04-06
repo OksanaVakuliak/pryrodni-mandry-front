@@ -2,7 +2,7 @@
 
 import { useAuthStore } from '@/lib/store/useAuthStore';
 import TravellerInfo from '@/components/ui/TravellerInfo/TravellerInfo';
-import {} from '@/components/ui/';
+import ProfileTabs from '@/components/ui/ProfileTabs/ProfileTabs';
 
 export default function ProfilePage() {
   const user = useAuthStore((state) => state.user);

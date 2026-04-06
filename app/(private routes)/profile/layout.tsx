@@ -1,7 +1,7 @@
 'use client';
 import { ReactNode } from 'react';
-import { usePathname } from 'next/navigation';
 import css from './ProfileLayout.module.css';
+import { usePathname } from 'next/navigation';
 
 interface ProfileLayoutProps {
   children: ReactNode;
@@ -21,12 +21,7 @@ export default function ProfileLayout({
   return (
     <main className={css.layoutContainer}>
       <div className={css.innerWrapper}>
-        {/* ВЕРХНЯ ЧАСТИНА: TravellerInfo + Таби */}
-        {/* Вони приходять сюди через пропс {children} з файлу page.tsx */}
         <section className={css.userInfoSection}>{children}</section>
-
-        {/* НИЖНЯ ЧАСТИНА: Список історій */}
-        {/* Завдяки Parallel Routes, тут буде завантажуватись або @saved, або @my */}
         <section className={css.storiesSection}>
           {isMyStories ? my : saved}
         </section>

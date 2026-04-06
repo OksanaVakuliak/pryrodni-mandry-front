@@ -2,20 +2,15 @@
   width: 100%;
   min-height: 100vh;
   padding: 40px 0;
-  background-color: #fff; /* або колір фону твого проекту */
+  background-color: #fff;
 }
 
 .innerWrapper {
-  max-width: 1200px; /* стандарт для десктопа у тебе в проекті */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .userInfoSection {
-  margin-bottom: 48px; /* відступ між інфо користувача та початком списку історій */
-}
-
-.storiesSection {
-  /* Тут нічого особливого не треба, бо всередині @saved/@my 
-     вже буде твій TravellersStories зі своєю сіткою */
+  margin-bottom: 48px;
 }

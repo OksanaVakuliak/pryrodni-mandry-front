@@ -1,18 +1,19 @@
 import TravellersStories from '@/components/ui/TravellersStories/TravellersStories';
-import { getServerProfileSavedStories } from '@/lib/api/serverApi';
+import { getServerProfileMyStories } from '@/lib/api/serverApi';
 import { Story } from '@/types/story';
 
-export default async function MySavedStoriesPage() {
+export default async function MyStoriesPage() {
   let stories: Story[] = [];
 
   try {
-    const response = await getServerProfileSavedStories(1, 6);
+    const response = await getServerProfileMyStories(1, 6);
 
     if (response && Array.isArray(response.stories)) {
       stories = response.stories;
     } else {
       stories = [];
     }
+    stories = response.stories;
   } catch (error) {
     stories = [];
   }
