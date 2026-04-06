@@ -15,13 +15,13 @@
 }
 
 .closeIcon {
-  fill: black;
-  stroke: black;
+  fill: var(--text-primary);
+  stroke: var(--text-primary);
   stroke-width: 1;
 }
 
 .modal {
-  background: #e6f2e8;
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 64px 16px 16px;
   width: 335px;

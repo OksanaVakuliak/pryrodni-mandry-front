@@ -1,5 +1,5 @@
 .wrapper {
-  background: var(--color-scheme-2-foreground);
+  background: var(--card-bg);
   padding: 24px;
   border-radius: 16px;
   width: 335px;

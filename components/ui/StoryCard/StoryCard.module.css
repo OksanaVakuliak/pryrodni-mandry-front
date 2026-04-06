@@ -1,5 +1,5 @@
 .card {
-  background-color: var(--color-mantis-lighter);
+  background-color: var(--card-bg);
   border-radius: 16px;
   overflow: hidden;
   width: 100%;
@@ -31,17 +31,17 @@
   display: flex;
   gap: 6px;
   font-size: 14px;
-  color: var(--color-scheme-2-text);
+  color: var(--text-muted);
   align-items: center;
 }
 
 .metaSeparator {
-  color: var(--color-neutral-light);
+  color: var(--text-muted);
 }
 
 .title {
   display: -webkit-box;
-  color: var(--color-scheme-2-text);
+  color: var(--text-primary);
   margin-bottom: 12px;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -70,6 +70,11 @@
   padding: 6px;
   min-height: 48px;
   min-width: 48px;
+  fill: var(--text-primary);
+}
+
+.svg {
+  fill: var(--text-primary);
 }
 
 @media only screen and (min-width: 767px) {
