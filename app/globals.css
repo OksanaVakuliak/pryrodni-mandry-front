@@ -53,9 +53,13 @@
   --text-muted: var(--color-neutral);
   --text-on-scheme-2-primary: var(--color-mantis-darkest);
   --text-on-scheme-2-secondary: var(--color-mantis-dark);
+  --active-bg: var(--color-neutral-lightest);
+  --active-color: #000;
 }
 
 :root[data-theme='dark'] {
+  --active-bg: var(--color-mantis-dark);
+  --active-color: #fff;
   --color-scheme-2-background: #0f1a14;
   --logo-color: #ffffff;
   --card-bg: var(--color-scheme-1-background);
