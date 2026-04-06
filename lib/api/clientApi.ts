@@ -70,6 +70,10 @@ export const storiesApi = {
     );
     return response.data;
   },
+  create: async (formData: FormData) => {
+    const { data } = await instance.post<Story>('/stories/new', formData);
+    return data;
+  },
   deleteStory: async (storyId: string): Promise<SaveResponse> => {
     const response = await instance.patch<SaveResponse>(
       `/stories/${storyId}/delete`,
