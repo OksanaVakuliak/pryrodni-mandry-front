@@ -159,6 +159,8 @@
   .authBtn {
     display: block;
     max-height: 32px;
+    display: flex;
+    align-items: center;
   }
 
   .navLinkTablet {
