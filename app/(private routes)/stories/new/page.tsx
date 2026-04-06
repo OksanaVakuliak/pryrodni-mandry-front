@@ -4,12 +4,14 @@ import type { Metadata } from 'next';
 import css from './page.module.css';
 
 export const metadata: Metadata = {
-  title: 'Створити історію | Природні мандри',
-  description: 'Поділіться своєю історією подорожі, пригод та відкриттів разом із спільнотою Природні мандри.',
+  title: 'Створити історію',
+  description:
+    'Поділіться своєю історією подорожі, пригод та відкриттів разом із спільнотою Природні мандри.',
 
   openGraph: {
     title: 'Створити нову історію — Природні мандри',
-    description: 'Опублікуйте власну історію подорожі та надихайте інших досліджувати світ разом із вами.',
+    description:
+      'Опублікуйте власну історію подорожі та надихайте інших досліджувати світ разом із вами.',
     url: 'https://your-site.com/stories/new',
     siteName: 'Природні мандри',
     images: [
@@ -25,11 +27,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CreateStoryPage() {  
+export default function CreateStoryPage() {
   return (
-        <div className='container'>
-            <PageTitle tag="h1" className={css.title}>Створити нову історію</PageTitle>
-            <AddStoryForm/>
-        </div>
-    );
+    <div className="container">
+      <PageTitle tag="h1" className={css.title}>
+        Створити нову історію
+      </PageTitle>
+      <AddStoryForm />
+    </div>
+  );
 }
