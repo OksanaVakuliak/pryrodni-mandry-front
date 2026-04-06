@@ -1,0 +1,10 @@
+.savedIcon {
+  background: var(--color-mantis-darker);
+  color: var(--color-white);
+  border-color: var(--opacity-transparent);
+}
+
+.savedIcon svg {
+  fill: var(--color-white);
+  color: var(--color-white);
+}

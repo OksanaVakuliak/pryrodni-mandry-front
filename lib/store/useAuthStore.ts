@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import { User } from '@/types/Users';
-import instance from '@/lib/api/api';
+import { getMe, refresh } from '@/lib/api/clientApi';
 import { AxiosError } from 'axios';
+import toast from 'react-hot-toast';
 
 interface AuthState {
   user: User | null;
@@ -32,7 +33,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   checkAuth: async () => {
     try {
-      const { data } = await instance.get<User>('/api/profile/me');
+      const data = await getMe();
 
       set({
         user: data,
@@ -42,10 +43,17 @@ export const useAuthStore = create<AuthState>((set) => ({
       const err = error as AxiosError;
 
       if (err.response?.status === 401) {
-        set({
-          user: null,
-          isAuthenticated: false,
-        });
+        try {
+          await refresh();
+          const refreshed = await getMe();
+          set({ user: refreshed, isAuthenticated: true });
+        } catch (error: unknown) {
+          const err = error as AxiosError;
+          set({ user: null, isAuthenticated: false });
+          toast.error(err.message);
+        }
+      } else {
+        set({ user: null, isAuthenticated: false });
       }
     } finally {
       set({ isCheckingAuth: false });

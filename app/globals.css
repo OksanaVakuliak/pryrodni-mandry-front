@@ -78,7 +78,7 @@ h6 {
 }
 
 body {
-  background-color: var(--color-scheme-1-background);
+  background-color: var(--color-scheme-2-background);
   color: var(--color-neutral-darkest);
   font-family: var(--font-family);
   margin: 0 auto;
@@ -107,6 +107,22 @@ li {
   margin: 0 auto;
 }
 
+.custom-toast::after {
+  content: '✕';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  opacity: 0.5;
+  font-weight: bold;
+}
+
+.custom-toast-error::after {
+  color: #cb2431;
+  opacity: 0.8;
+}
+
 @media only screen and (min-width: 768px) {
   .container {
     max-width: 768px;
@@ -121,4 +137,25 @@ li {
     padding-right: 64px;
     padding-left: 64px;
   }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.shimmerEffect {
+  background: linear-gradient(
+    90deg,
+    var(--color-scheme-2-foreground) 25%,
+    var(--color-scheme-1-border) 50%,
+    var(--color-scheme-2-foreground) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
 }

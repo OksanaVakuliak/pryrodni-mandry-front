@@ -6,7 +6,7 @@
 
 ## 🛠 Властивості (Props)
 
-| Проп         | Тип         | Дефолт      | ******\*\*******\*\*\*******\*\*******                                |
+| Проп         | Тип         | Дефолт      | **\*\***\*\***\*\***\*\*\***\*\***\*\***\*\***                        |
 | :----------- | :---------- | :---------- | :-------------------------------------------------------------------- |
 | `href`       | `string`    | —           | **Обов'язковий**. Шлях для переходу.                                  |
 | `variant`    | `string`    | `'primary'` | Стиль: `primary`, `secondary`, `nav`, `textWithBorder`, `iconButton`. |
@@ -22,11 +22,11 @@
 реагувати на наведення.
 
 ```typescript
-import { Link } from '@/components/ui/Link/Link';
+import { CustomLink } from '@/components/ui/Link/Link';
 
-<Link href="/shop" variant="textWithBorder">
+<CustomLink href="/shop" variant="textWithBorder">
   Переглянути все
-</Link>
+</CustomLink>
 
 ```
 
@@ -35,7 +35,7 @@ import { Link } from '@/components/ui/Link/Link';
 
 TypeScript
 
-<Link 
+<CustomLink
   href="/favorites" 
   variant="iconButton" 
   iconId="icon-bookmark" 
@@ -46,15 +46,15 @@ TypeScript
 
 TypeScript
 
-<Link href="/services" variant="nav">
+<CustomLink href="/services" variant="nav">
   Послуги
-</Link>
+</CustomLink>
 1. Заблокований стан (isDisabled)
 Вимикає можливість переходу та візуально робить елемент неактивним.
 
 TypeScript
 
-<Link href="#" variant="iconButton" iconId="icon-bookmark" isDisabled />
+<CustomLink href="#" variant="iconButton" iconId="icon-bookmark" isDisabled />
 
 4.  Кнопка "Мандрівники" (Primary) Використовується для головних закликів до дії
     (CTA), має фоновий колір mantis-dark.

@@ -1,3 +1,11 @@
+export type ApiError = {
+  message: string;
+  status: number;
+  response?: {
+    data?: { error?: string };
+    status?: number;
+  };
+};
 import axios from 'axios';
 
 const baseURL = process.env.BACKEND_URL;

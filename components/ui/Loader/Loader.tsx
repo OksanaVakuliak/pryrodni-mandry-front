@@ -1,10 +1,18 @@
+import { Skeleton } from '../Skeleton/Skeleton';
 import { Icon } from '@/components/ui/Icon/Icon';
-import styles from './Loader.module.css';
+
+import css from './Loader.module.css';
 
 export const Loader = () => {
   return (
-    <div className={styles.wrapper}>
-      <Icon name="icon-eco" className={styles.loader} />
+    <div className={css.loaderWrapper}>
+      <div className={css.wrapper}>
+        <Icon name="icon-eco" className={css.loader} />
+      </div>
+
+      <div className={css.skeletonUnderlay}>
+        <Skeleton limit={6} />
+      </div>
     </div>
   );
 };
