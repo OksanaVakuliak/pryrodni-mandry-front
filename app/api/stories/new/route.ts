@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const title = formData.get('title');
     const category = formData.get('category');
     const article = formData.get('article');
-    const image = formData.get('image') as File | null;
+    const image = formData.get('img') as File | null;
       
     const backendFormData = new FormData();
 

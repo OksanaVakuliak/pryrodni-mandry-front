@@ -26,14 +26,18 @@ export default function AddStoryForm() {
   const [loadingCategories, setLoadingCategories] = useState(true);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+
+  const STORAGE_KEY = 'add_story_form';
   
   const onDrop = (acceptedFiles: File[]) => {
   const file = acceptedFiles[0];
 
   if (file) {
+    const newPreview = URL.createObjectURL(file);
+
     formik.setFieldValue('img', file);
     formik.setFieldTouched('img', true);
-    setPreview(URL.createObjectURL(file));
+    setPreview(newPreview);
   }
 };
 
@@ -66,14 +70,38 @@ const { getRootProps, getInputProps } = useDropzone({
             URL.revokeObjectURL(preview);
         };
     }, [preview]);
-
-  const formik = useFormik({
-    initialValues: {
+  
+  const getInitialValues = () => {
+  if (typeof window === 'undefined') {
+    return {
       title: '',
       category: '',
       article: '',
-      img: null as File | null,
-    },
+      img: null,
+    };
+  }
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      return {
+        ...parsed,
+        img: null,
+      };
+    }
+  } catch (error) {
+    console.error('localStorage parse error', error);
+  }
+
+  return { title: '', category: '', article: '', img: null };
+  
+  };
+
+  const [initialValues] = useState(() => getInitialValues());
+
+  const formik = useFormik({
+    initialValues,
     validateOnMount: true,
     validationSchema: Yup.object({
       title: Yup.string()
@@ -106,6 +134,7 @@ const { getRootProps, getInputProps } = useDropzone({
         const data = await storiesApi.create(formData);
 
         router.push(`/stories/${data._id}`);
+        localStorage.removeItem(STORAGE_KEY);
       } catch (error) {
   if (error instanceof AxiosError) {
     const status = error.response?.status;
@@ -124,8 +153,21 @@ const { getRootProps, getInputProps } = useDropzone({
     },
   });
 
+  useEffect(() => {
+  const timeout = setTimeout(() => {
+    const { title, category, article } = formik.values;
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ title, category, article })
+    );
+  }, 500);
+
+  return () => clearTimeout(timeout);
+}, [formik.values]);
+
     return (
-        <div className='container'>
+        <div>
             <form onSubmit={formik.handleSubmit}>
                 <div className={css.wrapper}>
             <div>
@@ -202,8 +244,9 @@ const { getRootProps, getInputProps } = useDropzone({
             type="button"
             variant="secondary"
             onClick={() => {
-                formik.resetForm();
+                formik.resetForm({values: { title: '', category: '', article: '', img: null }});
                 setPreview(null);
+                localStorage.removeItem(STORAGE_KEY);
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                 }
@@ -215,7 +258,7 @@ const { getRootProps, getInputProps } = useDropzone({
             className={css.btn}
             type="submit"
             isLoading={formik.isSubmitting}
-            disabled={!formik.isValid || !formik.dirty}
+            disabled={!formik.isValid || !formik.dirty || formik.isSubmitting}
         >
             Зберегти
         </Button>

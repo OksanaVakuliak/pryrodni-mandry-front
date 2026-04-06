@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 
 export default function CreateStoryPage() {  
   return (
-        <>
+        <div className='container'>
             <PageTitle tag="h1" className={css.title}>Створити нову історію</PageTitle>
             <AddStoryForm/>
-        </>
+        </div>
     );
 }

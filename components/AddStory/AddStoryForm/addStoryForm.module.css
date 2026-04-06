@@ -56,6 +56,10 @@
 }
 
 @media only screen and (min-width: 1440px) {
+    .wrapper {
+        width: 1091px;
+    }
+
     .loadImgBtn {
         width: 215px;
         height: 38px;
