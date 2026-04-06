@@ -1,6 +1,6 @@
 .card {
   display: block;
-  background: var(--color-mantis-lightest);
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 24px 16px;
   text-align: center;
@@ -19,16 +19,58 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
 }
 
+/* --- КНОПКА --- */
 .profileLink {
-  display: inline-block;
   margin-top: auto;
-  padding: 8px 12px;
-  border-radius: 10px;
-  background: #d9eadf;
-  text-decoration: none;
-  color: inherit;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 48px;
+  text-align: center;
+  padding: 6px 12px;
+  border: 1px solid var(--color-scheme-1-border);
+  max-width: none; /* 👈 убрать ограничения */
+}
+
+.card .profileLink {
+  background-color: var(--card-bg);
 }
 
 .profileLink:hover {
   background: #cde5d3;
+}
+
+.compact {
+  font-size: 16px;
+  min-width: 287px;
+  min-height: 48px;
+}
+
+/* --- АДАПТИВ --- */
+@media only screen and (min-width: 767px) {
+  .profileLink:not(.compact) {
+    min-width: 292px;
+  }
+
+  .compact {
+    min-width: 170px;
+    min-height: 48px;
+    padding: 0px 5px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .profileLink:not(.compact) {
+    min-width: 262px;
+  }
+
+  .compact {
+    min-width: 262px;
+    min-height: 48px;
+  }
 }

@@ -8,6 +8,7 @@ import { CustomLink } from '@/components/ui/Link/Link';
 import { Icon } from '@/components/ui/Icon/Icon';
 import UserBar from '../UserBar/UserBar';
 import css from './header.module.css';
+import { ThemeToggle } from '@/components/ui/ThemeToggle/ThemeToggle';
 
 const Header = () => {
   const { isAuthenticated, checkAuth } = useAuthStore();
@@ -48,7 +49,8 @@ const Header = () => {
       <div className={css.container}>
         <Link href="/" className={css.logoLink}>
           <div className={css.logoContainer}>
-            <Icon name={'icon-Logo'} className={css.svg} />
+            <Icon name="icon-Logo" className={css.svg} />
+            <ThemeToggle />
           </div>
         </Link>
 

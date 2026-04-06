@@ -2,12 +2,14 @@ import styles from './TravallerCard.module.css';
 import { Traveller } from '@/types/traveller';
 import TravellerInfo from '@/components/ui/TravellerInfo/TravellerInfo';
 import { CustomLink } from '@/components/ui/Link/Link';
+import clsx from 'clsx';
 
 type Props = {
   traveller: Traveller;
+  compact?: boolean; // 👈 добавили
 };
 
-export default function TravellerCard({ traveller }: Props) {
+export default function TravellerCard({ traveller, compact }: Props) {
   return (
     <div className={styles.card}>
       <TravellerInfo
@@ -18,8 +20,8 @@ export default function TravellerCard({ traveller }: Props) {
       >
         <CustomLink
           href={`/travellers/${traveller._id}`}
-          variant="tertiary"
-          className={styles.profileLink}
+          variant="secondary"
+          className={clsx(styles.profileLink, compact && styles.compact)}
         >
           Переглянути профіль
         </CustomLink>

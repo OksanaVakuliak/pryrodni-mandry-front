@@ -95,7 +95,7 @@ export const SaveStoryButton = ({
       aria-label={isSaved ? 'Збережено' : 'Зберегти'}
     >
       {variant === 'icon' ? (
-        <Icon name="icon-bookmark" width={20} height={20} />
+        <Icon name="icon-bookmark" width={30} height={30} />
       ) : (
         <span>{isSaved ? 'Збережено' : 'Зберегти'}</span>
       )}
