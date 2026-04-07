@@ -6,10 +6,16 @@ import { clientApi } from '@/lib/api/clientApi';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { StoriesCategories } from './CategoriesFilter/StoriesCategories';
 import { StoriesGrid } from './CategoriesFilter/StoriesGrid';
-import { Button } from '@/components/ui/Button/Button';
+// import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
+import {
+  SkeletonInput,
+  SkeletonButton,
+} from '@/components/ui/Skeleton/Skeleton';
+import { StoryCardSkeleton } from '@/components/ui/StoryCard/StoryCardSkeleton';
 import css from './StoriesPage.module.css';
 import StoryCard from '../ui/StoryCard/StoryCard';
+import { Pagination } from '../ui/Pagination/Pagination';
 
 const StoriesPage = () => {
   const [filters, setFilters] = useState<StoriesFilters>({
@@ -100,7 +106,22 @@ const StoriesPage = () => {
       <div className="container">
         <PageTitle className={css.title}>Статті</PageTitle>
 
-        {isLoading && <Loader />}
+        {isLoading && (
+          <>
+            <div className={css.skeletonFilters}>
+              <SkeletonInput height={48} />
+            </div>
+            <div className={css.skeletonGrid}>
+              {Array.from({ length: 6 }).map((_, index) => (
+                <StoryCardSkeleton key={`stories-skeleton-${index}`} />
+              ))}
+            </div>
+            <div className={css.skeletonButtonWrap}>
+              <SkeletonButton />
+            </div>
+            <Loader />
+          </>
+        )}
         {isError && <p>Помилка завантаження статей.</p>}
 
         {!isLoading && !isError && (
@@ -120,13 +141,12 @@ const StoriesPage = () => {
 
             {hasMore && (
               <div className={css.showMoreButtonContainer}>
-                <Button
-                  variant="primary"
+                <Pagination
                   onClick={handleShowMore}
+                  isLoading={isLoading}
+                  isVisible={hasMore}
                   className={css.showMoreButton}
-                >
-                  Показати ще
-                </Button>
+                />
               </div>
             )}
           </>

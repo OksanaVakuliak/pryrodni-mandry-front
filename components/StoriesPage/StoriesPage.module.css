@@ -11,19 +11,40 @@
 .showMoreContainer {
   margin-bottom: 48px;
 }
+
+.skeletonFilters {
+  margin-bottom: 24px;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.skeletonButtonWrap {
+  display: flex;
+  justify-content: center;
+}
+
 .showMoreButtonContainer {
   display: flex;
   justify-content: center;
 }
 
 .showMoreButton {
-  max-width: 335px;
+  min-width: 335px;
   min-height: 48px;
 }
 
 @media (min-width: 768px) {
+  .skeletonGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .showMoreButton {
-    max-width: 136px;
+    min-width: 136px;
   }
 }
 
@@ -34,7 +55,12 @@
   .showMoreContainer {
     margin-bottom: 40px;
   }
+
+  .skeletonGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .showMoreButton {
-    max-width: 162px;
+    min-width: 162px;
   }
 }
