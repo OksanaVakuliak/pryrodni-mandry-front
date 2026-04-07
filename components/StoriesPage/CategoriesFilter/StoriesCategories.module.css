@@ -42,8 +42,8 @@
 }
 
 .active {
-  color: var(--color-mantis-darkest);
-  background: var(--color-scheme-1-foreground);
+  background: var(--active-bg);
+  color: var(--active-color);
 }
 
 @media (min-width: 768px) {

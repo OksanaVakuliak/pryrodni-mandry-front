@@ -81,7 +81,7 @@ const TravellersList = () => {
               index === travellers.length - PER_PAGE ? scrollAnchorRef : null
             }
           >
-            <TravellerCard traveller={traveller} />
+            <TravellerCard traveller={traveller} compact />
           </div>
         ))}
       </div>

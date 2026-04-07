@@ -12,7 +12,6 @@
 
   border: 1px solid transparent;
   transition: all var(--transition-default);
-  width: 100%;
 }
 /* --- */
 .primary {
