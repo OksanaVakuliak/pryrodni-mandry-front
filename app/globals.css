@@ -81,9 +81,9 @@
   --color-mantis: #4fae4e;
   --color-mantis-light: #6bcf6a;
   --opacity-neutral-darkest-15: rgba(255, 255, 255, 0.15);
-  --color-mantis-dark: #6f4e37; /* основной */
-  --color-mantis-lighter: #8b6a50; /* hover */
-  --color-mantis-light: #a17c5b; /* active */
+  --color-mantis-dark: #6f4e37; 
+  --color-mantis-lighter: #8b6a50; 
+  --color-mantis-light: #a17c5b;
   --color-mantis-darker: #5a3e2b;
 }
 
