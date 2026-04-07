@@ -116,6 +116,7 @@
   gap: 8px;
   border: 1px solid transparent;
   transition: all var(--transition-default);
+  margin-top: auto;
 }
 
 .secondary:hover:not(:disabled) {
@@ -158,4 +159,20 @@
 .tertiary:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+.buttonProfile {
+  display: block;
+  background: var(--color-mantis-dark);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color-white);
+  line-height: 150%;
+  transition:
+    background-color var(--transition-default),
+    transform var(--transition-default);
+  border: 1px solid transparent;
+  font-size: 20px;
+  width: fit-content;
 }

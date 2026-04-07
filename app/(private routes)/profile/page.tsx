@@ -17,7 +17,7 @@ export default function ProfilePage() {
         avatar={user.avatarUrl}
         storiesCount={user.articlesAmount || 0}
       >
-        <CustomLink variant="button" href="profile/edit">
+        <CustomLink variant="buttonProfile" href="profile/edit">
           Відредагувати профіль
         </CustomLink>
       </TravellerInfo>
