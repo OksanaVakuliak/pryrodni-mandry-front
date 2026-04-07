@@ -26,7 +26,7 @@ export default function TravellerInfo({
         <PageTitle tag="h3">{name}</PageTitle>
         <p className={styles.meta}>Статей: {storiesCount}</p>
       </div>
-      {children} {/* 🔥 сюда прокидываем кнопку */}
+      <div className={styles.actions}>{children}</div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import StoriesErrorClient from '@/components/Errors/StoriesErrorClient';
-import TravellersStories from '@/components/ui/TravellersStories/TravellersStories';
+import SavedStoriesClient from './SavedStoriesClient';
 import { getServerProfileSavedStories } from '@/lib/api/serverApi';
 import { Story } from '@/types/story';
 import { isAxiosError } from 'axios';
@@ -54,7 +54,7 @@ export default async function MySavedStoriesPage() {
 
   return (
     <>
-      <TravellersStories stories={stories} variant="noSaved" />
+      <SavedStoriesClient initialStories={stories} />
       <StoriesErrorClient error={errorMessage} />
     </>
   );
