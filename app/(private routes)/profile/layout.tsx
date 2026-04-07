@@ -6,6 +6,7 @@ import { useAuthStore } from '@/lib/store/useAuthStore';
 import TravellerInfo from '@/components/ui/TravellerInfo/TravellerInfo';
 import ProfileTabs from '@/components/ui/ProfileTabs/ProfileTabs';
 import { CustomLink } from '@/components/ui/Link/Link';
+import { useModalStore } from '@/lib/store/useModalStore';
 
 interface ProfileLayoutProps {
   saved: ReactNode;
@@ -23,6 +24,7 @@ export default function ProfileLayout({
   const pathname = usePathname();
   const user = useAuthStore((state) => state.user);
   const isMyStories = pathname === '/profile/my';
+  const openEditProfile = useModalStore((state) => state.openEditProfile);
 
   if (pathname.includes('confirm')) {
     return <>{children}</>;
@@ -42,7 +44,11 @@ export default function ProfileLayout({
                 avatar={user.avatarUrl}
                 storiesCount={user.articlesAmount || 0}
               >
-                <CustomLink variant="buttonProfile" href="/profile/edit">
+                <CustomLink
+                  variant="buttonProfile"
+                  href="/profile/edit"
+                  onClick={() => openEditProfile()}
+                >
                   Відредагувати профіль
                 </CustomLink>
               </TravellerInfo>
