@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/Button/Button';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import styles from './ErrorWhilesavingModal.module.css';
+import { Icon } from '@/components/ui/Icon/Icon';
 
 type Props = {
   isOpen: boolean;
@@ -23,7 +24,12 @@ export default function ErrorWhileSavingModal({
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <button onClick={onClose} className={styles.close}>
-          X
+          <Icon
+            name="icon-close"
+            className={styles.closeIcon}
+            width={24}
+            height={24}
+          />
         </button>
 
         <PageTitle className={styles.title} tag="h2">

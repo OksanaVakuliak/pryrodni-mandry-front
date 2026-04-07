@@ -1,0 +1,99 @@
+.toggle {
+  width: 72px;
+  height: 36px;
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-scheme-1-border);
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+
+  transition: var(--transition-default);
+}
+
+/* SKY */
+.sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #c8f2c2 0%, #5dbe5c 100%);
+  transition: 0.6s ease;
+}
+
+.dark .sky {
+  background: linear-gradient(180deg, #0f1a14 0%, #1a2a22 100%);
+}
+
+/* SUN */
+.sun {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffd93b;
+
+  top: 6px;
+  left: 10px;
+
+  box-shadow: 0 0 12px #ffd93b;
+  transition: 0.6s ease;
+}
+
+.dark .sun {
+  transform: translateY(40px);
+  opacity: 0;
+}
+
+/* MOON */
+.moon {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e5e7eb;
+
+  top: 8px;
+  right: 10px;
+
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+
+  transform: translateY(30px);
+  opacity: 0;
+
+  transition: 0.6s ease;
+}
+
+.dark .moon {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* TREE (SVG-like) */
+.tree {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 10px;
+  height: 14px;
+  background: var(--color-mantis-dark);
+
+  clip-path: polygon(
+    50% 0%,
+    80% 40%,
+    65% 40%,
+    100% 80%,
+    0% 80%,
+    35% 40%,
+    20% 40%
+  );
+
+  transition: 0.4s;
+}
+
+/* DARK TREE */
+.dark .tree {
+  background: #cbd5e1;
+}

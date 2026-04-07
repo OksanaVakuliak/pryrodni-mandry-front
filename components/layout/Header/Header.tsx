@@ -8,6 +8,7 @@ import { CustomLink } from '@/components/ui/Link/Link';
 import { Icon } from '@/components/ui/Icon/Icon';
 import UserBar from '../UserBar/UserBar';
 import css from './header.module.css';
+import { ThemeToggle } from '@/components/ui/ThemeToggle/ThemeToggle';
 
 const Header = () => {
   const { isAuthenticated, checkAuth } = useAuthStore();
@@ -48,7 +49,8 @@ const Header = () => {
       <div className={css.container}>
         <Link href="/" className={css.logoLink}>
           <div className={css.logoContainer}>
-            <Icon name={'icon-Logo'} className={css.svg} />
+            <Icon name="icon-Logo" className={css.svg} />
+            <ThemeToggle />
           </div>
         </Link>
 
@@ -144,17 +146,33 @@ const Header = () => {
         </button>
         <nav className={css.navTablet}>
           <div className={css.navLinkTablet1}>
-            <Link href="/" className={css.navLinkTablet}>
+            <Link
+              href="/"
+              onClick={() => setIsMenuOpen(false)}
+              className={css.navLinkTablet}
+            >
               Головна
             </Link>
-            <Link href="/stories" className={css.navLinkTablet}>
+            <Link
+              href="/stories"
+              onClick={() => setIsMenuOpen(false)}
+              className={css.navLinkTablet}
+            >
               Статті
             </Link>
-            <Link href="/travellers" className={css.navLinkTablet}>
+            <Link
+              href="/travellers"
+              onClick={() => setIsMenuOpen(false)}
+              className={css.navLinkTablet}
+            >
               Еко-мандрівники
             </Link>
             {isAuthenticated && (
-              <Link href="/profile" className={css.navLinkTablet}>
+              <Link
+                href="/profile"
+                onClick={() => setIsMenuOpen(false)}
+                className={css.navLinkTablet}
+              >
                 Мій профіль
               </Link>
             )}

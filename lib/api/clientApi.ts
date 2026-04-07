@@ -74,6 +74,10 @@ export const storiesApi = {
     );
     return response.data;
   },
+  create: async (formData: FormData) => {
+    const { data } = await instance.post<Story>('/stories/new', formData);
+    return data;
+  },
   deleteStory: async (storyId: string): Promise<SaveResponse> => {
     const response = await instance.patch<SaveResponse>(
       `/stories/${storyId}/delete`,
@@ -120,3 +124,25 @@ export const requestProfileUpdate = async (
   );
   return data;
 };
+// export const getProfileSavedStories = async (
+//   page: number = 1,
+//   perPage: number = 6,
+// ): Promise<StoriesResponse> => {
+//   const { data } = await instance.get<StoriesResponse>(
+//     '/profile/saved-stories',
+//     {
+//       params: { page, perPage },
+//     },
+//   );
+//   return data;
+// };
+
+// export const getProfileMyStories = async (
+//   page: number = 1,
+//   perPage: number = 6,
+// ): Promise<StoriesResponse> => {
+//   const { data } = await instance.get<StoriesResponse>('/profile/my-stories', {
+//     params: { page, perPage },
+//   });
+//   return data;
+// };
