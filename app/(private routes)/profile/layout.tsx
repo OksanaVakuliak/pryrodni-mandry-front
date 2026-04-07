@@ -7,12 +7,14 @@ interface ProfileLayoutProps {
   children: ReactNode;
   saved: ReactNode;
   my: ReactNode;
+  modal: ReactNode;
 }
 
 export default function ProfileLayout({
   children,
   saved,
   my,
+  modal,
 }: ProfileLayoutProps) {
   const pathname = usePathname();
 
@@ -26,6 +28,8 @@ export default function ProfileLayout({
           {isMyStories ? my : saved}
         </section>
       </div>
+
+      {modal}
     </div>
   );
 }
