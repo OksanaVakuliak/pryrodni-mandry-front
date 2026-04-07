@@ -7,13 +7,14 @@ export const profileUpdateSchema = Yup.object().shape({
 
   password: Yup.string()
     .min(8, 'Пароль має бути не менше 8 символів')
-    .matches(/[a-zA-Z]/, 'Пароль повинен містити хоча б одну літеру'),
+    .max(128, 'Пароль занадто довгий'),
 
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Паролі повинні збігатися')
-    .when('password', {
-      is: (val: string) => val && val.length > 0,
-      then: (schema) => schema.required('Будь ласка, підтвердіть пароль'),
-      otherwise: (schema) => schema.notRequired(),
-    }),
+  confirmPassword: Yup.string().when('password', {
+    is: (val: string) => val && val.length > 0,
+    then: (schema) =>
+      schema
+        .required('Будь ласка, підтвердіть пароль')
+        .oneOf([Yup.ref('password')], 'Паролі повинні збігатися'),
+    otherwise: (schema) => schema.notRequired(),
+  }),
 });

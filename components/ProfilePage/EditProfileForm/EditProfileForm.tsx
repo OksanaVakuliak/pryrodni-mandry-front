@@ -24,7 +24,7 @@ interface FormValues {
   confirmPassword: string;
 }
 
-export default function EditProfileForm() {
+export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
   const setUser = useAuthStore((state) => state.setUser);
 
   const [userData, setUserData] = useState<User | null>(null);
@@ -247,7 +247,7 @@ export default function EditProfileForm() {
               <Button
                 type="button"
                 variant="secondary"
-                onClick={() => window.history.back()}
+                onClick={onClose || (() => window.history.back())}
               >
                 Назад
               </Button>

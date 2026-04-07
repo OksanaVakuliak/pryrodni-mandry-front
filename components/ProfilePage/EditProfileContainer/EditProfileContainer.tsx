@@ -2,14 +2,20 @@ import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import EditProfileForm from '../EditProfileForm/EditProfileForm';
 import css from './EditProfileContainer.module.css';
 
-export default function EditProfileContainer() {
+interface EditProfileContainerProps {
+  onClose?: () => void;
+}
+
+export default function EditProfileContainer({
+  onClose,
+}: EditProfileContainerProps) {
   return (
     <main className={css.main}>
       <div className={css.container}>
         <PageTitle tag="h2" className={css.title}>
           Налаштування профілю
         </PageTitle>
-        <EditProfileForm />
+        <EditProfileForm onClose={onClose} />
       </div>
     </main>
   );
