@@ -23,8 +23,13 @@ export default function ProfileLayout({
   return (
     <div className={css.layoutContainer}>
       <div className={css.innerWrapper}>
-        <section className={css.userInfoSection}>{children}</section>
-        <section className={css.storiesSection}>
+        <section
+          className={css.userInfoSection}
+          aria-label="Інформація профілю"
+        >
+          {children}
+        </section>
+        <section className={css.storiesSection} aria-label="Статті профілю">
           {isMyStories ? my : saved}
         </section>
       </div>

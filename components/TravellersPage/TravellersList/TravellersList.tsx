@@ -8,6 +8,7 @@ import { toast } from 'react-hot-toast';
 import styles from './TravellersList.module.css';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { Pagination } from '@/components/ui/Pagination/Pagination';
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 
 const TravellersList = () => {
   const [travellers, setTravellers] = useState<Traveller[]>([]);
@@ -56,7 +57,7 @@ const TravellersList = () => {
 
   return (
     <section className={styles.section}>
-      <h1 className={styles.title}>Мандрівники</h1>
+      <PageTitle className={styles.title}>Мандрівники</PageTitle>
       {isLoading && travellers.length === 0 && (
         <div className={styles.loaderWrapper}>
           <Loader />
