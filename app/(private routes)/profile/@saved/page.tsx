@@ -1,9 +1,9 @@
+import StoriesErrorClient from '@/components/Errors/StoriesErrorClient';
 import TravellersStories from '@/components/ui/TravellersStories/TravellersStories';
 import { getServerProfileSavedStories } from '@/lib/api/serverApi';
 import { Story } from '@/types/story';
 import { isAxiosError } from 'axios';
 import type { Metadata } from 'next';
-import toast from 'react-hot-toast';
 
 export const metadata: Metadata = {
   title: 'Збережені історії',
@@ -31,6 +31,7 @@ export const metadata: Metadata = {
 
 export default async function MySavedStoriesPage() {
   let stories: Story[] = [];
+  let errorMessage: string | null = null;
 
   try {
     const response = await getServerProfileSavedStories(1, 6);
@@ -42,14 +43,19 @@ export default async function MySavedStoriesPage() {
     }
   } catch (error: unknown) {
     if (isAxiosError(error)) {
-      toast.error(
-        'Помилка сервера при завантаженні історій:',
-        error.response?.data ?? error.message,
-      );
+      errorMessage =
+        (error.response?.data && String(error.response.data)) ||
+        error.message ||
+        'Помилка сервера при завантаженні історій.';
     } else {
-      toast.error('Невідома помилка при завантаженні історій');
+      errorMessage = 'Невідома помилка при завантаженні історій.';
     }
   }
 
-  return <TravellersStories stories={stories} />;
+  return (
+    <>
+      <TravellersStories stories={stories} />
+      <StoriesErrorClient error={errorMessage} />
+    </>
+  );
 }
