@@ -1,6 +1,8 @@
 'use client';
 import { useCallback, useRef, useEffect } from 'react';
 import css from './Modal.module.css';
+import { Icon } from '../Icon/Icon';
+import { Button } from '../Button/Button';
 
 export function Modal({
   children,
@@ -35,9 +37,7 @@ export function Modal({
       document.body.style.left = '';
       document.body.style.right = '';
       document.body.style.width = '';
-
       window.scrollTo(0, scrollY);
-
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
@@ -58,13 +58,19 @@ export function Modal({
   return (
     <div ref={overlay} className={css.backdrop} onClick={onClick}>
       <div ref={wrapper} className={css.content}>
-        <button
+        <Button
+          variant="secondary"
           onClick={onDismiss}
           className={css.closeBtn}
           aria-label="Закрити модальне вікно"
         >
-          ×
-        </button>
+          <Icon
+            name="icon-close"
+            width={24}
+            height={24}
+            className={css.closeIcon}
+          />
+        </Button>
         {children}
       </div>
     </div>
