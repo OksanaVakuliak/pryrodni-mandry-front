@@ -1,7 +1,7 @@
 .layoutContainer {
   width: 100%;
   min-height: 100vh;
-  padding: 40px 0;
+  padding: 32px 0;
 }
 
 .innerWrapper {
@@ -11,5 +11,21 @@
 }
 
 .userInfoSection {
-  margin-bottom: 48px;
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .innerWrapper {
+    padding: 0 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .layoutContainer {
+    padding: 48px 0;
+  }
+
+  .innerWrapper {
+    padding: 0 64px;
+  }
 }
