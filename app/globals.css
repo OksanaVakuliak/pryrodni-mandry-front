@@ -1,4 +1,6 @@
 @import 'modern-normalize';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
 
 :root {
   --font-family: 'Montserrat', sans-serif;

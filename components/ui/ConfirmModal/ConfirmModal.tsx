@@ -5,6 +5,7 @@ import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { Button } from '@/components/ui/Button/Button';
 import toast from 'react-hot-toast';
 import { logout } from '@/lib/api/clientApi';
+import axios from 'axios';
 
 import styles from './ConfirmModal.module.css';
 import { Icon } from '@/components/ui/Icon/Icon';
@@ -27,8 +28,11 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
       toast.success('Ви вийшли');
       onConfirm?.();
     } catch (error: unknown) {
-      console.error('Logout error', error);
-      toast.error('Не вдалося вийти');
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message || 'Не вдалося вийти');
+      } else {
+        toast.error('Непередбачувана помилка. Спробуйте пізніше');
+      }
     } finally {
       setIsLoading(false);
     }

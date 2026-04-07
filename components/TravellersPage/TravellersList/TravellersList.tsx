@@ -5,6 +5,7 @@ import { getTravellers } from '@/lib/api/clientApi';
 import { Traveller } from '@/types/traveller';
 import TravellerCard from '@/components/ui/TravallerCard/TravallerCard';
 import { toast } from 'react-hot-toast';
+import axios from 'axios';
 import styles from './TravellersList.module.css';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { Pagination } from '@/components/ui/Pagination/Pagination';
@@ -38,8 +39,11 @@ const TravellersList = () => {
         }, 100);
       }
     } catch (error) {
-      toast.error('Помилка при завантаженні списку мандрівників');
-      console.error(error);
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message || 'Помилка при завантаженні списку мандрівників');
+      } else {
+        toast.error('Непередбачувана помилка. Спробуйте пізніше');
+      }
     } finally {
       setIsLoading(false);
     }

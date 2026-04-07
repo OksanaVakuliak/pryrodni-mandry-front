@@ -1,3 +1,6 @@
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+
 .popularStories {
   display: flex;
   flex-direction: column;
