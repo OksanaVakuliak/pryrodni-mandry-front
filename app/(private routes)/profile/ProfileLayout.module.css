@@ -1,0 +1,15 @@
+.layoutContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 0;
+}
+
+.innerWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.userInfoSection {
+  margin-bottom: 48px;
+}
