@@ -28,6 +28,27 @@
   padding: 20px;
 }
 
+.initialLoadingWrap {
+  margin-bottom: 24px;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.loaderBottomWrapper {
+  margin-top: 24px;
+}
+
+.skeletonBottomRow {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
 .title {
   font-weight: 700;
   font-size: 32px;
@@ -42,6 +63,12 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
   }
+
+  .skeletonGrid,
+  .skeletonBottomRow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .title {
     font-size: 48px;
   }
@@ -51,6 +78,11 @@
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  .skeletonGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .paginationWrapper button {
     width: auto;
     min-width: 160px;

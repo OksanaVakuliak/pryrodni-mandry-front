@@ -8,11 +8,13 @@ import { toast } from 'react-hot-toast';
 import styles from './TravellersList.module.css';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { Pagination } from '@/components/ui/Pagination/Pagination';
+import { TravellerCardSkeleton } from '@/components/ui/TravallerCard/TravellerCardSkeleton';
+import { SkeletonPageTitle } from '@/components/ui/Skeleton/Skeleton';
 
 const TravellersList = () => {
   const [travellers, setTravellers] = useState<Traveller[]>([]);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [hasNextPage, setHasNextPage] = useState(true);
 
   const PER_PAGE = 12;
@@ -56,9 +58,18 @@ const TravellersList = () => {
 
   return (
     <section className={styles.section}>
-      <h1 className={styles.title}>Мандрівники</h1>
+      {isLoading && travellers.length === 0 ? (
+        <SkeletonPageTitle tag="h1" className={styles.title} />
+      ) : (
+        <h1 className={styles.title}>Мандрівники</h1>
+      )}
       {isLoading && travellers.length === 0 && (
-        <div className={styles.loaderWrapper}>
+        <div className={styles.initialLoadingWrap}>
+          <div className={styles.skeletonGrid}>
+            {Array.from({ length: PER_PAGE }).map((_, index) => (
+              <TravellerCardSkeleton key={`traveller-skeleton-${index}`} />
+            ))}
+          </div>
           <Loader />
         </div>
       )}
@@ -76,6 +87,13 @@ const TravellersList = () => {
       </div>
       {isLoading && travellers.length > 0 && (
         <div className={styles.loaderBottomWrapper}>
+          <div className={styles.skeletonBottomRow}>
+            {Array.from({ length: 3 }).map((_, index) => (
+              <TravellerCardSkeleton
+                key={`traveller-bottom-skeleton-${index}`}
+              />
+            ))}
+          </div>
           <Loader />
         </div>
       )}
