@@ -3,6 +3,7 @@
 import { useAuthStore } from '@/lib/store/useAuthStore';
 import TravellerInfo from '@/components/ui/TravellerInfo/TravellerInfo';
 import ProfileTabs from '@/components/ui/ProfileTabs/ProfileTabs';
+import { CustomLink } from '@/components/ui/Link/Link';
 
 export default function ProfilePage() {
   const user = useAuthStore((state) => state.user);
@@ -15,7 +16,11 @@ export default function ProfilePage() {
         name={user.name}
         avatar={user.avatarUrl}
         storiesCount={user.articlesAmount || 0}
-      />
+      >
+        <CustomLink variant="button" href="profile/edit">
+          Відредагувати профіль
+        </CustomLink>
+      </TravellerInfo>
       <ProfileTabs />
     </>
   );
