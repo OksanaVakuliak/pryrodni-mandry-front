@@ -246,6 +246,7 @@ export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
 
               <Button
                 type="button"
+                className={css.backBtn}
                 variant="secondary"
                 onClick={onClose || (() => window.history.back())}
               >
