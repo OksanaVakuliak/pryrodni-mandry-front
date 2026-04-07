@@ -1,20 +1,20 @@
-import StoriesErrorClient from '@/components/Errors/StoriesErrorClient';
 import TravellersStories from '@/components/ui/TravellersStories/TravellersStories';
-import { getServerProfileSavedStories } from '@/lib/api/serverApi';
+import StoriesErrorClient from '@/components/Errors/StoriesErrorClient';
+import { getServerProfileMyStories } from '@/lib/api/serverApi';
 import { Story } from '@/types/story';
-import { isAxiosError } from 'axios';
 import type { Metadata } from 'next';
+import { isAxiosError } from 'axios';
 
 export const metadata: Metadata = {
-  title: 'Збережені історії',
+  title: 'Мої історії',
   description:
-    'Колекція збережених історій подорожей, пригод та відкриттів у спільноті Природні мандри.',
+    'Ваша колекція історій подорожей, пригод та відкриттів у спільноті Природні мандри.',
 
   openGraph: {
-    title: 'Збережені історії — Природні мандри',
+    title: 'Мої історії — Природні мандри',
     description:
-      'Колекція збережених історій подорожей, пригод та відкриттів у спільноті Природні мандри.',
-    url: 'https://your-site.com/profile',
+      'Ваша колекція історій подорожей, пригод та відкриттів у спільноті Природні мандри.',
+    url: 'https://your-site.com/profile/my-stories',
     siteName: 'Природні мандри',
     images: [
       {
@@ -29,12 +29,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function MySavedStoriesPage() {
+export default async function MyStoriesPage() {
   let stories: Story[] = [];
   let errorMessage: string | null = null;
 
   try {
-    const response = await getServerProfileSavedStories(1, 6);
+    const response = await getServerProfileMyStories(1, 6);
 
     if (response && Array.isArray(response.stories)) {
       stories = response.stories;

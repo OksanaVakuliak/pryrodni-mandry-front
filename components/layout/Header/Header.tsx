@@ -146,17 +146,33 @@ const Header = () => {
         </button>
         <nav className={css.navTablet}>
           <div className={css.navLinkTablet1}>
-            <Link href="/" className={css.navLinkTablet}>
+            <Link
+              href="/"
+              onClick={() => setIsMenuOpen(false)}
+              className={css.navLinkTablet}
+            >
               Головна
             </Link>
-            <Link href="/stories" className={css.navLinkTablet}>
+            <Link
+              href="/stories"
+              onClick={() => setIsMenuOpen(false)}
+              className={css.navLinkTablet}
+            >
               Статті
             </Link>
-            <Link href="/travellers" className={css.navLinkTablet}>
+            <Link
+              href="/travellers"
+              onClick={() => setIsMenuOpen(false)}
+              className={css.navLinkTablet}
+            >
               Еко-мандрівники
             </Link>
             {isAuthenticated && (
-              <Link href="/profile" className={css.navLinkTablet}>
+              <Link
+                href="/profile"
+                onClick={() => setIsMenuOpen(false)}
+                className={css.navLinkTablet}
+              >
                 Мій профіль
               </Link>
             )}
