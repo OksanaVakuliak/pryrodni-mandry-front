@@ -1,7 +1,9 @@
 import { create } from 'zustand';
 import { User } from '@/types/Users';
-import instance from '@/lib/api/api';
+import { getMe, refresh } from '@/lib/api/clientApi';
 import { AxiosError } from 'axios';
+import toast from 'react-hot-toast';
+import { useStoriesStore } from '@/lib/store/useStoriesStore';
 
 interface AuthState {
   user: User | null;
@@ -18,34 +20,64 @@ export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
   isCheckingAuth: true,
 
-  setUser: (user) =>
-    set({
-      user,
-      isAuthenticated: true,
-    }),
+  setUser: (user) => {
+    set({ user, isAuthenticated: true });
 
-  clearUser: () =>
-    set({
-      user: null,
-      isAuthenticated: false,
-    }),
+    try {
+      const setStorySaved = useStoriesStore.getState().setStorySaved;
+      if (user.savedArticles && user.savedArticles.length) {
+        user.savedArticles.forEach((id) => setStorySaved(id, true));
+      }
+    } catch (error: unknown) {
+      const err = error as AxiosError;
+      const msg =
+        err.message ?? 'Локальна синхронізація збережених статей не вдалася';
+      toast.error(msg);
+    }
+  },
+
+  clearUser: () => {
+    set({ user: null, isAuthenticated: false });
+    try {
+      useStoriesStore.setState({ savedStories: {} });
+    } catch (error: unknown) {
+      const err = error as AxiosError;
+      const msg = err?.message ?? 'Не вдалося очистити локальні збереження';
+      toast.error(msg);
+    }
+  },
 
   checkAuth: async () => {
     try {
-      const { data } = await instance.get<User>('/api/profile/me');
+      const data = await getMe();
 
-      set({
-        user: data,
-        isAuthenticated: true,
-      });
+      set({ user: data, isAuthenticated: true });
+      try {
+        const setStorySaved = useStoriesStore.getState().setStorySaved;
+        if (data.savedArticles && data.savedArticles.length) {
+          data.savedArticles.forEach((id) => setStorySaved(id, true));
+        }
+      } catch (error: unknown) {
+        const err = error as AxiosError;
+        const msg =
+          err?.message ?? 'Локальна синхронізація збережених статей не вдалася';
+        toast.error(msg);
+      }
     } catch (error) {
       const err = error as AxiosError;
 
       if (err.response?.status === 401) {
-        set({
-          user: null,
-          isAuthenticated: false,
-        });
+        try {
+          await refresh();
+          const refreshed = await getMe();
+          set({ user: refreshed, isAuthenticated: true });
+        } catch (error: unknown) {
+          const err = error as AxiosError;
+          set({ user: null, isAuthenticated: false });
+          toast.error(err.message);
+        }
+      } else {
+        set({ user: null, isAuthenticated: false });
       }
     } finally {
       set({ isCheckingAuth: false });

@@ -14,7 +14,7 @@ const TravellerPublicProfile = ({
   travellerId,
 }: TravellerPublicProfileProps) => {
   return (
-    <main className={css.main}>
+    <section className={css.main} aria-label="Профіль мандрівника">
       <div className={css.container}>
         <TravellerInfo
           name={traveller.name}
@@ -30,7 +30,7 @@ const TravellerPublicProfile = ({
           <TravellerStoriesList travellerId={travellerId} />
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 

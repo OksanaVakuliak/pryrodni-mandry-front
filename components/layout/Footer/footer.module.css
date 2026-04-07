@@ -8,11 +8,15 @@
   .svgLogo {
     width: 124px;
     height: 40px;
+    fill: var(--logo-color);
+    stroke: var(--logo-color);
+    stroke-width: 1.5px;
   }
 
   .socialLink {
     width: 32px;
     height: 32px;
+    fill: var(--text-primary);
   }
 
   .socialContainer {
@@ -70,7 +74,7 @@
   }
 
   .footer {
-    background: var(--color-scheme-2-foreground);
+    background: var(--card-bg);
   }
 }
 

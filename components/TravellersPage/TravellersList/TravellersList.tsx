@@ -5,9 +5,11 @@ import { getTravellers } from '@/lib/api/clientApi';
 import { Traveller } from '@/types/traveller';
 import TravellerCard from '@/components/ui/TravallerCard/TravallerCard';
 import { toast } from 'react-hot-toast';
+import axios from 'axios';
 import styles from './TravellersList.module.css';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { Pagination } from '@/components/ui/Pagination/Pagination';
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 
 const TravellersList = () => {
   const [travellers, setTravellers] = useState<Traveller[]>([]);
@@ -37,8 +39,11 @@ const TravellersList = () => {
         }, 100);
       }
     } catch (error) {
-      toast.error('Помилка при завантаженні списку мандрівників');
-      console.error(error);
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message || 'Помилка при завантаженні списку мандрівників');
+      } else {
+        toast.error('Непередбачувана помилка. Спробуйте пізніше');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -56,7 +61,7 @@ const TravellersList = () => {
 
   return (
     <section className={styles.section}>
-      <h1 className={styles.title}>Мандрівники</h1>
+      <PageTitle className={styles.title}>Мандрівники</PageTitle>
       {isLoading && travellers.length === 0 && (
         <div className={styles.loaderWrapper}>
           <Loader />
@@ -70,7 +75,7 @@ const TravellersList = () => {
               index === travellers.length - PER_PAGE ? scrollAnchorRef : null
             }
           >
-            <TravellerCard traveller={traveller} />
+            <TravellerCard traveller={traveller} compact />
           </div>
         ))}
       </div>

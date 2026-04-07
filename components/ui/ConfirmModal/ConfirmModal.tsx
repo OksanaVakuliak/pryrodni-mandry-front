@@ -5,8 +5,10 @@ import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { Button } from '@/components/ui/Button/Button';
 import toast from 'react-hot-toast';
 import { logout } from '@/lib/api/clientApi';
+import axios from 'axios';
 
 import styles from './ConfirmModal.module.css';
+import { Icon } from '@/components/ui/Icon/Icon';
 
 type Props = {
   isOpen: boolean;
@@ -26,8 +28,11 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
       toast.success('Ви вийшли');
       onConfirm?.();
     } catch (error: unknown) {
-      console.error('Logout error', error);
-      toast.error('Не вдалося вийти');
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message || 'Не вдалося вийти');
+      } else {
+        toast.error('Непередбачувана помилка. Спробуйте пізніше');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -37,7 +42,12 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <button className={styles.close} onClick={onCancel}>
-          ✕
+          <Icon
+            name="icon-close"
+            className={styles.closeIcon}
+            width={24}
+            height={24}
+          />
         </button>
 
         <PageTitle className={styles.title} tag="h2">

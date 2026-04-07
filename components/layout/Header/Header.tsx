@@ -8,6 +8,7 @@ import { CustomLink } from '@/components/ui/Link/Link';
 import { Icon } from '@/components/ui/Icon/Icon';
 import UserBar from '../UserBar/UserBar';
 import css from './header.module.css';
+import { ThemeToggle } from '@/components/ui/ThemeToggle/ThemeToggle';
 
 const Header = () => {
   const { isAuthenticated, checkAuth } = useAuthStore();
@@ -46,13 +47,18 @@ const Header = () => {
   return (
     <header className={css.headerContainer}>
       <div className={css.container}>
-        <Link href="/" className={css.logoLink}>
-          <div className={css.logoContainer}>
-            <Icon name={'icon-Logo'} className={css.svg} />
-          </div>
-        </Link>
+        <div className={css.logoContainer}>
+          <Link
+            href="/"
+            aria-label="Природні Мандри — на головну"
+            className={css.logoLink}
+          >
+            <Icon name="icon-Logo" className={css.svg} />
+          </Link>
+          <ThemeToggle />
+        </div>
 
-        <nav className={css.navigation}>
+        <nav className={css.navigation} aria-label="Основна навігація">
           <Link href="/" className={css.navLink}>
             Головна
           </Link>
@@ -99,13 +105,22 @@ const Header = () => {
               </CustomLink>
             </div>
           )}
-          <button onClick={toggleMenu} className={css.burgerButton}>
+          <button
+            onClick={toggleMenu}
+            className={css.burgerButton}
+            aria-label="Відкрити меню"
+            aria-expanded={isMenuOpen}
+          >
             <Icon className={css.burgerIcon} name="icon-burger_menu" />
           </button>
         </div>
       </div>
       <div className={`${css.modalTablet} ${isMenuOpen ? css.isOpen : ''}`}>
-        <Link href="/" className={css.logoLinkTablet}>
+        <Link
+          href="/"
+          className={css.logoLinkTablet}
+          aria-label="Природні Мандри — на головну"
+        >
           <div className={css.logoContainer}>
             <Icon name={'icon-Logo'} className={css.svg} />
           </div>
@@ -139,22 +154,42 @@ const Header = () => {
             </div>
           )}
         </div>
-        <button onClick={toggleMenu} className={css.closeButton}>
+        <button
+          onClick={toggleMenu}
+          className={css.closeButton}
+          aria-label="Закрити меню"
+        >
           <Icon name="icon-close" />
         </button>
-        <nav className={css.navTablet}>
+        <nav className={css.navTablet} aria-label="Навігація">
           <div className={css.navLinkTablet1}>
-            <Link href="/" className={css.navLinkTablet}>
+            <Link
+              href="/"
+              onClick={() => setIsMenuOpen(false)}
+              className={css.navLinkTablet}
+            >
               Головна
             </Link>
-            <Link href="/stories" className={css.navLinkTablet}>
+            <Link
+              href="/stories"
+              onClick={() => setIsMenuOpen(false)}
+              className={css.navLinkTablet}
+            >
               Статті
             </Link>
-            <Link href="/travellers" className={css.navLinkTablet}>
+            <Link
+              href="/travellers"
+              onClick={() => setIsMenuOpen(false)}
+              className={css.navLinkTablet}
+            >
               Еко-мандрівники
             </Link>
             {isAuthenticated && (
-              <Link href="/profile" className={css.navLinkTablet}>
+              <Link
+                href="/profile"
+                onClick={() => setIsMenuOpen(false)}
+                className={css.navLinkTablet}
+              >
                 Мій профіль
               </Link>
             )}

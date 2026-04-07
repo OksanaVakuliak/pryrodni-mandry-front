@@ -6,7 +6,11 @@ const AuthHeader = () => {
   return (
     <header className={css.headerContainer}>
       <div className="container">
-        <Link href="/" className={css.link}>
+        <Link
+          href="/"
+          className={css.link}
+          aria-label="Природні Мандри — на головну"
+        >
           <Icon name={'icon-Logo'} className={css.svgLogo} />
         </Link>
       </div>

@@ -3,6 +3,8 @@
   flex-direction: column;
   gap: 8px;
   width: 100%;
+  position: relative;
+  padding-bottom: 20px;
 }
 
 .label {
@@ -22,14 +24,34 @@
   color: var(--color-scheme-2-text);
   font-family: inherit;
 
-  resize: vertical;
-  min-height: 80px;
-
+  resize: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 180px;
+  max-height: 180px;
   transition:
     border-color var(--transition-default),
     box-shadow var(--transition-default);
+  scrollbar-width: thin;
+  scrollbar-color: var(--opacity-neutral-darkest-15) transparent;
 }
 
+.textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+  background-color: var(--opacity-neutral-darkest-15);
+  border-radius: 10px;
+}
+
+.textarea::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-neutral-dark);
+}
 .textarea:focus {
   border-color: var(--color-scheme-1-accent);
   box-shadow: 0 0 0 2px var(--color-mantis-lighter);
@@ -39,6 +61,7 @@
 .textareaError {
   border-color: var(--color-red);
   background: var(--opacity-transparent);
+  position: static;
 }
 
 .textareaError:focus {
@@ -48,6 +71,9 @@
 .errorMessage {
   font-size: 12px;
   color: var(--color-red);
+  position: absolute;
+  bottom: 0;
+  left: 12px;
 }
 
 @media only screen and (min-width: 1440px) {

@@ -1,8 +1,7 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
+
 import { Navigation } from 'swiper/modules';
 import { useQuery } from '@tanstack/react-query';
 import { getPopularStories } from '@/lib/api/clientApi';
@@ -82,6 +81,7 @@ export default function PopularStories() {
               disabled={isBeginning}
               className={`${css.navButton} ${css.navPrev}`}
               variant="secondary"
+              aria-label="Попередні"
             >
               <Icon name="icon-strelka_left" className={css.icon} />
             </Button>
@@ -90,6 +90,7 @@ export default function PopularStories() {
               disabled={isEnd}
               className={`${css.navButton} ${css.navNext}`}
               variant="secondary"
+              aria-label="Наступні"
             >
               <Icon name="icon-strelka_right" className={css.icon} />
             </Button>

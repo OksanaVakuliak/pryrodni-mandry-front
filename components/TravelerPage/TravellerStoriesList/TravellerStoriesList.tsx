@@ -6,6 +6,7 @@ import StoryCard from '@/components/ui/StoryCard/StoryCard';
 import { Pagination } from '@/components/ui/Pagination/Pagination';
 import { Loader } from '@/components/ui/Loader/Loader';
 import css from './TravellerStoriesList.module.css';
+import TravellersStories from '@/components/ui/TravellersStories/TravellersStories';
 
 export const TravellerStoriesList = ({
   travellerId,
@@ -27,7 +28,7 @@ export const TravellerStoriesList = ({
   const allStories = data?.pages.flatMap((page) => page.stories) || [];
 
   if (allStories.length === 0) {
-    return 'Цей мандрівник ще не написав жодної історії';
+    return <TravellersStories stories={allStories} variant="noStories" />;
   }
 
   return (
