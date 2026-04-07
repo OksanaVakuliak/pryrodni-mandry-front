@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import { parse } from 'cookie';
 import { serverApi } from '@/app/api/api';
+import { getAuthHeaders } from '@/lib/api/serverApi';
 import { isAxiosError } from 'axios';
 
 export async function POST(req: Request) {
@@ -14,9 +17,24 @@ export async function POST(req: Request) {
       );
     }
 
-    const res = await serverApi.post('/profile/update-confirm', {
-      token,
-    });
+    const cookieStore = await cookies();
+    const cookieString = cookieStore.toString();
+    const parsedCookies = cookieString ? parse(cookieString) : {};
+
+    if (!parsedCookies.accessToken) {
+      return NextResponse.json(
+        { status: 401, message: 'Missing access token' },
+        { status: 401 },
+      );
+    }
+
+    const headers = await getAuthHeaders();
+
+    const res = await serverApi.post(
+      '/profile/update-confirm',
+      { token },
+      { headers },
+    );
 
     return NextResponse.json(res.data, { status: 200 });
   } catch (error) {
