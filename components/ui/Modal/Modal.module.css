@@ -1,0 +1,116 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  background-color: var(--opacity-neutral-darkest-40);
+  padding: 16px;
+  animation: fadeIn var(--transition-default);
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  background-color: var(--color-scheme-1-background);
+  border: 1px solid var(--color-scheme-1-border);
+  border-radius: 16px;
+  max-height: 95vh;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.scrollArea {
+  padding: 40px 24px 24px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  min-width: 32px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.closeIcon {
+  fill: currentColor;
+  transition: transform var(--transition-default);
+}
+
+.closeBtn:hover .closeIcon {
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 16px 0;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+  background-clip: content-box;
+}
+
+.scrollArea::-webkit-scrollbar-thumb {
+  background: var(--opacity-neutral-darkest-20);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.scrollArea::-webkit-scrollbar-thumb:hover {
+  background: var(--opacity-neutral-darkest-40);
+  background-clip: content-box;
+}
+
+@media (max-width: 480px) {
+  .content {
+    border-radius: 16px;
+  }
+
+  .scrollArea {
+    padding: 48px 16px 24px;
+  }
+
+  .closeBtn {
+    top: 12px;
+    right: 12px;
+  }
+}
