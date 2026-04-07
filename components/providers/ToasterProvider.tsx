@@ -9,8 +9,8 @@ const ToasterProvider = () => {
         className: 'custom-toast',
         duration: 4000,
         style: {
-          background: '#eef8ee',
-          color: '#1b391b',
+          background: 'var(--color-scheme-1-background)',
+          color: 'var(--active-color)',
           borderRadius: '12px',
           fontSize: '18px',
           fontWeight: 500,
