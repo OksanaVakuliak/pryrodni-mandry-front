@@ -14,18 +14,18 @@ const Footer = () => {
             <Icon name={'icon-Logo'} className={css.svgLogo} />
           </Link>
           <div className={css.socialContainer}>
-            <Link href="https://www.facebook.com/" className={css.link}>
+            <a href="https://www.facebook.com/" className={css.link}>
               <Icon name={'icon-Facebook'} className={css.socialLink} />
-            </Link>
-            <Link href="https://www.instagram.com/" className={css.link}>
+            </a>
+            <a href="https://www.instagram.com/" className={css.link}>
               <Icon name={'icon-Instagram'} className={css.socialLink} />
-            </Link>
-            <Link href="https://x.com/" className={css.link}>
+            </a>
+            <a href="https://x.com/" className={css.link}>
               <Icon name={'icon-Twiter'} className={css.socialLink} />
-            </Link>
-            <Link href="https://www.youtube.com/" className={css.link}>
+            </a>
+            <a href="https://www.youtube.com/" className={css.link}>
               <Icon name={'icon-Youtube'} className={css.socialLink} />
-            </Link>
+            </a>
           </div>
           <nav className={css.navigation}>
             <Link href="/" className={css.navLink}>
