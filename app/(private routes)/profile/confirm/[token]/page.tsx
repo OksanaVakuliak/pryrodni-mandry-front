@@ -7,7 +7,8 @@ import { useAuthStore } from '@/lib/store/useAuthStore';
 import { confirmUpdateEmail } from '@/lib/api/clientApi';
 import { Loader } from '@/components/ui/Loader/Loader';
 import css from './Page.module.css';
-import Link from 'next/link';
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
+import { CustomLink } from '@/components/ui/Link/Link';
 
 export default function EmailConfirmationPage() {
   const params = useParams();
@@ -34,7 +35,7 @@ export default function EmailConfirmationPage() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [data]);
+  }, [data, setUser]);
 
   useEffect(() => {
     if (seconds === 0 && data) {
@@ -48,20 +49,29 @@ export default function EmailConfirmationPage() {
     <section className={`${css.container}`}>
       {isError ? (
         <div className={css.infoContainer}>
+          <PageTitle tag="h2" className={css.title}>
+            Невдача...
+          </PageTitle>
           <p className={css.errorMessage}>
             На жаль, посилання недійсне або термін його дії вичерпано
           </p>
 
-          <Link className={css.button} href="/profile/edit">
+          <CustomLink className={css.button} href="/profile/edit">
             Повернутися до редагування
-          </Link>
+          </CustomLink>
         </div>
       ) : (
         <div className={css.infoContainer}>
+          <PageTitle tag="h2" className={css.title}>
+            Успіх!
+          </PageTitle>
           <p className={css.successMessage}>Ваші дані успішно оновлено!</p>
           <p className={css.redirectMessage}>
             Перенаправлення на профіль через {seconds} сек...
           </p>
+          <CustomLink className={css.button} href="/profile">
+            Повернутися в профіль
+          </CustomLink>
         </div>
       )}
     </section>
