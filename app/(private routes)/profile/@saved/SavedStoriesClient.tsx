@@ -17,5 +17,5 @@ export default function SavedStoriesClient({ initialStories }: Props) {
     [initialStories, savedStories],
   );
 
-  return <TravellersStories stories={visibleStories} />;
+  return <TravellersStories stories={visibleStories} variant="noSaved" />;
 }

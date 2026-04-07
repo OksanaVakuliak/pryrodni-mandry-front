@@ -3,6 +3,10 @@ import { Category } from '@/types/Category';
 import { Traveller, TravellersResponse } from '@/types/traveller';
 import { User } from '@/types/Users';
 import { SaveResponse, StoriesResponse, Story } from '@/types/story';
+import {
+  UpdateAvatarResponse,
+  UpdateProfilePayload,
+} from '@/types/updateProfile';
 
 export interface AuthRequest {
   email: string;
@@ -96,6 +100,30 @@ export const getTravellerStories = async (
   return data;
 };
 
+export const updateAvatar = async (
+  formData: FormData,
+): Promise<UpdateAvatarResponse> => {
+  const { data } = await instance.patch<UpdateAvatarResponse>(
+    '/profile/avatar',
+    formData,
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    },
+  );
+  return data;
+};
+
+export const requestProfileUpdate = async (
+  payload: UpdateProfilePayload,
+): Promise<{ message: string }> => {
+  const { data } = await instance.post<{ message: string }>(
+    '/profile/edit',
+    payload,
+  );
+  return data;
+};
 // export const getProfileSavedStories = async (
 //   page: number = 1,
 //   perPage: number = 6,
@@ -118,3 +146,10 @@ export const getTravellerStories = async (
 //   });
 //   return data;
 // };
+
+export const confirmUpdateEmail = async (token: string): Promise<User> => {
+  const { data } = await instance.post<User>('/profile/update-confirm', {
+    token,
+  });
+  return data;
+};
