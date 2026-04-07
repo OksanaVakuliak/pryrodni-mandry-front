@@ -21,7 +21,7 @@ export const Icon = ({
       aria-hidden="true"
       {...props}
     >
-      <use href={`./Icons/sprite.svg#${name}`} />
+      <use href={`/Icons/sprite.svg#${name}`} />
     </svg>
   );
 };
