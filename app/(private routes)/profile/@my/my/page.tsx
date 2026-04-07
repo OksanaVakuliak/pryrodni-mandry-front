@@ -2,6 +2,8 @@ import TravellersStories from '@/components/ui/TravellersStories/TravellersStori
 import { getServerProfileMyStories } from '@/lib/api/serverApi';
 import { Story } from '@/types/story';
 import type { Metadata } from 'next';
+import { isAxiosError } from 'axios';
+import toast from 'react-hot-toast';
 
 export const metadata: Metadata = {
   title: 'Мої історії',
@@ -39,8 +41,15 @@ export default async function MyStoriesPage() {
       stories = [];
     }
     stories = response.stories;
-  } catch (error) {
-    stories = [];
+  } catch (error: unknown) {
+    if (isAxiosError(error)) {
+      toast.error(
+        'Помилка сервера при завантаженні історій:',
+        error.response?.data ?? error.message,
+      );
+    } else {
+      toast.error('Невідома помилка при завантаженні історій');
+    }
   }
 
   return <TravellersStories stories={stories} />;

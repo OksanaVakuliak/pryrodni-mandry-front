@@ -1,7 +1,9 @@
 import TravellersStories from '@/components/ui/TravellersStories/TravellersStories';
 import { getServerProfileSavedStories } from '@/lib/api/serverApi';
 import { Story } from '@/types/story';
+import { isAxiosError } from 'axios';
 import type { Metadata } from 'next';
+import toast from 'react-hot-toast';
 
 export const metadata: Metadata = {
   title: 'Збережені історії',
@@ -38,8 +40,15 @@ export default async function MySavedStoriesPage() {
     } else {
       stories = [];
     }
-  } catch (error) {
-    stories = [];
+  } catch (error: unknown) {
+    if (isAxiosError(error)) {
+      toast.error(
+        'Помилка сервера при завантаженні історій:',
+        error.response?.data ?? error.message,
+      );
+    } else {
+      toast.error('Невідома помилка при завантаженні історій');
+    }
   }
 
   return <TravellersStories stories={stories} />;

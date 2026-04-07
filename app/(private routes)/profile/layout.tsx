@@ -19,13 +19,13 @@ export default function ProfileLayout({
   const isMyStories = pathname === '/profile/my';
 
   return (
-    <main className={css.layoutContainer}>
+    <div className={css.layoutContainer}>
       <div className={css.innerWrapper}>
         <section className={css.userInfoSection}>{children}</section>
         <section className={css.storiesSection}>
           {isMyStories ? my : saved}
         </section>
       </div>
-    </main>
+    </div>
   );
 }
