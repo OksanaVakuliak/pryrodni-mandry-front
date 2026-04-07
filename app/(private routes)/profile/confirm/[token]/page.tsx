@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useParams, useRouter } from 'next/navigation';
 import { useAuthStore } from '@/lib/store/useAuthStore';
 import { confirmUpdateEmail } from '@/lib/api/clientApi';
 import { Loader } from '@/components/ui/Loader/Loader';
 import css from './Page.module.css';
-import { Button } from '@/components/ui/Button/Button';
+import Link from 'next/link';
 
 export default function EmailConfirmationPage() {
   const params = useParams();
@@ -15,6 +15,7 @@ export default function EmailConfirmationPage() {
   const token = Array.isArray(tokenParam) ? tokenParam[0] : tokenParam;
   const router = useRouter();
   const setUser = useAuthStore((s) => s.setUser);
+  const [seconds, setSeconds] = useState(5);
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['confirmEmail', token],
@@ -24,37 +25,45 @@ export default function EmailConfirmationPage() {
   });
 
   useEffect(() => {
-    if (data) {
-      setUser(data);
+    if (!data) return;
 
-      const timer = setTimeout(() => {
-        router.push('/profile');
-      }, 3500);
+    setUser(data);
 
-      return () => clearTimeout(timer);
+    const interval = setInterval(() => {
+      setSeconds((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [data]);
+
+  useEffect(() => {
+    if (seconds === 0 && data) {
+      router.push('/profile');
     }
-  }, [data, router, setUser]);
+  }, [seconds, data, router]);
 
   if (isLoading) return <Loader />;
 
   return (
-    <div className={`${css.container} container`}>
+    <section className={`${css.container}`}>
       {isError ? (
-        <>
+        <div className={css.infoContainer}>
           <p className={css.errorMessage}>
             На жаль, посилання недійсне або термін його дії вичерпано
           </p>
 
-          <Button
-            className={css.button}
-            onClick={() => router.push('/profile/edit')}
-          >
+          <Link className={css.button} href="/profile/edit">
             Повернутися до редагування
-          </Button>
-        </>
+          </Link>
+        </div>
       ) : (
-        <p className={css.successMessage}>Ваші дані успішно оновлено!</p>
+        <div className={css.infoContainer}>
+          <p className={css.successMessage}>Ваші дані успішно оновлено!</p>
+          <p className={css.redirectMessage}>
+            Перенаправлення на профіль через {seconds} сек...
+          </p>
+        </div>
       )}
-    </div>
+    </section>
   );
 }
