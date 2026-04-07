@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.successMessage {
+  font-family: var(--font-family);
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-2-text);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.errorMessage {
+  font-family: var(--font-family);
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-2-text);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1440px) {
+  .errorMessage {
+    font-size: 22px;
+  }
+
+  .successMessage {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .button {
+    width: 276px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .button {
+    width: 340px;
+  }
+}

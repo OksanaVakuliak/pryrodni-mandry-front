@@ -118,3 +118,10 @@ export const getTravellerStories = async (
 //   });
 //   return data;
 // };
+
+export const confirmUpdateEmail = async (token: string): Promise<User> => {
+  const { data } = await instance.post<User>('/profile/update-confirm', {
+    token,
+  });
+  return data;
+};
