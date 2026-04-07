@@ -28,7 +28,6 @@ export default function StoryCard({ story }: Props) {
 
   const initStoryRate = useStoriesStore((s) => s.initStoryRate);
 
-  // 👉 инициализируем rate
   useEffect(() => {
     initStoryRate(story._id, story.rate);
   }, [story._id, story.rate, initStoryRate]);
