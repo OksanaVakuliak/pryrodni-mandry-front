@@ -9,13 +9,14 @@ interface CustomLinkProps
   extends NextLinkProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
   children?: ReactNode;
   variant?:
-    | 'primary'
-    | 'secondary'
-    | 'nav'
-    | 'textWithBorder'
-    | 'iconButton'
-    | 'button'
-    | 'tertiary';
+  | 'primary'
+  | 'secondary'
+  | 'nav'
+  | 'textWithBorder'
+  | 'iconButton'
+  | 'button'
+  | 'buttonProfile'
+  | 'tertiary';
 
   iconId?: string;
   className?: string;
