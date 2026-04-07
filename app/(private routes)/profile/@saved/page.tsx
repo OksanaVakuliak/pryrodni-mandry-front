@@ -54,7 +54,7 @@ export default async function MySavedStoriesPage() {
 
   return (
     <>
-      <TravellersStories stories={stories} />
+      <TravellersStories stories={stories} variant="noSaved" />
       <StoriesErrorClient error={errorMessage} />
     </>
   );

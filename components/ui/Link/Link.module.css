@@ -57,6 +57,23 @@
   height: 20px;
   fill: currentColor;
 }
+
+.button {
+  display: block;
+  background: var(--color-mantis-dark);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color-white);
+  line-height: 150%;
+  transition:
+    background-color var(--transition-default),
+    transform var(--transition-default);
+  border: 1px solid transparent;
+  font-size: 16px;
+  width: 100%;
+}
+
 .primary {
   background: var(--color-mantis-dark);
   padding: 6px 12px;

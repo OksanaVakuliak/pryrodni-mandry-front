@@ -54,7 +54,7 @@ export default async function MyStoriesPage() {
 
   return (
     <>
-      <TravellersStories stories={stories} />
+      <TravellersStories stories={stories} variant="noOwn" />
       <StoriesErrorClient error={errorMessage} />
     </>
   );
