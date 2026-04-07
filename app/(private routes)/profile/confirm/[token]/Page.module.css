@@ -1,52 +1,53 @@
 .container {
   display: flex;
-  flex-direction: column;
-  row-gap: 20px;
   justify-content: center;
   align-items: center;
-  padding-top: 48px;
-  padding-bottom: 48px;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(93, 190, 92, 0.15),
+      transparent 60%
+    ),
+    var(--color-scheme-2-background);
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  justify-content: center;
+  align-items: center;
 }
 
 .successMessage {
-  font-family: var(--font-family);
-  letter-spacing: -0.01em;
-  color: var(--color-scheme-2-text);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.4;
   text-align: center;
-  letter-spacing: -0.01em;
+  font-size: 16px;
+  color: var(--color-neutral);
+  max-width: 280px;
+}
+
+.redirectMessage {
+  font-size: 14px;
+  color: var(--color-neutral-light);
 }
 
 .errorMessage {
-  font-family: var(--font-family);
-  letter-spacing: -0.01em;
-  color: var(--color-scheme-2-text);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.4;
   text-align: center;
+  font-size: 16px;
+  color: var(--color-neutral);
+  max-width: 280px;
 }
 
-@media only screen and (min-width: 1440px) {
-  .errorMessage {
-    font-size: 22px;
-  }
-
-  .successMessage {
-    font-size: 22px;
-  }
+.button {
+  padding: 12px 24px;
+  background: var(--color-mantis);
+  color: var(--color-white);
+  border-radius: 12px;
+  transition: var(--transition-default);
+  text-decoration: none;
 }
 
-@media only screen and (min-width: 768px) {
-  .button {
-    width: 276px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .button {
-    width: 340px;
-  }
+.button:hover {
+  background: var(--color-mantis-dark);
 }
