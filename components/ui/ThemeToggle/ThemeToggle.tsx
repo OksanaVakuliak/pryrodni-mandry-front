@@ -8,7 +8,12 @@ export const ThemeToggle = () => {
 
   return (
     <button
-      onClick={toggleTheme}
+      type="button"
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleTheme();
+      }}
       className={`${styles.toggle} ${theme === 'dark' ? styles.dark : ''}`}
     >
       <div className={styles.sky}></div>

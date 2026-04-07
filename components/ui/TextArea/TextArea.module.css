@@ -3,6 +3,8 @@
   flex-direction: column;
   gap: 8px;
   width: 100%;
+  position: relative;
+  padding-bottom: 20px;
 }
 
 .label {
@@ -23,9 +25,10 @@
   font-family: inherit;
 
   resize: none;
-  min-height: 120px;
   overflow-y: auto;
-
+  overflow-x: hidden;
+  height: 180px;
+  max-height: 180px;
   transition:
     border-color var(--transition-default),
     box-shadow var(--transition-default);
@@ -58,6 +61,7 @@
 .textareaError {
   border-color: var(--color-red);
   background: var(--opacity-transparent);
+  position: static;
 }
 
 .textareaError:focus {
@@ -67,6 +71,9 @@
 .errorMessage {
   font-size: 12px;
   color: var(--color-red);
+  position: absolute;
+  bottom: 0;
+  left: 12px;
 }
 
 @media only screen and (min-width: 1440px) {

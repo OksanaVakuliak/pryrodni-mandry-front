@@ -53,9 +53,13 @@
   --text-muted: var(--color-neutral);
   --text-on-scheme-2-primary: var(--color-mantis-darkest);
   --text-on-scheme-2-secondary: var(--color-mantis-dark);
+  --active-bg: var(--color-neutral-lightest);
+  --active-color: #000;
 }
 
 :root[data-theme='dark'] {
+  --active-bg: var(--color-mantis-dark);
+  --active-color: #fff;
   --color-scheme-2-background: #0f1a14;
   --logo-color: #ffffff;
   --card-bg: var(--color-scheme-1-background);
@@ -77,9 +81,9 @@
   --color-mantis: #4fae4e;
   --color-mantis-light: #6bcf6a;
   --opacity-neutral-darkest-15: rgba(255, 255, 255, 0.15);
-  --color-mantis-dark: #6f4e37; /* основной */
-  --color-mantis-lighter: #8b6a50; /* hover */
-  --color-mantis-light: #a17c5b; /* active */
+  --color-mantis-dark: #6f4e37; 
+  --color-mantis-lighter: #8b6a50; 
+  --color-mantis-light: #a17c5b;
   --color-mantis-darker: #5a3e2b;
 }
 
