@@ -12,8 +12,6 @@ import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { CustomLink } from '@/components/ui/Link/Link';
 
-import 'swiper/css';
-import 'swiper/css/grid';
 import css from './OurTravellers.module.css';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import TravellerCard from '@/components/ui/TravallerCard/TravallerCard';
@@ -43,7 +41,9 @@ const OurTravellers = () => {
     <section className={css.section}>
       <div className={css.container}>
         <div className={css.header}>
-          <PageTitle className={css.title}>Наші Мандрівники</PageTitle>
+          <PageTitle tag="h2" className={css.title}>
+            Наші Мандрівники
+          </PageTitle>
           <CustomLink
             href="/travellers"
             variant="primary"

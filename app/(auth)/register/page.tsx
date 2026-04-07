@@ -24,9 +24,5 @@ export const metadata: Metadata = {
 };
 
 export default function RegisterPage() {
-  return (
-    <main>
-      <RegistrationForm />
-    </main>
-  );
+  return <RegistrationForm />;
 }

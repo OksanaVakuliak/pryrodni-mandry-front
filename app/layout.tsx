@@ -12,6 +12,8 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_API_URL;
+
 export const metadata: Metadata = {
   title: {
     template: '%s | Природні Мандри',
@@ -34,6 +36,8 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export const metadataBase = siteUrl ? new URL(siteUrl) : undefined;
 
 export default function RootLayout({
   children,

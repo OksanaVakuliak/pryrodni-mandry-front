@@ -33,7 +33,10 @@ export default function ProfileLayout({
   return (
     <div className={css.layoutContainer}>
       <div className={css.innerWrapper}>
-        <section className={css.userInfoSection}>
+        <section
+          className={css.userInfoSection}
+          aria-label="Інформація профілю"
+        >
           {user && (
             <>
               <TravellerInfo
@@ -53,7 +56,7 @@ export default function ProfileLayout({
             </>
           )}
         </section>
-        <section className={css.storiesSection}>
+        <section className={css.storiesSection} aria-label="Статті профілю">
           {isMyStories ? my : saved}
         </section>
       </div>

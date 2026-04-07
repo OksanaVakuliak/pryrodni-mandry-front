@@ -71,9 +71,8 @@ export const SaveStoryButton = ({
         }
 
         toast.error('Сталася помилка. Спробуйте пізніше');
-        console.error('Save error:', err);
       } else {
-        toast.error('Сталася помилка. Спробуйте пізніше');
+        toast.error('Непередбачувана помилка. Спробуйте пізніше');
       }
     } finally {
       setIsRequesting(false);
