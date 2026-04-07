@@ -1,11 +1,5 @@
 'use client';
-import {
-  forwardRef,
-  TextareaHTMLAttributes,
-  useId,
-  useEffect,
-  useRef,
-} from 'react';
+import { forwardRef, TextareaHTMLAttributes, useId, useRef } from 'react';
 import styles from './TextArea.module.css';
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -20,18 +14,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const errorId = `${textareaId}-error`;
 
     const internalRef = useRef<HTMLTextAreaElement | null>(null);
-
-    const updateHeight = () => {
-      const textarea = internalRef.current;
-      if (textarea) {
-        textarea.style.height = 'auto';
-        textarea.style.height = `${textarea.scrollHeight}px`;
-      }
-    };
-
-    useEffect(() => {
-      updateHeight();
-    }, [value]);
 
     return (
       <div className={`${styles.container} ${className}`}>
