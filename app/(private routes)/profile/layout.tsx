@@ -18,6 +18,10 @@ export default function ProfileLayout({
 
   const isMyStories = pathname === '/profile/my';
 
+  if (pathname.includes('confirm')) {
+    return <>{children}</>;
+  }
+
   return (
     <div className={css.layoutContainer}>
       <div className={css.innerWrapper}>
