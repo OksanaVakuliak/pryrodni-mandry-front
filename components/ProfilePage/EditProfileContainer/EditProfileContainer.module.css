@@ -1,0 +1,14 @@
+.main {
+  background-color: #e2e5d8;
+  padding: 48px 16px;
+}
+
+.container {
+  max-width: 672px;
+  margin: 0 auto;
+}
+
+.title {
+  margin-bottom: 32px;
+  text-align: center;
+}
