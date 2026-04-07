@@ -1,7 +1,5 @@
 'use client';
 
-import styles from './problem.module.css';
-
 export default function Error({
   error,
   reset,
@@ -15,13 +13,13 @@ export default function Error({
       : 'Сталася помилка. Спробуйте ще раз.';
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.inner}>
-        <h1 className={styles.title}>Щось пішло не так</h1>
+    <div className="problem-wrappererror">
+      <div className="problem-inner">
+        <h1 className="problem-title">Щось пішло не так</h1>
 
-        <p className={styles.text}>{message}</p>
+        <p className="problem-text">{message}</p>
 
-        <button onClick={reset} className={styles.buttonerror}>
+        <button onClick={reset} className="problem-buttonerror">
           Спробувати ще раз
         </button>
       </div>

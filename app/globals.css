@@ -81,8 +81,8 @@
   --color-mantis: #4fae4e;
   --color-mantis-light: #6bcf6a;
   --opacity-neutral-darkest-15: rgba(255, 255, 255, 0.15);
-  --color-mantis-dark: #6f4e37; 
-  --color-mantis-lighter: #8b6a50; 
+  --color-mantis-dark: #6f4e37;
+  --color-mantis-lighter: #8b6a50;
   --color-mantis-light: #a17c5b;
   --color-mantis-darker: #5a3e2b;
 }
@@ -202,4 +202,93 @@ li {
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite linear;
+}
+
+/* Problem / Error page global styles (replaces app/problem.module.css to avoid unused preload) */
+.problem-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(93, 190, 92, 0.15),
+      transparent 60%
+    ),
+    var(--color-scheme-2-background);
+}
+
+.problem-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.problem-code {
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--color-neutral-darkest);
+}
+
+.problem-text {
+  font-size: 16px;
+  color: var(--color-neutral);
+  max-width: 280px;
+}
+
+.problem-button {
+  padding: 12px 24px;
+  background: var(--color-mantis);
+  color: var(--color-white);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: var(--transition-default);
+}
+
+.problem-button:hover {
+  background: var(--color-mantis-dark);
+}
+
+.problem-redirect {
+  font-size: 14px;
+  color: var(--color-neutral-light);
+}
+
+.problem-wrappererror {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px;
+  text-align: center;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(93, 190, 92, 0.15),
+      transparent 60%
+    ),
+    var(--color-scheme-2-background);
+}
+
+.problem-title {
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.problem-buttonerror {
+  padding: 10px 20px;
+  background: #ef4444;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.problem-buttonerror:hover {
+  background: #dc2626;
 }
