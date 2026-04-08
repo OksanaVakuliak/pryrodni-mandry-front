@@ -26,13 +26,17 @@ export const SaveStoryButton = ({
   className = '',
 }: SaveStoryButtonProps) => {
   const { openAuthModal } = useAuthModal();
+
   const savedFromStore = useStoriesStore(
     (state) => state.savedStories[storyId] ?? initialIsSaved,
   );
-  const isSaved = isAuthenticated ? savedFromStore : false;
-  const setStorySaved = useStoriesStore((state) => state.setStorySaved);
 
-  const [isRequesting, setIsRequesting] = useState<boolean>(false);
+  const isSaved = isAuthenticated ? savedFromStore : false;
+
+  const setStorySaved = useStoriesStore((s) => s.setStorySaved);
+  const updateStoryRate = useStoriesStore((s) => s.updateStoryRate);
+
+  const [isRequesting, setIsRequesting] = useState(false);
 
   const handleToggleSave = async () => {
     if (!isAuthenticated) {
@@ -41,7 +45,11 @@ export const SaveStoryButton = ({
     }
 
     const prev = isSaved;
+
+    // ✅ optimistic update
     setStorySaved(storyId, !prev);
+    updateStoryRate(storyId, prev ? -1 : +1);
+
     setIsRequesting(true);
 
     try {
@@ -53,7 +61,9 @@ export const SaveStoryButton = ({
         toast.success('Історію збережено!');
       }
     } catch (err) {
+      // 🔁 rollback
       setStorySaved(storyId, prev);
+      updateStoryRate(storyId, prev ? +1 : -1);
 
       if (axios.isAxiosError(err)) {
         const status = err.response?.status;
@@ -66,7 +76,6 @@ export const SaveStoryButton = ({
 
         if (status === 409) {
           setStorySaved(storyId, true);
-          toast.success('Історія вже у збережених');
           return;
         }
 
@@ -74,6 +83,8 @@ export const SaveStoryButton = ({
       } else {
         toast.error('Непередбачувана помилка. Спробуйте пізніше');
       }
+
+      toast.error('Сталася помилка');
     } finally {
       setIsRequesting(false);
     }
@@ -86,7 +97,7 @@ export const SaveStoryButton = ({
     <Button
       className={buttonClassName}
       onClick={handleToggleSave}
-      isLoading={variant === 'icon' ? false : isRequesting}
+      isLoading={false}
       disabled={isRequesting}
       variant={variant === 'icon' ? 'secondary' : 'primary'}
       type="button"
@@ -94,7 +105,16 @@ export const SaveStoryButton = ({
       aria-label={isSaved ? 'Збережено' : 'Зберегти'}
     >
       {variant === 'icon' ? (
-        <Icon name="icon-bookmark" width={30} height={30} />
+        isRequesting ? (
+          <Icon
+            name="icon-pensil-edit"
+            width={30}
+            height={30}
+            className={styles.loadingIcon}
+          />
+        ) : (
+          <Icon name="icon-bookmark" width={30} height={30} />
+        )
       ) : (
         <span>{isSaved ? 'Збережено' : 'Зберегти'}</span>
       )}

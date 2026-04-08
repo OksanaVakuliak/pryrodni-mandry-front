@@ -1,4 +1,4 @@
-@media screen and (min-width: 5px) {
+@media screen and (min-width: 300px) {
   .authBtn {
     display: none;
   }
@@ -40,7 +40,6 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    width: 100%;
   }
 
   .navLinkTablet {

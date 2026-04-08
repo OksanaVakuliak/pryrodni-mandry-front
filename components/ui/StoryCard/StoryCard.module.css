@@ -3,7 +3,7 @@
   border-radius: 16px;
   overflow: hidden;
   width: 100%;
-  height: 560px;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -11,8 +11,7 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: 335px;
-  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
 }
 
 .image {
@@ -20,7 +19,7 @@
 }
 
 .content {
-  padding: 16px;
+  padding: 12px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -30,7 +29,8 @@
 .meta {
   display: flex;
   gap: 6px;
-  font-size: 14px;
+  font-size: 12px;
+  min-height: 20px;
   color: var(--text-muted);
   align-items: center;
 }
@@ -42,66 +42,106 @@
 .title {
   display: -webkit-box;
   color: var(--text-primary);
-  margin-bottom: 12px;
+  margin: 8px 0;
+
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
+  font-size: 14px;
 }
 
+/* 🔥 фикс кнопок (без прыжков) */
 .actions {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .card .infoBtn {
+  flex: 1;
+  min-width: 0;
+
+  height: 40px;
+  font-size: 14px;
+
   display: flex;
-  padding: 6px 12px;
-  font-size: 16px;
   align-items: center;
   justify-content: center;
+
+  padding: 6px 12px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   border-color: var(--opacity-neutral-darkest-15);
-  min-height: 48px;
 }
 
 .card .actions .iconBtn {
-  padding: 6px;
-  min-height: 48px;
-  min-width: 48px;
+  flex-shrink: 0;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   fill: var(--text-primary);
+  padding: 6px;
 }
 
 .svg {
   fill: var(--text-primary);
 }
 
-@media only screen and (max-width: 375px) {
-  .card .actions .iconBtn {
-    padding: 15px;
-  }
-}
-
+/* 📱 tablet */
 @media only screen and (min-width: 767px) {
-  .card {
-    width: 100%;
+  .content {
+    padding: 16px;
+  }
+
+  .meta {
+    font-size: 14px;
+    min-height: 24px;
+  }
+
+  .title {
+    font-size: 16px;
+    margin: 12px 0;
   }
 
   .card .infoBtn {
-    min-width: 244px;
-    min-height: 48px;
+    height: 44px;
+    font-size: 15px;
+  }
+
+  .card .actions .iconBtn {
+    width: 44px;
+    height: 44px;
   }
 }
 
+/* 💻 desktop */
 @media only screen and (min-width: 1440px) {
-  .card {
-    width: 100%;
+  .imageWrapper {
+    aspect-ratio: auto;
+    height: 421px;
+  }
+
+  .meta {
+    min-height: 30px;
   }
 
   .card .infoBtn {
     font-size: 20px;
-    padding: 6px;
+    height: 48px;
     width: 100%;
-    min-height: 48px;
+  }
+
+  .card .actions .iconBtn {
+    width: 48px;
+    height: 48px;
   }
 }
