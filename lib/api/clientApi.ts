@@ -1,6 +1,6 @@
 import instance from './api';
 import { Category } from '@/types/Category';
-import { Traveller, TravellersResponse } from '@/types/traveller';
+import { TravellersResponse } from '@/types/traveller';
 import { User } from '@/types/Users';
 import { SaveResponse, StoriesResponse, Story } from '@/types/story';
 import {

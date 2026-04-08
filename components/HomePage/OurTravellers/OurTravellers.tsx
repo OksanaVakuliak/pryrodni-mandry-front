@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
 import { getTravellers } from '@/lib/api/clientApi';
+import { Traveller } from '@/types/traveller';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
@@ -94,7 +95,7 @@ const OurTravellers = () => {
             }}
             className={css.swiper}
           >
-            {travellers?.map((traveller) => (
+            {travellers?.users?.map((traveller: Traveller) => (
               <SwiperSlide key={traveller._id} className={css.swiperSlide}>
                 <TravellerCard traveller={traveller} />
               </SwiperSlide>
