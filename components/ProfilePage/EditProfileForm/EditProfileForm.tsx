@@ -89,6 +89,8 @@ export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
         toast.error(
           error.response?.data?.message || 'Помилка завантаження фото',
         );
+      } else {
+        toast.error('Непередбачувана помилка. Спробуйте пізніше');
       }
     } finally {
       setIsUploading(false);
@@ -132,6 +134,8 @@ export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
         toast.error(
           error.response?.data?.message || 'Не вдалося надіслати запит',
         );
+      } else {
+        toast.error('Непередбачувана помилка. Спробуйте пізніше');
       }
     } finally {
       setSubmitting(false);
@@ -248,7 +252,7 @@ export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
                 type="button"
                 className={css.backBtn}
                 variant="secondary"
-                onClick={onClose || (() => window.history.back())}
+                onClick={onClose}
               >
                 Назад
               </Button>

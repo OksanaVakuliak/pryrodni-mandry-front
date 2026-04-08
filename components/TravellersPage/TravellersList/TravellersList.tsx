@@ -4,11 +4,16 @@ import { getTravellers } from '@/lib/api/clientApi';
 import { Traveller } from '@/types/traveller';
 import TravellerCard from '@/components/ui/TravallerCard/TravallerCard';
 import { toast } from 'react-hot-toast';
+import axios from 'axios';
 import styles from './TravellersList.module.css';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { Pagination } from '@/components/ui/Pagination/Pagination';
+<<<<<<< HEAD
 import { TravellerCardSkeleton } from '@/components/ui/TravallerCard/TravellerCardSkeleton';
 import { SkeletonPageTitle } from '@/components/ui/Skeleton/Skeleton';
+=======
+import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
+>>>>>>> f3baba39decc58f14bcc3a06a42b2d1d0d0a299f
 
 const TravellersList = () => {
   const [travellers, setTravellers] = useState<Traveller[]>([]);
@@ -44,8 +49,11 @@ const TravellersList = () => {
         }, 100);
       }
     } catch (error) {
-      toast.error('Помилка при завантаженні списку мандрівників');
-      console.error(error);
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data?.message || 'Помилка при завантаженні списку мандрівників');
+      } else {
+        toast.error('Непередбачувана помилка. Спробуйте пізніше');
+      }
     } finally {
       setIsLoading(false);
     }

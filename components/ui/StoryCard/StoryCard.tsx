@@ -28,7 +28,6 @@ export default function StoryCard({ story }: Props) {
 
   const initStoryRate = useStoriesStore((s) => s.initStoryRate);
 
-  // 👉 инициализируем rate
   useEffect(() => {
     initStoryRate(story._id, story.rate);
   }, [story._id, story.rate, initStoryRate]);
@@ -40,6 +39,7 @@ export default function StoryCard({ story }: Props) {
           src={img}
           alt={title}
           fill
+          sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
           className={styles.image}
           loading="lazy"
         />
