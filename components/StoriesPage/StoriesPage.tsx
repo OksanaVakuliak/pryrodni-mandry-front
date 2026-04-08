@@ -80,9 +80,12 @@ const StoriesPage = () => {
       );
     }
 
-    result.sort((a, b) => b.rate - a.rate);
+    if (filters.sort === 'rate') {
+      result.sort((a, b) => Number(b.rate || 0) - Number(a.rate || 0));
+    }
+
     return result;
-  }, [stories, filters.category]);
+  }, [stories, filters.category, filters.sort]);
 
   const paginatedStories = useMemo(() => {
     const limit = filters.page * filters.perPage;
