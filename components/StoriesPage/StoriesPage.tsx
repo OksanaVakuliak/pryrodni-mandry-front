@@ -3,14 +3,15 @@ import { StoriesFilters } from '@/types/Stories';
 import { useMemo, useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { clientApi } from '@/lib/api/clientApi';
+import { toast } from 'react-hot-toast';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { StoriesCategories } from './CategoriesFilter/StoriesCategories';
 import { StoriesGrid } from './CategoriesFilter/StoriesGrid';
-// import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
 import {
   SkeletonInput,
   SkeletonButton,
+  SkeletonPageTitle,
 } from '@/components/ui/Skeleton/Skeleton';
 import { StoryCardSkeleton } from '@/components/ui/StoryCard/StoryCardSkeleton';
 import css from './StoriesPage.module.css';
@@ -62,7 +63,12 @@ const StoriesPage = () => {
   });
 
   const isLoading = isLoadingStories || isLoadingCategories;
-  const isError = isErrorStories;
+
+  useEffect(() => {
+    if (isErrorStories) {
+      toast.error('Помилка завантаження статей.');
+    }
+  }, [isErrorStories]);
 
   const filteredStories = useMemo(() => {
     if (!stories) return [];
@@ -104,10 +110,9 @@ const StoriesPage = () => {
   return (
     <section className={css.pageWrapper}>
       <div className="container">
-        <PageTitle className={css.title}>Статті</PageTitle>
-
         {isLoading && (
           <>
+            <SkeletonPageTitle tag="h1" className={css.title} />
             <div className={css.skeletonFilters}>
               <SkeletonInput height={48} />
             </div>
@@ -122,10 +127,10 @@ const StoriesPage = () => {
             <Loader />
           </>
         )}
-        {isError && <p>Помилка завантаження статей.</p>}
 
-        {!isLoading && !isError && (
+        {!isLoading && !isErrorStories && (
           <>
+            <PageTitle className={css.title}>Статті</PageTitle>
             <StoriesCategories
               categories={categories}
               activeCategory={filters.category}
