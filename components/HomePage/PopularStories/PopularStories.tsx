@@ -13,6 +13,8 @@ import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { Button } from '@/components/ui/Button/Button';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { CustomLink } from '@/components/ui/Link/Link';
+import { Skeleton, SkeletonButton } from '@/components/ui/Skeleton/Skeleton';
+import { StoryCardSkeleton } from '@/components/ui/StoryCard/StoryCardSkeleton';
 import css from './PopularStories.module.css';
 
 export default function PopularStories() {
@@ -32,7 +34,29 @@ export default function PopularStories() {
       toast.error('Не вдалося завантажити статті');
     }
   }, [isError]);
-  if (isLoading) return <Loader />;
+  if (isLoading)
+    return (
+      <section className={`${css.popularStories} container`}>
+        <div className={css.header}>
+          <Skeleton variant="title" width={260} />
+          <div className={css.linkWrapperDesktop}>
+            <SkeletonButton />
+          </div>
+        </div>
+
+        <div className={css.skeletonGrid}>
+          {Array.from({ length: 3 }).map((_, index) => (
+            <StoryCardSkeleton key={`popular-skeleton-${index}`} />
+          ))}
+        </div>
+
+        <div className={css.linkWrapperMobile}>
+          <SkeletonButton width="100%" />
+        </div>
+
+        <Loader />
+      </section>
+    );
 
   return (
     <section className={`${css.popularStories} container`}>
