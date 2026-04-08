@@ -219,6 +219,11 @@ export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
                 label="Новий пароль"
                 placeholder="••••••••"
                 autoComplete="new-password"
+                style={
+                  {
+                    '--eye-top': '53%',
+                  } as React.CSSProperties
+                }
                 error={
                   touched.password && errors.password
                     ? (errors.password as string)
@@ -231,6 +236,11 @@ export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
                 label="Підтвердження"
                 placeholder="••••••••"
                 autoComplete="new-password"
+                style={
+                  {
+                    '--eye-top': '53%',
+                  } as React.CSSProperties
+                }
                 error={
                   touched.confirmPassword && errors.confirmPassword
                     ? (errors.confirmPassword as string)
