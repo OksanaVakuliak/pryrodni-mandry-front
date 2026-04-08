@@ -59,12 +59,12 @@ export const getPopularStories = async (): Promise<Story[]> => {
 export const getTravellers = async (
   perPage: number = 10,
   page: number = 1,
-): Promise<Traveller[]> => {
+): Promise<TravellersResponse> => {
   const { data } = await instance.get<TravellersResponse>('/travellers', {
     params: { perPage, page },
   });
 
-  return data.users;
+  return data;
 };
 
 export const storiesApi = {
