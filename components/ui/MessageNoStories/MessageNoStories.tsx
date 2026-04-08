@@ -25,7 +25,7 @@ const contentMap: Record<
   noOwn: {
     text: 'Ви ще нічого не публікували, поділіться своєю першою історією',
     buttonText: 'Опублікувати історію',
-    href: '/create',
+    href: '/stories/new',
   },
 };
 

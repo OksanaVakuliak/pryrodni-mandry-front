@@ -3,13 +3,20 @@ import { StoriesFilters } from '@/types/Stories';
 import { useMemo, useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { clientApi } from '@/lib/api/clientApi';
+import { toast } from 'react-hot-toast';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { StoriesCategories } from './CategoriesFilter/StoriesCategories';
 import { StoriesGrid } from './CategoriesFilter/StoriesGrid';
-import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
+import {
+  SkeletonButton,
+  SkeletonPageTitle,
+  Skeleton,
+} from '@/components/ui/Skeleton/Skeleton';
+import { StoryCardSkeleton } from '@/components/ui/StoryCard/StoryCardSkeleton';
 import css from './StoriesPage.module.css';
 import StoryCard from '../ui/StoryCard/StoryCard';
+import { Pagination } from '../ui/Pagination/Pagination';
 
 const StoriesPage = () => {
   const [filters, setFilters] = useState<StoriesFilters>({
@@ -56,7 +63,12 @@ const StoriesPage = () => {
   });
 
   const isLoading = isLoadingStories || isLoadingCategories;
-  const isError = isErrorStories;
+
+  useEffect(() => {
+    if (isErrorStories) {
+      toast.error('Помилка завантаження статей.');
+    }
+  }, [isErrorStories]);
 
   const filteredStories = useMemo(() => {
     if (!stories) return [];
@@ -68,9 +80,12 @@ const StoriesPage = () => {
       );
     }
 
-    result.sort((a, b) => b.rate - a.rate);
+    if (filters.sort === 'rate') {
+      result.sort((a, b) => Number(b.rate || 0) - Number(a.rate || 0));
+    }
+
     return result;
-  }, [stories, filters.category]);
+  }, [stories, filters.category, filters.sort]);
 
   const paginatedStories = useMemo(() => {
     const limit = filters.page * filters.perPage;
@@ -98,13 +113,27 @@ const StoriesPage = () => {
   return (
     <section className={css.pageWrapper}>
       <div className="container">
-        <PageTitle className={css.title}>Статті</PageTitle>
-
-        {isLoading && <Loader />}
-        {isError && <p>Помилка завантаження статей.</p>}
-
-        {!isLoading && !isError && (
+        {isLoading && (
           <>
+            <SkeletonPageTitle tag="h1" className={css.title} />
+            <div className={css.skeletonFilters}>
+              <Skeleton variant="text" height={48} width={'100%'} lines={2} />
+            </div>
+            <div className={css.skeletonGrid}>
+              {Array.from({ length: 9 }).map((_, index) => (
+                <StoryCardSkeleton key={`stories-skeleton-${index}`} />
+              ))}
+            </div>
+            <div className={css.skeletonButtonWrap}>
+              <SkeletonButton />
+            </div>
+            <Loader />
+          </>
+        )}
+
+        {!isLoading && !isErrorStories && (
+          <>
+            <PageTitle className={css.title}>Статті</PageTitle>
             <StoriesCategories
               categories={categories}
               activeCategory={filters.category}
@@ -120,13 +149,12 @@ const StoriesPage = () => {
 
             {hasMore && (
               <div className={css.showMoreButtonContainer}>
-                <Button
-                  variant="primary"
+                <Pagination
                   onClick={handleShowMore}
+                  isLoading={isLoading}
+                  isVisible={hasMore}
                   className={css.showMoreButton}
-                >
-                  Показати ще
-                </Button>
+                />
               </div>
             )}
           </>
