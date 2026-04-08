@@ -1,5 +1,6 @@
 .footerContainer {
   width: 100%;
+  background: var(--color-scheme-1-background);
 }
 
 .text {
