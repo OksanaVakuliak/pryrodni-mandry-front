@@ -1,5 +1,4 @@
 'use client';
-
 import { useState, useEffect, useRef } from 'react';
 import { getTravellers } from '@/lib/api/clientApi';
 import { Traveller } from '@/types/traveller';
@@ -13,23 +12,29 @@ import { SkeletonPageTitle } from '@/components/ui/Skeleton/Skeleton';
 
 const TravellersList = () => {
   const [travellers, setTravellers] = useState<Traveller[]>([]);
+  const [totalItems, setTotalItems] = useState(0);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [hasNextPage, setHasNextPage] = useState(true);
 
   const PER_PAGE = 12;
+
   const scrollAnchorRef = useRef<HTMLDivElement>(null);
+  const remainingItems = totalItems - travellers.length;
+  const skeletonsToShow = Math.min(remainingItems, PER_PAGE);
 
   const loadData = async (currentPage: number) => {
     setIsLoading(true);
     try {
-      const data = await getTravellers(PER_PAGE, currentPage);
+      const response = await getTravellers(PER_PAGE, currentPage);
 
-      if (data.length < PER_PAGE) {
-        setHasNextPage(false);
-      }
+      setTotalItems(response.totalItems);
+      setHasNextPage(response.hasNextPage);
 
-      setTravellers((prev) => (currentPage === 1 ? data : [...prev, ...data]));
+      const newTravellers = response.users;
+      setTravellers((prev) =>
+        currentPage === 1 ? newTravellers : [...prev, ...newTravellers],
+      );
       if (currentPage > 1) {
         setTimeout(() => {
           scrollAnchorRef.current?.scrollIntoView({
@@ -88,7 +93,7 @@ const TravellersList = () => {
       {isLoading && travellers.length > 0 && (
         <div className={styles.loaderBottomWrapper}>
           <div className={styles.skeletonBottomRow}>
-            {Array.from({ length: 3 }).map((_, index) => (
+            {Array.from({ length: skeletonsToShow }).map((_, index) => (
               <TravellerCardSkeleton
                 key={`traveller-bottom-skeleton-${index}`}
               />
