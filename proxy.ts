@@ -35,6 +35,8 @@ export async function proxy(request: NextRequest) {
             cookieStore.set('accessToken', parsed.accessToken, options);
           if (parsed.refreshToken)
             cookieStore.set('refreshToken', parsed.refreshToken, options);
+          if (parsed.sessionId)
+            cookieStore.set('sessionId', parsed.sessionId, options);
         }
 
         if (isAuthRoute) {
@@ -75,10 +77,12 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/profile/',
     '/profile/:path*',
     '/stories/new',
     '/login',
     '/register',
+    '/',
+    '/stories/:path*',
+    '/travellers/:path*',
   ],
 };
