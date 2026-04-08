@@ -22,6 +22,7 @@ export const Avatar = ({
           alt={alt}
           width={size}
           height={size}
+          sizes={`${size}px`}
           className={styles.avatarImage}
         />
       ) : (
