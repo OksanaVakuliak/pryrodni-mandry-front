@@ -48,7 +48,9 @@ export default function TravellerInfo({
         <Avatar src={avatar} alt={name} size={130} className={styles.avatar} />
       </div>
       <div className={styles.content}>
-        <PageTitle tag="h3">{name}</PageTitle>
+        <PageTitle className={styles.title} tag="h3">
+          {name}
+        </PageTitle>
         <p className={styles.meta}>Статей: {storiesCount}</p>
       </div>
       <div className={styles.actions}>{children}</div>
