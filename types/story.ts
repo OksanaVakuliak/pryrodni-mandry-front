@@ -18,7 +18,7 @@ export interface Story {
   ownerId: StoryOwner;
   rate: number;
   date: string;
-  isSaved: boolean;
+  isSaved?: boolean;
 }
 
 export interface StoriesResponse {
