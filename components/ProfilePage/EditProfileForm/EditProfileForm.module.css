@@ -114,6 +114,14 @@
   gap: 16px;
   margin-top: 32px;
 }
+@media only screen and (max-width: 374px) {
+  .submitBtn {
+    min-width: 100%;
+  }
+  .backBtn {
+    min-width: 100%;
+  }
+}
 
 @media (min-width: 768px) {
   .card {
