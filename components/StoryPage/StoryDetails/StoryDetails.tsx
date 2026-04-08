@@ -2,17 +2,23 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { Icon } from '@/components/ui/Icon/Icon';
 import { Story } from '@/types/Stories';
 import instance from '@/lib/api/api';
-import { Loader } from '@/components/ui/Loader/Loader';
+import { toast } from 'react-hot-toast';
 import { RecommendedStories } from '../RecomendedStories/RecommendedStories';
 import css from './StoryDetails.module.css';
 import { SaveStoryButton } from '@/components/ui/SaveStoryButton.tsx/SaveStoryButton';
 import { useAuthStore } from '@/lib/store/useAuthStore';
 import { useStoriesStore } from '@/lib/store/useStoriesStore';
+import {
+  Skeleton,
+  SkeletonCard,
+  SkeletonPageTitle,
+} from '@/components/ui/Skeleton/Skeleton';
 
 interface StoryPageProps {
   storyId: string;
@@ -47,6 +53,8 @@ const formatArticle = (text: string): string[] => {
 };
 
 export const StoryDetails = ({ storyId }: StoryPageProps) => {
+  const hasShownErrorRef = useRef(false);
+
   const {
     data: story,
     isLoading,
@@ -62,25 +70,90 @@ export const StoryDetails = ({ storyId }: StoryPageProps) => {
     (s) => s.savedStories[storyId] ?? false,
   );
 
+  useEffect(() => {
+    if ((isError || (!isLoading && !story)) && !hasShownErrorRef.current) {
+      toast.error('Не вдалося завантажити деталі історії. Спробуйте пізніше.');
+      hasShownErrorRef.current = true;
+    }
+  }, [isError, isLoading, story]);
+
   if (isLoading) {
     return (
       <section className={css.pageWrapper}>
         <div className="container">
-          <Loader />
+          <div className={css.article}>
+            <div className={css.header}>
+              <div className={css.heroImageWrapper}>
+                <Skeleton
+                  variant="image"
+                  className={css.heroImage}
+                  width="100%"
+                  height="100%"
+                />
+              </div>
+
+              <div className={css.headerContent}>
+                <Skeleton
+                  variant="text"
+                  width={140}
+                  height={28}
+                  className={css.backLink}
+                />
+                <SkeletonPageTitle tag="h1" className={css.title} />
+
+                <div className={css.meta}>
+                  <Skeleton variant="text" width="72%" />
+                  <Skeleton variant="text" width="64%" />
+                  <Skeleton variant="text" width="56%" />
+                </div>
+              </div>
+            </div>
+
+            <div className={css.contentBox}>
+              <div className={css.content}>
+                {Array.from({ length: 3 }).map((_, idx) => (
+                  <Skeleton
+                    key={`story-content-skeleton-${idx}`}
+                    lines={3}
+                    width="100%"
+                    className={css.articleText}
+                  />
+                ))}
+              </div>
+
+              <div className={css.saveSection}>
+                <div className={css.saveSectionInner}>
+                  <SkeletonPageTitle
+                    tag="h3"
+                    className={css.saveTitle}
+                    width={280}
+                  />
+                  <Skeleton lines={2} width="100%" />
+                  <Skeleton
+                    variant="button"
+                    width={220}
+                    className={css.saveButton}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={css.recommendedBox}>
+            <Skeleton variant="title" width={280} height={36} />
+            <div className={css.content}>
+              {Array.from({ length: 3 }).map((_, idx) => (
+                <SkeletonCard key={`recommended-story-skeleton-${idx}`} />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     );
   }
 
   if (isError || !story) {
-    return (
-      <section className={css.pageWrapper}>
-        <div className="container">
-          <PageTitle className={css.title}>Помилка</PageTitle>
-          <p>Не вдалося завантажити деталі історії. Спробуйте пізніше.</p>
-        </div>
-      </section>
-    );
+    return null;
   }
 
   return (
