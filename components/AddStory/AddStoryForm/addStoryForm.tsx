@@ -99,7 +99,8 @@ export default function AddStoryForm() {
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(
-          error.response?.data?.message || 'Не вдалося відновити збережені дані',
+          error.response?.data?.message ||
+            'Не вдалося відновити збережені дані',
         );
       } else {
         toast.error('Не вдалося відновити збережені дані');
@@ -187,7 +188,7 @@ export default function AddStoryForm() {
 
               <Image
                 className={css.image}
-                src={preview || '/Image/placeholder.png'}
+                src={preview || '/Image/placeholder.webp'}
                 alt="preview"
                 width={335}
                 height={223}

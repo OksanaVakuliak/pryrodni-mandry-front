@@ -5,8 +5,11 @@
 .card {
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  text-align: start;
   height: 100%;
+}
+.card .meta {
+  text-align: left;
 }
 
 .profile {
@@ -21,6 +24,16 @@
   width: 130px;
   height: 130px;
   margin-bottom: 24px;
+}
+
+.title {
+  display: -webkit-box;
+  color: var(--text-primary);
+  margin: 8px 0;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 14px;
 }
 
 .avatar {
