@@ -9,9 +9,9 @@ import { StoriesCategories } from './CategoriesFilter/StoriesCategories';
 import { StoriesGrid } from './CategoriesFilter/StoriesGrid';
 import { Loader } from '@/components/ui/Loader/Loader';
 import {
-  SkeletonInput,
   SkeletonButton,
   SkeletonPageTitle,
+  Skeleton,
 } from '@/components/ui/Skeleton/Skeleton';
 import { StoryCardSkeleton } from '@/components/ui/StoryCard/StoryCardSkeleton';
 import css from './StoriesPage.module.css';
@@ -117,10 +117,10 @@ const StoriesPage = () => {
           <>
             <SkeletonPageTitle tag="h1" className={css.title} />
             <div className={css.skeletonFilters}>
-              <SkeletonInput height={48} />
+              <Skeleton variant="text" height={48} width={'100%'} lines={2} />
             </div>
             <div className={css.skeletonGrid}>
-              {Array.from({ length: 6 }).map((_, index) => (
+              {Array.from({ length: 9 }).map((_, index) => (
                 <StoryCardSkeleton key={`stories-skeleton-${index}`} />
               ))}
             </div>
