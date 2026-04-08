@@ -40,6 +40,18 @@
   border-color: var(--opacity-neutral-darkest-15);
 }
 
+@media screen and (max-width: 374px) {
+  .tabs {
+    width: 100%;
+  }
+
+  .tab {
+    width: auto;
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .tabs {
     width: 422px;
