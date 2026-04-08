@@ -28,6 +28,7 @@ const About = () => {
                 height={410}
                 src="/Image/About.webp"
                 alt="forest"
+                sizes="(min-width: 1440px) 644px, (min-width: 768px) 704px, 335px"
                 loading="eager"
             />
         </section>

@@ -3,7 +3,7 @@
   width: 100%;
   max-width: 335px;
   margin: 0 auto;
-  margin-top: 64px;
+  padding-top: 64px;
 }
 
 .tabs {
@@ -61,6 +61,27 @@
 
 .submitBtn {
   min-height: 44px;
+}
+
+@media only screen and (max-width: 374px) {
+  .formCard {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 40px;
+  }
+
+  .formCard .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .form {
+    gap: 16px;
+  }
 }
 
 @media only screen and (min-width: 768px) {

@@ -1,4 +1,5 @@
 'use client';
+
 import { useAuthStore } from '@/lib/store/useAuthStore';
 import { useStoriesStore } from '@/lib/store/useStoriesStore';
 import Image from 'next/image';
@@ -16,6 +17,7 @@ type Props = {
 
 export default function StoryCard({ story }: Props) {
   const { title, img, ownerId } = story;
+
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
 
   const initialIsSaved = useStoriesStore(
@@ -29,8 +31,10 @@ export default function StoryCard({ story }: Props) {
   const initStoryRate = useStoriesStore((s) => s.initStoryRate);
 
   useEffect(() => {
-    initStoryRate(story._id, story.rate);
-  }, [story._id, story.rate, initStoryRate]);
+    if (storyRateFromStore === undefined) {
+      initStoryRate(story._id, story.rate);
+    }
+  }, [story._id, story.rate, storyRateFromStore, initStoryRate]);
 
   return (
     <div className={styles.card}>
@@ -70,6 +74,7 @@ export default function StoryCard({ story }: Props) {
           >
             Переглянути статтю
           </CustomLink>
+
           <SaveStoryButton
             storyId={story._id}
             initialIsSaved={initialIsSaved}

@@ -1,5 +1,4 @@
 'use client';
-
 import { useState, useEffect, useRef } from 'react';
 import { getTravellers } from '@/lib/api/clientApi';
 import { Traveller } from '@/types/traveller';
@@ -9,27 +8,34 @@ import axios from 'axios';
 import styles from './TravellersList.module.css';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { Pagination } from '@/components/ui/Pagination/Pagination';
-import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
+import { TravellerCardSkeleton } from '@/components/ui/TravallerCard/TravellerCardSkeleton';
+import { SkeletonPageTitle } from '@/components/ui/Skeleton/Skeleton';
 
 const TravellersList = () => {
   const [travellers, setTravellers] = useState<Traveller[]>([]);
+  const [totalItems, setTotalItems] = useState(0);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [hasNextPage, setHasNextPage] = useState(true);
 
   const PER_PAGE = 12;
+
   const scrollAnchorRef = useRef<HTMLDivElement>(null);
+  const remainingItems = totalItems - travellers.length;
+  const skeletonsToShow = Math.min(remainingItems, PER_PAGE);
 
   const loadData = async (currentPage: number) => {
     setIsLoading(true);
     try {
-      const data = await getTravellers(PER_PAGE, currentPage);
+      const response = await getTravellers(PER_PAGE, currentPage);
 
-      if (data.length < PER_PAGE) {
-        setHasNextPage(false);
-      }
+      setTotalItems(response.totalItems);
+      setHasNextPage(response.hasNextPage);
 
-      setTravellers((prev) => (currentPage === 1 ? data : [...prev, ...data]));
+      const newTravellers = response.users;
+      setTravellers((prev) =>
+        currentPage === 1 ? newTravellers : [...prev, ...newTravellers],
+      );
       if (currentPage > 1) {
         setTimeout(() => {
           scrollAnchorRef.current?.scrollIntoView({
@@ -40,7 +46,10 @@ const TravellersList = () => {
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        toast.error(error.response?.data?.message || 'Помилка при завантаженні списку мандрівників');
+        toast.error(
+          error.response?.data?.message ||
+            'Помилка при завантаженні списку мандрівників',
+        );
       } else {
         toast.error('Непередбачувана помилка. Спробуйте пізніше');
       }
@@ -61,9 +70,18 @@ const TravellersList = () => {
 
   return (
     <section className={styles.section}>
-      <PageTitle className={styles.title}>Мандрівники</PageTitle>
+      {isLoading && travellers.length === 0 ? (
+        <SkeletonPageTitle tag="h1" className={styles.title} />
+      ) : (
+        <h1 className={styles.title}>Мандрівники</h1>
+      )}
       {isLoading && travellers.length === 0 && (
-        <div className={styles.loaderWrapper}>
+        <div className={styles.initialLoadingWrap}>
+          <div className={styles.skeletonGrid}>
+            {Array.from({ length: PER_PAGE }).map((_, index) => (
+              <TravellerCardSkeleton key={`traveller-skeleton-${index}`} />
+            ))}
+          </div>
           <Loader />
         </div>
       )}
@@ -81,6 +99,13 @@ const TravellersList = () => {
       </div>
       {isLoading && travellers.length > 0 && (
         <div className={styles.loaderBottomWrapper}>
+          <div className={styles.skeletonBottomRow}>
+            {Array.from({ length: skeletonsToShow }).map((_, index) => (
+              <TravellerCardSkeleton
+                key={`traveller-bottom-skeleton-${index}`}
+              />
+            ))}
+          </div>
           <Loader />
         </div>
       )}

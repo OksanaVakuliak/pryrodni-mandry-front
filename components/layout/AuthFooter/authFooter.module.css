@@ -1,14 +1,14 @@
-@media screen and (min-width: 300px) {
-  .footerContainer {
-    width: 100%;
-  }
-
-  .text {
-    padding-top: 24px;
-    padding-bottom: 24px;
-    text-align: center;
-  }
+.footerContainer {
+  width: 100%;
+  background: var(--color-scheme-1-background);
 }
+
+.text {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  text-align: center;
+}
+
 @media screen and (min-width: 768px) {
   .text {
     padding-top: 24px;

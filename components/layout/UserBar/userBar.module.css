@@ -1,8 +1,11 @@
-@media screen and (min-width: 300px) {
+@media screen and (min-width: 5px) {
   .authContainer {
     flex-direction: column;
     display: flex;
     gap: 24px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
   .authBtn {
     margin-right: 0;
@@ -11,7 +14,11 @@
     border: 1px solid var(--color-mantis-dark);
     border-radius: 6px;
     padding: 4px 10px;
-    width: 335px;
+    width: 100%;
+    max-width: 335px;
+    height: 32px;
+    flex-shrink: 0;
+    box-sizing: border-box;
     height: 32px;
   }
   .stateContainer {

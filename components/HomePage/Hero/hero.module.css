@@ -48,7 +48,8 @@
 
 .heroImage {
   order: -1;
-  width: 335px;
+  width: 100%;
+  max-width: 335px;
   height: 469px;
   margin-bottom: 24px;
   object-fit: cover;
@@ -57,7 +58,7 @@
 
 @media only screen and (min-width: 768px) {
   .heroImage {
-    width: 704px;
+    max-width: 704px;
   }
 
   .heroLink {

@@ -1,5 +1,14 @@
-import { Skeleton } from '@/components/ui/Skeleton/Skeleton';
+import TravellersStories from '@/components/ui/TravellersStories/TravellersStories';
 
-export default function Loading() {
-  return <Skeleton limit={6} />;
+export default function MyLoading() {
+  return (
+    <>
+      <TravellersStories
+        stories={[]}
+        variant="noOwn"
+        isLoading
+        skeletonCount={6}
+      />
+    </>
+  );
 }
