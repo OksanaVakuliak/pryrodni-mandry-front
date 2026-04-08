@@ -11,7 +11,7 @@ interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement>
 }
 
 export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ label, error, ...props }, ref) => {
+  ({ label, error, className = '', style, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -21,7 +21,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
     const iconId = showPassword ? 'icon-eye' : 'icon-eye-blocked';
 
     return (
-      <div className={styles.wrapper}>
+      <div className={`${styles.wrapper} ${className}`} style={style}>
         <Input
           ref={ref}
           label={label}
