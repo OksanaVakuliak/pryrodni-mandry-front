@@ -62,7 +62,6 @@
   align-items: center;
   justify-content: center;
   border-color: var(--opacity-neutral-darkest-15);
-  min-width: 239px;
   min-height: 48px;
 }
 
@@ -75,6 +74,12 @@
 
 .svg {
   fill: var(--text-primary);
+}
+
+@media only screen and (max-width: 375px) {
+  .card .actions .iconBtn {
+    padding: 15px;
+  }
 }
 
 @media only screen and (min-width: 767px) {

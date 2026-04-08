@@ -48,6 +48,13 @@
 }
 
 /* --- АДАПТИВ --- */
+
+@media only screen and (max-width: 374px) {
+  .compact {
+    min-width: 100%;
+  }
+}
+
 @media only screen and (min-width: 767px) {
   .profileLink:not(.compact) {
     min-width: 292px;
