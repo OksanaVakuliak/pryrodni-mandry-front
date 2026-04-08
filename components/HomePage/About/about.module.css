@@ -40,7 +40,8 @@
 
 .image {
     border-radius: 12px;
-    width: 335px;
+    width: 100%;
+    max-width: 335px;
     height: 410px;
     object-fit: cover;
 }
@@ -73,7 +74,7 @@
 @media only screen and (min-width: 1440px) {
     .aboutSection {
         display: flex;
-        column-gap: 24;
+        column-gap: 24px;
         align-items: center;
         padding-top: 112px;
         padding-bottom: 112px;
