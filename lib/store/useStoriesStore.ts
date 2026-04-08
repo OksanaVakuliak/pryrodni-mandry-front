@@ -4,42 +4,41 @@ type StoriesState = {
   savedStories: Record<string, boolean>;
   storiesRate: Record<string, number>;
 
-  setStorySaved: (storyId: string, isSaved: boolean) => void;
-  initStoryRate: (storyId: string, rate: number) => void;
+  setStorySaved: (id: string, value: boolean) => void;
+  initStoryRate: (id: string, rate: number) => void;
+  updateStoryRate: (id: string, delta: number) => void;
 };
 
 export const useStoriesStore = create<StoriesState>((set) => ({
   savedStories: {},
   storiesRate: {},
 
-  initStoryRate: (storyId, rate) =>
+  setStorySaved: (id, value) =>
     set((state) => ({
-      storiesRate: {
-        ...state.storiesRate,
-        [storyId]: state.storiesRate[storyId] ?? rate,
+      savedStories: {
+        ...state.savedStories,
+        [id]: value,
       },
     })),
 
-  setStorySaved: (storyId, isSaved) =>
+  initStoryRate: (id, rate) =>
     set((state) => {
-      const prevSaved = state.savedStories[storyId];
-      const currentRate = state.storiesRate[storyId] ?? 0;
-
-      let newRate = currentRate;
-
-      if (prevSaved !== isSaved) {
-        newRate = isSaved ? currentRate + 1 : currentRate - 1;
-      }
+      // 👉 важно: не перезаписываем если уже есть
+      if (state.storiesRate[id] !== undefined) return state;
 
       return {
-        savedStories: {
-          ...state.savedStories,
-          [storyId]: isSaved,
-        },
         storiesRate: {
           ...state.storiesRate,
-          [storyId]: newRate,
+          [id]: rate,
         },
       };
     }),
+
+  updateStoryRate: (id, delta) =>
+    set((state) => ({
+      storiesRate: {
+        ...state.storiesRate,
+        [id]: (state.storiesRate[id] ?? 0) + delta,
+      },
+    })),
 }));

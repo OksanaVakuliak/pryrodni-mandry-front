@@ -18,6 +18,7 @@ export interface Story {
   ownerId: StoryOwner;
   rate: number;
   date: string;
+  isSaved: boolean;
 }
 
 export interface StoriesResponse {
@@ -31,6 +32,7 @@ export interface StoriesResponse {
 }
 
 export interface SaveResponse {
-  rate: number;
-  savedArticles: string[];
+  isSaved: boolean;
+  savesCount: number;
+  message: string;
 }
