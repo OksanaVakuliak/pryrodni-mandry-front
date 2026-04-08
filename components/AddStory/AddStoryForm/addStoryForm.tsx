@@ -188,7 +188,7 @@ export default function AddStoryForm() {
 
               <Image
                 className={css.image}
-                src={preview || '/Image/placeholder.webp'}
+                src={preview || '/Image/Placeholder.webp'}
                 alt="preview"
                 width={335}
                 height={223}
