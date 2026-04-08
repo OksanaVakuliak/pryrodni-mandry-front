@@ -55,7 +55,13 @@ export default function AddStoryForm() {
         const data = await clientApi.categories.getAll();
         setCategories(data);
       } catch (error) {
-        console.error('Не вдалося завантажити категорії', error);
+        if (error instanceof AxiosError) {
+          toast.error(
+            error.response?.data?.message || 'Не вдалося завантажити категорії',
+          );
+        } else {
+          toast.error('Непередбачувана помилка. Спробуйте пізніше');
+        }
       } finally {
         setLoadingCategories(false);
       }
@@ -91,7 +97,13 @@ export default function AddStoryForm() {
         };
       }
     } catch (error) {
-      console.error('localStorage parse error', error);
+      if (error instanceof AxiosError) {
+        toast.error(
+          error.response?.data?.message || 'Не вдалося відновити збережені дані',
+        );
+      } else {
+        toast.error('Не вдалося відновити збережені дані');
+      }
     }
 
     return { title: '', category: '', article: '', img: null };
@@ -200,9 +212,8 @@ export default function AddStoryForm() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={
-              formik.touched.category &&
-              typeof formik.errors.category === 'string'
-                ? formik.errors.category
+              formik.touched.title && typeof formik.errors.title === 'string'
+                ? formik.errors.title
                 : undefined
             }
           />

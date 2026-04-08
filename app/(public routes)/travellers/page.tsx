@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 
 const TravellersPage = () => {
   return (
-    <main className="container">
+    <div className="container">
       <TravellersList />
-    </main>
+    </div>
   );
 };
 export default TravellersPage;

@@ -124,25 +124,10 @@ export const requestProfileUpdate = async (
   );
   return data;
 };
-// export const getProfileSavedStories = async (
-//   page: number = 1,
-//   perPage: number = 6,
-// ): Promise<StoriesResponse> => {
-//   const { data } = await instance.get<StoriesResponse>(
-//     '/profile/saved-stories',
-//     {
-//       params: { page, perPage },
-//     },
-//   );
-//   return data;
-// };
 
-// export const getProfileMyStories = async (
-//   page: number = 1,
-//   perPage: number = 6,
-// ): Promise<StoriesResponse> => {
-//   const { data } = await instance.get<StoriesResponse>('/profile/my-stories', {
-//     params: { page, perPage },
-//   });
-//   return data;
-// };
+export const confirmUpdateEmail = async (token: string): Promise<User> => {
+  const { data } = await instance.post<User>('/profile/update-confirm', {
+    token,
+  });
+  return data;
+};

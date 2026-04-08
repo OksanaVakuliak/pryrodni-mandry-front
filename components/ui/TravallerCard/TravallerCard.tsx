@@ -6,7 +6,7 @@ import clsx from 'clsx';
 
 type Props = {
   traveller: Traveller;
-  compact?: boolean; // 👈 добавили
+  compact?: boolean;
 };
 
 export default function TravellerCard({ traveller, compact }: Props) {

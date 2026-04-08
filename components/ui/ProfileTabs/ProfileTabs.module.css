@@ -2,7 +2,7 @@
   display: inline-flex;
   border-radius: 10px;
   background-color: var(--color-mantis-lighter);
-  width: 422px;
+  width: 335px;
   height: 48px;
   align-items: center;
   justify-content: center;
@@ -15,28 +15,57 @@
   align-items: center;
   border-radius: 8px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 15.3px;
   line-height: 1.5;
   color: var(--color-mantis-darkest);
   transition: all var(--transition-default);
   padding: 4px 12px;
-  width: 207px;
+  width: 163px;
+  height: 40px;
   justify-content: center;
 }
 
-.tab:hover:not(.active) {
+.tab:hover {
   background-color: var(--color-mantis-lightest);
   border: 1px solid var(--opacity-neutral-darkest-15);
-}
-
-.tab:active {
-  background-color: var(--color-mantis-lightest);
-  border: 1px solid var(--opacity-neutral-darkest-15);
-  font-weight: 500;
 }
 
 .active {
   background-color: var(--color-mantis-lightest);
   border: 1px solid var(--opacity-neutral-darkest-15);
-  font-weight: 500;
+}
+
+.tab:focus {
+  outline: none;
+  border-color: var(--opacity-neutral-darkest-15);
+}
+
+@media screen and (max-width: 374px) {
+  .tabs {
+    width: 100%;
+  }
+
+  .tab {
+    width: auto;
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tabs {
+    width: 422px;
+    height: 48px;
+  }
+
+  .tab {
+    width: 207px;
+    justify-content: center;
+  }
+
+  .active {
+    background-color: var(--color-mantis-lightest);
+    border: 1px solid var(--opacity-neutral-darkest-15);
+    font-weight: 500;
+  }
 }

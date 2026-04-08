@@ -89,6 +89,8 @@ export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
         toast.error(
           error.response?.data?.message || 'Помилка завантаження фото',
         );
+      } else {
+        toast.error('Непередбачувана помилка. Спробуйте пізніше');
       }
     } finally {
       setIsUploading(false);
@@ -101,17 +103,11 @@ export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
   ) => {
     try {
       const payload: UpdateProfilePayload = {};
-      const whatChanged: string[] = [];
+      const isNameChanged = values.name !== userData?.name;
+      const isPasswordChanged = values.password.trim().length > 0;
 
-      if (values.name !== userData?.name) {
-        payload.name = values.name;
-        whatChanged.push('імені');
-      }
-
-      if (values.password.trim()) {
-        payload.password = values.password;
-        whatChanged.push('пароля');
-      }
+      if (isNameChanged) payload.name = values.name;
+      if (isPasswordChanged) payload.password = values.password;
 
       if (Object.keys(payload).length === 0) {
         return toast('Ви не змінили жодних даних');
@@ -119,19 +115,34 @@ export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
 
       await requestProfileUpdate(payload);
 
-      toast.success(
-        `Запит на зміну ${whatChanged.join(' та ')} надіслано. Перевірте пошту!`,
-        { duration: 5000 },
-      );
+      if (isNameChanged && isPasswordChanged) {
+        toast.success('Ім’я оновлено! Для зміни пароля перевірте пошту.');
+      } else if (isNameChanged) {
+        toast.success('Ім’я успішно оновлено');
+      } else if (isPasswordChanged) {
+        toast.success('Запит на зміну пароля надіслано на пошту');
+      }
+
+      if (isNameChanged && userData) {
+        const updatedUser = { ...userData, name: values.name };
+        setUserData(updatedUser);
+        setUser(updatedUser);
+      }
 
       resetForm({
-        values: { ...values, password: '', confirmPassword: '' },
+        values: {
+          name: values.name,
+          password: '',
+          confirmPassword: '',
+        },
       });
     } catch (error) {
       if (axios.isAxiosError(error)) {
         toast.error(
-          error.response?.data?.message || 'Не вдалося надіслати запит',
+          error.response?.data?.message || 'Не вдалося оновити профіль',
         );
+      } else {
+        toast.error('Непередбачувана помилка. Спробуйте пізніше');
       }
     } finally {
       setSubmitting(false);
@@ -248,7 +259,7 @@ export default function EditProfileForm({ onClose }: { onClose?: () => void }) {
                 type="button"
                 className={css.backBtn}
                 variant="secondary"
-                onClick={onClose || (() => window.history.back())}
+                onClick={onClose}
               >
                 Назад
               </Button>

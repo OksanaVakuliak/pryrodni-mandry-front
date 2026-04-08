@@ -10,13 +10,13 @@ export default function EditProfileContainer({
   onClose,
 }: EditProfileContainerProps) {
   return (
-    <main className={css.main}>
+    <section className={css.main} aria-label="Налаштування профілю">
       <div className={css.container}>
         <PageTitle tag="h2" className={css.title}>
           Налаштування профілю
         </PageTitle>
         <EditProfileForm onClose={onClose} />
       </div>
-    </main>
+    </section>
   );
 }
