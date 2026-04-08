@@ -1,17 +1,16 @@
-@media screen and (min-width: 300px) {
-  .headerContainer {
-    width: 100%;
-    padding: 18px 20px;
-  }
-
-  .svgLogo {
-    width: 124px;
-    height: 40px;
-    fill: var(--logo-color);
-    stroke: var(--logo-color);
-    stroke-width: 1.5px;
-  }
+.headerContainer {
+  width: 100%;
+  padding: 18px 20px;
 }
+
+.svgLogo {
+  width: 124px;
+  height: 40px;
+  fill: var(--logo-color);
+  stroke: var(--logo-color);
+  stroke-width: 1.5px;
+}
+
 @media screen and (min-width: 768px) {
   .headerContainer {
     width: 100%;
