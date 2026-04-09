@@ -16,34 +16,6 @@ export const checkServerSession = async (): Promise<AxiosResponse> => {
   return instance.post('/auth/refresh', {}, { headers });
 };
 
-export const getServerProfileSavedStories = async (
-  page: number = 1,
-  perPage: number = 6,
-): Promise<StoriesResponse> => {
-  const headers = await getAuthHeaders();
-  const { data } = await instance.get<StoriesResponse>(
-    '/profile/saved-stories',
-    {
-      params: { page, perPage },
-      headers,
-    },
-  );
-  return data;
-};
-
-export const getServerProfileMyStories = async (
-  page: number = 1,
-  perPage: number = 6,
-): Promise<StoriesResponse> => {
-  const headers = await getAuthHeaders();
-  const { data } = await instance.get<StoriesResponse>('/profile/my-stories', {
-    params: { page, perPage },
-    headers,
-  });
-
-  return data;
-};
-
 export const getTravellerByIdServer = async (
   id: string,
 ): Promise<Traveller> => {
