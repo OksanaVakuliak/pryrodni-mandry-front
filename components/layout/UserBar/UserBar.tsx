@@ -41,7 +41,11 @@ const UserBar = () => {
           <Avatar src={user?.avatarUrl} alt={user?.name} size={32}></Avatar>
           <span className={css.userName}>{user?.name || "Ім'я"}</span>
         </div>
-        <button onClick={toggleMenu} className={css.logoutBtn}>
+        <button
+          onClick={toggleMenu}
+          className={css.logoutBtn}
+          aria-label="Вийти з акаунту"
+        >
           <Icon name="icon-logout" className={css.svgClose} />
         </button>
       </div>

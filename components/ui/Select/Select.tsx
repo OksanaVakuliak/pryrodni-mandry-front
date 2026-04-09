@@ -44,6 +44,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
     const listRef = useRef<HTMLUListElement>(null);
     const generatedId = useId();
     const labelId = `${generatedId}-label`;
+    const buttonContentId = `${generatedId}-button-content`;
     const listboxId = `${generatedId}-listbox`;
     const errorId = `${generatedId}-error`;
 
@@ -114,10 +115,13 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
             onClick={toggleDropdown}
             aria-haspopup="listbox"
             aria-expanded={isOpen}
-            aria-labelledby={label ? labelId : undefined}
+            aria-labelledby={
+              label ? `${labelId} ${buttonContentId}` : undefined
+            }
             aria-describedby={error ? errorId : undefined}
           >
             <span
+              id={buttonContentId}
               className={
                 selectedOption ? styles.selectedValue : styles.placeholder
               }
