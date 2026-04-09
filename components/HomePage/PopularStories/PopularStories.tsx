@@ -93,9 +93,9 @@ export default function PopularStories() {
               setIsEnd(swiper.isEnd);
             }}
           >
-            {stories?.slice(0, 10).map((story) => (
+            {stories?.slice(0, 10).map((story, index) => (
               <SwiperSlide key={story._id} className={css.slide}>
-                <StoryCard story={story} />
+                <StoryCard story={story} isPriority={index < 3} />
               </SwiperSlide>
             ))}
           </Swiper>

@@ -13,9 +13,10 @@ import { useEffect } from 'react';
 
 type Props = {
   story: Story;
+  isPriority?: boolean;
 };
 
-export default function StoryCard({ story }: Props) {
+export default function StoryCard({ story, isPriority = false }: Props) {
   const { title, img, ownerId } = story;
 
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
@@ -45,7 +46,7 @@ export default function StoryCard({ story }: Props) {
           fill
           sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
           className={styles.image}
-          loading="lazy"
+          {...(isPriority ? { priority: true } : { loading: 'lazy' })}
         />
       </div>
 

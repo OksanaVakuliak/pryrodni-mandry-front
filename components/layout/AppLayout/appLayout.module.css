@@ -6,4 +6,5 @@
 
 .main {
   flex: 1;
+  min-height: calc(100dvh - 72px);
 }
