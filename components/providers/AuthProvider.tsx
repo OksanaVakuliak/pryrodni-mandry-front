@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
-import { getMe } from '@/lib/api/clientApi';
 import { Loader } from '../ui/Loader/Loader';
 import { useAuthStore } from '@/lib/store/useAuthStore';
 
@@ -12,8 +11,7 @@ export default function AuthProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const setUser = useAuthStore((state) => state.setUser);
-  const clearUser = useAuthStore((state) => state.clearUser);
+  const checkAuth = useAuthStore((state) => state.checkAuth);
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   const [isChecking, setIsChecking] = useState(true);
@@ -27,10 +25,7 @@ export default function AuthProvider({
       if (isInitialized.current) return;
 
       try {
-        const user = await getMe();
-        setUser(user);
-      } catch {
-        clearUser();
+        await checkAuth();
       } finally {
         isInitialized.current = true;
         setIsChecking(false);
@@ -38,7 +33,7 @@ export default function AuthProvider({
     };
 
     validateSession();
-  }, [setUser, clearUser]);
+  }, [checkAuth]);
 
   useEffect(() => {
     if (isChecking) return;
