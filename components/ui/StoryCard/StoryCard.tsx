@@ -38,7 +38,7 @@ export default function StoryCard({ story }: Props) {
 
   return (
     <div className={styles.card}>
-      <div className={styles.imageWrapper} tabIndex={-1} aria-hidden="true">
+      <div className={styles.imageWrapper} aria-hidden="true">
         <Image
           src={img}
           alt={title}

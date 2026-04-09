@@ -19,7 +19,12 @@ export const Button = ({
   const buttonClass = `${styles.button} ${styles[variant]} ${className}`;
 
   return (
-    <button className={buttonClass} disabled={isLoading || disabled} {...props}>
+    <button
+      className={buttonClass}
+      disabled={isLoading || disabled}
+      aria-busy={isLoading || undefined}
+      {...props}
+    >
       {isLoading ? 'Завантаження...' : children}
     </button>
   );

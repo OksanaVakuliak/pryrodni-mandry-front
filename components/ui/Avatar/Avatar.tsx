@@ -31,6 +31,8 @@ export const Avatar = ({
           width={size}
           height={size}
           className={styles.avatarSvg}
+          aria-hidden={undefined}
+          role="img"
           aria-label={alt}
         />
       )}

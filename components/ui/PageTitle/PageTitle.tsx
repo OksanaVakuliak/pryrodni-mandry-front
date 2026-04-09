@@ -5,12 +5,18 @@ interface PageTitleProps {
   children: React.ReactNode;
   className?: string;
   tag?: 'h1' | 'h2' | 'h3';
+  id?: string;
 }
 
 export const PageTitle = ({
   children,
   className = '',
   tag: Tag = 'h1',
+  id,
 }: PageTitleProps) => {
-  return <Tag className={`${styles.title} ${className}`}>{children}</Tag>;
+  return (
+    <Tag id={id} className={`${styles.title} ${className}`}>
+      {children}
+    </Tag>
+  );
 };

@@ -15,6 +15,9 @@ export const ThemeToggle = () => {
         toggleTheme();
       }}
       className={`${styles.toggle} ${theme === 'dark' ? styles.dark : ''}`}
+      aria-label={
+        theme === 'dark' ? 'Перейти на світлу тему' : 'Перейти на темну тему'
+      }
     >
       <div className={styles.sky}></div>
 
