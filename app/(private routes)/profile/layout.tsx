@@ -43,6 +43,7 @@ export default function ProfileLayout({
                 name={user.name}
                 avatar={user.avatarUrl}
                 storiesCount={user.articlesAmount || 0}
+                isPriority
               >
                 <CustomLink
                   variant="buttonProfile"

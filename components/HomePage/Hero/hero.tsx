@@ -26,6 +26,7 @@ const Hero = () => {
           src="/Image/Hero.webp"
           alt="Краєвид гір України"
           priority
+          fetchPriority="high"
         />
       </div>
     </section>

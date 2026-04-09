@@ -196,6 +196,7 @@ export default function AddStoryForm() {
                 alt="preview"
                 width={335}
                 height={223}
+                priority
               />
             </div>
 
