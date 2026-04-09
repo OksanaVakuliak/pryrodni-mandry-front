@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { clientApi, storiesApi } from '@/lib/api/clientApi';
-import { Category } from '@/types/Category';
 import { Input } from '@/components/ui/Input/Input';
 import { Button } from '@/components/ui/Button/Button';
 import { TextArea } from '@/components/ui/TextArea/TextArea';
@@ -17,12 +16,13 @@ import toast from 'react-hot-toast';
 import css from './addStoryForm.module.css';
 import ErrorWhileSavingModal from '@/components/ui/ErrorWhileSavingModal/ErrorWhileSavingModal';
 import { AxiosError } from 'axios';
+import { StoryCategory } from '@/types/story';
 
 export default function AddStoryForm() {
   const router = useRouter();
 
   const [preview, setPreview] = useState<string | null>(null);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<StoryCategory[]>([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
@@ -188,7 +188,7 @@ export default function AddStoryForm() {
 
               <Image
                 className={css.image}
-                src={preview || '/Image/placeholder.webp'}
+                src={preview || '/Image/Placeholder.webp'}
                 alt="preview"
                 width={335}
                 height={223}

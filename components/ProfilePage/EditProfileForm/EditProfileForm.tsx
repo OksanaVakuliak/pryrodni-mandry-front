@@ -16,7 +16,7 @@ import { useAuthStore } from '@/lib/store/useAuthStore';
 import { requestProfileUpdate, updateAvatar, getMe } from '@/lib/api/clientApi';
 import { UpdateProfilePayload } from '@/types/updateProfile';
 import { profileUpdateSchema } from '@/schemas/profileValidation';
-import { User } from '@/types/Users';
+import { User } from '@/types/user';
 
 interface FormValues {
   name: string;

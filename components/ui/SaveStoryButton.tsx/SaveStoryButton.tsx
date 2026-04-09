@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { Button } from '@/components/ui/Button/Button';
@@ -46,7 +46,6 @@ export const SaveStoryButton = ({
 
     const prev = isSaved;
 
-    // ✅ optimistic update
     setStorySaved(storyId, !prev);
     updateStoryRate(storyId, prev ? -1 : +1);
 
@@ -61,7 +60,6 @@ export const SaveStoryButton = ({
         toast.success('Історію збережено!');
       }
     } catch (err) {
-      // 🔁 rollback
       setStorySaved(storyId, prev);
       updateStoryRate(storyId, prev ? +1 : -1);
 
@@ -83,8 +81,6 @@ export const SaveStoryButton = ({
       } else {
         toast.error('Непередбачувана помилка. Спробуйте пізніше');
       }
-
-      toast.error('Сталася помилка');
     } finally {
       setIsRequesting(false);
     }
@@ -97,7 +93,7 @@ export const SaveStoryButton = ({
     <Button
       className={buttonClassName}
       onClick={handleToggleSave}
-      isLoading={false}
+      isLoading={variant === 'icon' ? false : isRequesting}
       disabled={isRequesting}
       variant={variant === 'icon' ? 'secondary' : 'primary'}
       type="button"

@@ -1,5 +1,4 @@
 'use client';
-import { StoriesFilters } from '@/types/Stories';
 import { useMemo, useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { clientApi } from '@/lib/api/clientApi';
@@ -17,6 +16,7 @@ import { StoryCardSkeleton } from '@/components/ui/StoryCard/StoryCardSkeleton';
 import css from './StoriesPage.module.css';
 import StoryCard from '../ui/StoryCard/StoryCard';
 import { Pagination } from '../ui/Pagination/Pagination';
+import { StoriesFilters } from '@/types/story';
 
 const StoriesPage = () => {
   const [filters, setFilters] = useState<StoriesFilters>({

@@ -1,9 +1,9 @@
 import { Select } from '@/components/ui/Select/Select';
 import css from './StoriesCategories.module.css';
-import { Category } from '@/types/Category';
+import { StoryCategory } from '@/types/story';
 
 interface StoriesCategoriesProps {
-  categories: Category[];
+  categories: StoryCategory[];
   activeCategory: string | undefined;
   onCategoryChange: (categoryId: string | undefined) => void;
 }

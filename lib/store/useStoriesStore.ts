@@ -23,8 +23,7 @@ export const useStoriesStore = create<StoriesState>((set) => ({
 
   initStoryRate: (id, rate) =>
     set((state) => {
-      // 👉 важно: не перезаписываем если уже есть
-      if (state.storiesRate[id] !== undefined) return state;
+      if (state.storiesRate[id] !== undefined) return {};
 
       return {
         storiesRate: {
