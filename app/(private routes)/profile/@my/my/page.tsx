@@ -1,9 +1,5 @@
-import TravellersStories from '@/components/ui/TravellersStories/TravellersStories';
-import StoriesErrorClient from '@/components/Errors/StoriesErrorClient';
-import { getServerProfileMyStories } from '@/lib/api/serverApi';
-import { Story } from '@/types/story';
+import MyStoriesClient from './MyStoriesClient';
 import type { Metadata } from 'next';
-import { isAxiosError } from 'axios';
 
 export const metadata: Metadata = {
   title: 'Мої історії',
@@ -29,33 +25,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function MyStoriesPage() {
-  let stories: Story[] = [];
-  let errorMessage: string | null = null;
-
-  try {
-    const response = await getServerProfileMyStories(1, 6);
-
-    if (response && Array.isArray(response.stories)) {
-      stories = response.stories;
-    } else {
-      stories = [];
-    }
-  } catch (error: unknown) {
-    if (isAxiosError(error)) {
-      errorMessage =
-        (error.response?.data && String(error.response.data)) ||
-        error.message ||
-        'Помилка сервера при завантаженні історій.';
-    } else {
-      errorMessage = 'Невідома помилка при завантаженні історій.';
-    }
-  }
-
-  return (
-    <>
-      <TravellersStories stories={stories} variant="noOwn" />
-      <StoriesErrorClient error={errorMessage} />
-    </>
-  );
+export default function MyStoriesPage() {
+  return <MyStoriesClient />;
 }
