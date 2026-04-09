@@ -2,12 +2,13 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
-import { Story } from '@/types/Stories';
+
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import StoryCard from '@/components/ui/StoryCard/StoryCard';
 import { Loader } from '@/components/ui/Loader/Loader';
 import instance from '@/lib/api/api';
 import css from './RecommendedStories.module.css';
+import { Story } from '@/types/story';
 
 interface RecommendedStoriesProps {
   currentStoryId: string;
