@@ -12,6 +12,8 @@ import { Icon } from '@/components/ui/Icon/Icon';
 import { Button } from '@/components/ui/Button/Button';
 import { Loader } from '@/components/ui/Loader/Loader';
 import { CustomLink } from '@/components/ui/Link/Link';
+import { Skeleton } from '@/components/ui/Skeleton/Skeleton';
+import { TravellerCardSkeleton } from '@/components/ui/TravallerCard/TravellerCardSkeleton';
 
 import css from './OurTravellers.module.css';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
@@ -36,7 +38,22 @@ const OurTravellers = () => {
     }
   }, [isError]);
 
-  if (isLoading) return <Loader />;
+  if (isLoading)
+    return (
+      <section className={css.section}>
+        <div className={css.container}>
+          <div className={css.header}>
+            <Skeleton variant="title" width={260} />
+          </div>
+          <div className={css.skeletonGrid}>
+            {Array.from({ length: 4 }).map((_, index) => (
+              <TravellerCardSkeleton key={`traveller-skeleton-${index}`} />
+            ))}
+          </div>
+          <Loader />
+        </div>
+      </section>
+    );
 
   return (
     <section className={css.section}>

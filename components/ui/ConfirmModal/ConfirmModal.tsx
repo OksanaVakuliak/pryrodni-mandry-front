@@ -40,8 +40,17 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
 
   return (
     <div className={styles.overlay}>
-      <div className={styles.modal}>
-        <button className={styles.close} onClick={onCancel}>
+      <div
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="confirm-modal-title"
+      >
+        <button
+          className={styles.close}
+          onClick={onCancel}
+          aria-label="Закрити модальне вікно"
+        >
           <Icon
             name="icon-close"
             className={styles.closeIcon}
@@ -50,7 +59,7 @@ export default function ConfirmModal({ isOpen, onConfirm, onCancel }: Props) {
           />
         </button>
 
-        <PageTitle className={styles.title} tag="h2">
+        <PageTitle className={styles.title} tag="h2" id="confirm-modal-title">
           Ви точно хочете вийти?
         </PageTitle>
 

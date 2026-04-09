@@ -7,12 +7,14 @@ interface AvatarProps {
   alt?: string;
   size?: number;
   className?: string;
+  isPriority?: boolean;
 }
 export const Avatar = ({
   src,
   alt = 'User avatar',
   size = 40,
   className = '',
+  isPriority = false,
 }: AvatarProps) => {
   return (
     <div className={`${styles.avatarWrapper} ${className}`}>
@@ -24,6 +26,7 @@ export const Avatar = ({
           height={size}
           sizes={`${size}px`}
           className={styles.avatarImage}
+          {...(isPriority ? { priority: true } : { loading: 'lazy' })}
         />
       ) : (
         <Icon
@@ -31,6 +34,8 @@ export const Avatar = ({
           width={size}
           height={size}
           className={styles.avatarSvg}
+          aria-hidden={undefined}
+          role="img"
           aria-label={alt}
         />
       )}

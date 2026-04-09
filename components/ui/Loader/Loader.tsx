@@ -3,7 +3,7 @@ import css from './Loader.module.css';
 
 export const Loader = () => {
   return (
-    <div className={css.loaderWrapper}>
+    <div className={css.loaderWrapper} role="status" aria-label="Завантаження">
       <Icon name="icon-eco" className={css.loader} />
     </div>
   );

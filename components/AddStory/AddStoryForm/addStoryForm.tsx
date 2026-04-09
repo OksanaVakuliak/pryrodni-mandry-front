@@ -184,7 +184,11 @@ export default function AddStoryForm() {
             <label className={css.label}>Обкладинка статті</label>
 
             <div {...getRootProps()}>
-              <input {...getInputProps()} ref={fileInputRef} />
+              <input
+                {...getInputProps()}
+                ref={fileInputRef}
+                aria-label="Завантажити зображення"
+              />
 
               <Image
                 className={css.image}
@@ -192,6 +196,7 @@ export default function AddStoryForm() {
                 alt="preview"
                 width={335}
                 height={223}
+                priority
               />
             </div>
 

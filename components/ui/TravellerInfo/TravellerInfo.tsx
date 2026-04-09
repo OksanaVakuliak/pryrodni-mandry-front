@@ -15,6 +15,7 @@ type Props = {
   children?: React.ReactNode;
   variant?: 'card' | 'profile';
   isLoading?: boolean;
+  isPriority?: boolean;
 };
 
 export default function TravellerInfo({
@@ -24,6 +25,7 @@ export default function TravellerInfo({
   children,
   variant = 'profile',
   isLoading = false,
+  isPriority = false,
 }: Props) {
   if (isLoading) {
     return (
@@ -45,7 +47,13 @@ export default function TravellerInfo({
   return (
     <div className={`${styles.wrapper} ${styles[variant]}`}>
       <div className={styles.avatarWrapper}>
-        <Avatar src={avatar} alt={name} size={130} className={styles.avatar} />
+        <Avatar
+          src={avatar}
+          alt={name}
+          size={130}
+          className={styles.avatar}
+          isPriority={isPriority}
+        />
       </div>
       <div className={styles.content}>
         <PageTitle className={styles.title} tag="h3">

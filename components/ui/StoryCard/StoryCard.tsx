@@ -13,9 +13,10 @@ import { useEffect } from 'react';
 
 type Props = {
   story: Story;
+  isPriority?: boolean;
 };
 
-export default function StoryCard({ story }: Props) {
+export default function StoryCard({ story, isPriority = false }: Props) {
   const { title, img, ownerId } = story;
 
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
@@ -38,14 +39,14 @@ export default function StoryCard({ story }: Props) {
 
   return (
     <div className={styles.card}>
-      <div className={styles.imageWrapper} tabIndex={-1} aria-hidden="true">
+      <div className={styles.imageWrapper} aria-hidden="true">
         <Image
           src={img}
           alt={title}
           fill
           sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
           className={styles.image}
-          loading="lazy"
+          {...(isPriority ? { priority: true } : { loading: 'lazy' })}
         />
       </div>
 

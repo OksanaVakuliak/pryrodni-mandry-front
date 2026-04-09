@@ -80,7 +80,16 @@
   height: auto;
 }
 
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
 @media (min-width: 768px) {
+  .skeletonGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .allLink {
     display: inline-flex;
     min-height: 48px;
@@ -100,6 +109,9 @@
 }
 
 @media (min-width: 1440px) {
+  .skeletonGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
   .section {
     padding: 72px 0;
   }
