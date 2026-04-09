@@ -1,12 +1,16 @@
 import instance from './api';
-import { Category } from '@/types/Category';
 import { TravellersResponse } from '@/types/traveller';
-import { User } from '@/types/Users';
-import { SaveResponse, StoriesResponse, Story } from '@/types/story';
+import {
+  SaveResponse,
+  StoriesResponse,
+  Story,
+  StoryCategory,
+} from '@/types/story';
 import {
   UpdateAvatarResponse,
   UpdateProfilePayload,
 } from '@/types/updateProfile';
+import { User } from '@/types/user';
 
 export const getProfileMyStories = async (
   page: number = 1,
@@ -45,7 +49,7 @@ export const clientApi = {
   },
   categories: {
     getAll: async () => {
-      const { data } = await instance.get<Category[]>('/categories');
+      const { data } = await instance.get<StoryCategory[]>('/categories');
       return data;
     },
   },
