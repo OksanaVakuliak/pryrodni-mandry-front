@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Реєстрація — Природні мандри',
     description: 'Долучайтесь до спільноти мандрівників Природні мандри.',
-    url: 'https://your-site.com/register',
+    url: 'https://pryrodni-mandry-front.vercel.app/register',
     siteName: 'Природні мандри',
     images: [
       {

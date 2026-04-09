@@ -5,7 +5,6 @@ import Join from '@/components/HomePage/Join/join';
 import PopularStories from '@/components/HomePage/PopularStories/PopularStories';
 import OurTravellers from '@/components/HomePage/OurTravellers/OurTravellers';
 
-
 export const metadata: Metadata = {
   title: 'Головна',
   description: 'Еко-мандрівки Україною та спільнота свідомих мандрівників',
@@ -13,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Головна',
     description: 'Еко-мандрівки Україною та спільнота свідомих мандрівників',
-    url: 'https://your-site.com',
+    url: 'https://pryrodni-mandry-front.vercel.app/',
     siteName: 'Природні мандри',
     images: [
       {

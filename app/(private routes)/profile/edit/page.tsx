@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Налаштування профілю — Природні мандри',
     description:
       'Керуйте своїми особистими даними, змінюйте аватар та оновлюйте пароль у спільноті Природні мандри.',
-    url: 'https://your-site.com/profile/edit',
+    url: 'https://pryrodni-mandry-front.vercel.app/profile/edit',
     siteName: 'Природні мандри',
     images: [
       {

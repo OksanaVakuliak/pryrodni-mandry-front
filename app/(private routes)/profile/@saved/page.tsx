@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Збережені історії — Природні мандри',
     description:
       'Колекція збережених історій подорожей, пригод та відкриттів у спільноті Природні мандри.',
-    url: 'https://your-site.com/profile',
+    url: 'https://pryrodni-mandry-front.vercel.app/profile/saved-stories',
     siteName: 'Природні мандри',
     images: [
       {
