@@ -1,9 +1,9 @@
 .title {
-    margin: 32px 0;
+  margin: 32px 0;
 }
 
 @media only screen and (min-width: 1440px) {
-    .title {
-        margin: 48px 0;
-    }
+  .title {
+    margin: 48px 0;
+  }
 }
