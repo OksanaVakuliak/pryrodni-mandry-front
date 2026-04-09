@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Створити нову історію — Природні мандри',
     description:
       'Опублікуйте власну історію подорожі та надихайте інших досліджувати світ разом із вами.',
-    url: 'https://your-site.com/stories/new',
+    url: 'https://pryrodni-mandry-front.vercel.app/stories/new',
     siteName: 'Природні мандри',
     images: [
       {

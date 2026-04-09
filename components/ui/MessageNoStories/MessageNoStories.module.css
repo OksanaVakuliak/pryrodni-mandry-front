@@ -27,7 +27,6 @@
   padding: 6px 12px;
 }
 
-/* 📱 Tablet */
 @media only screen and (min-width: 767px) {
   .wrapper {
     width: 533px;
@@ -46,7 +45,6 @@
   }
 }
 
-/* 🖥 Desktop */
 @media only screen and (min-width: 1440px) {
   .wrapper {
     width: 553px;

@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     const category = formData.get('category');
     const article = formData.get('article');
     const image = formData.get('img') as File | null;
-      
+
     const backendFormData = new FormData();
 
     if (title) backendFormData.append('title', String(title));
@@ -27,8 +27,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(data, { status: 201 });
   } catch (error) {
-      if (axios.isAxiosError(error)) {
-          
+    if (axios.isAxiosError(error)) {
       const status = error.response?.status ?? 500;
       const message = error.response?.data ?? { message: 'Error' };
 
@@ -37,7 +36,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { message: 'Internal server error' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -13,7 +13,6 @@
   transition: var(--transition-default);
 }
 
-/* SKY */
 .sky {
   position: absolute;
   inset: 0;
@@ -25,7 +24,6 @@
   background: linear-gradient(180deg, #0f1a14 0%, #1a2a22 100%);
 }
 
-/* SUN */
 .sun {
   position: absolute;
   width: 14px;
@@ -45,7 +43,6 @@
   opacity: 0;
 }
 
-/* MOON */
 .moon {
   position: absolute;
   width: 12px;
@@ -69,7 +66,6 @@
   opacity: 1;
 }
 
-/* TREE (SVG-like) */
 .tree {
   position: absolute;
   bottom: 4px;
@@ -93,7 +89,6 @@
   transition: 0.4s;
 }
 
-/* DARK TREE */
 .dark .tree {
   background: #cbd5e1;
 }

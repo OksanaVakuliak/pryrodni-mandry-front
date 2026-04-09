@@ -137,7 +137,6 @@
   border-color: var(--opacity-transparent);
 }
 
-/* ---- */
 .tertiary {
   background: var(--opacity-neutral-darkest-5);
   color: var(--color-scheme-2-text);

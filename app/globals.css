@@ -206,7 +206,6 @@ li {
   animation: shimmer 1.5s infinite linear;
 }
 
-/* Problem / Error page global styles (replaces app/problem.module.css to avoid unused preload) */
 .problem-wrapper {
   display: flex;
   align-items: center;

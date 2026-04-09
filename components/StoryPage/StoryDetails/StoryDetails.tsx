@@ -6,7 +6,6 @@ import { useEffect, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { PageTitle } from '@/components/ui/PageTitle/PageTitle';
 import { Icon } from '@/components/ui/Icon/Icon';
-import { Story } from '@/types/Stories';
 import instance from '@/lib/api/api';
 import { toast } from 'react-hot-toast';
 import { RecommendedStories } from '../RecomendedStories/RecommendedStories';
@@ -19,6 +18,7 @@ import {
   SkeletonCard,
   SkeletonPageTitle,
 } from '@/components/ui/Skeleton/Skeleton';
+import { Story } from '@/types/story';
 
 interface StoryPageProps {
   storyId: string;

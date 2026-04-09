@@ -2,7 +2,6 @@ import { Traveller } from '@/types/traveller';
 import { cookies } from 'next/headers';
 import instance from './api';
 import { AxiosResponse } from 'axios';
-import { serverApi } from '@/app/api/api';
 import { Story, StoriesResponse } from '@/types/story';
 
 export const getAuthHeaders = async (): Promise<Record<string, string>> => {

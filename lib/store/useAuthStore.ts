@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { User } from '@/types/Users';
+import { User } from '@/types/user';
 import { getMe, refresh } from '@/lib/api/clientApi';
 import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';

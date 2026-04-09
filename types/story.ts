@@ -36,3 +36,10 @@ export interface SaveResponse {
   savesCount: number;
   message: string;
 }
+
+export interface StoriesFilters {
+  category?: string;
+  sort: 'rate';
+  page: number;
+  perPage: number;
+}
