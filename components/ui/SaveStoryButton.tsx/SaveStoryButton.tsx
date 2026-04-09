@@ -46,7 +46,6 @@ export const SaveStoryButton = ({
 
     const prev = isSaved;
 
-    // ✅ optimistic update
     setStorySaved(storyId, !prev);
     updateStoryRate(storyId, prev ? -1 : +1);
 
@@ -61,7 +60,7 @@ export const SaveStoryButton = ({
         toast.success('Історію збережено!');
       }
     } catch (err) {
-      // 🔁 rollback
+       🔁 rollback
       setStorySaved(storyId, prev);
       updateStoryRate(storyId, prev ? +1 : -1);
 
