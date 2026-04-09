@@ -22,8 +22,17 @@ export default function ErrorWhileSavingModal({
 
   return (
     <div className={styles.overlay}>
-      <div className={styles.modal}>
-        <button onClick={onClose} className={styles.close}>
+      <div
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="error-modal-title"
+      >
+        <button
+          onClick={onClose}
+          className={styles.close}
+          aria-label="Закрити модальне вікно"
+        >
           <Icon
             name="icon-close"
             className={styles.closeIcon}
@@ -32,7 +41,7 @@ export default function ErrorWhileSavingModal({
           />
         </button>
 
-        <PageTitle className={styles.title} tag="h2">
+        <PageTitle className={styles.title} tag="h2" id="error-modal-title">
           Помилка під час збереження
         </PageTitle>
 

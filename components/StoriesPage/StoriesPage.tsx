@@ -141,8 +141,12 @@ const StoriesPage = () => {
             />
             <div className={css.showMoreContainer}>
               <StoriesGrid>
-                {paginatedStories.map((story) => (
-                  <StoryCard key={story._id} story={story} />
+                {paginatedStories.map((story, index) => (
+                  <StoryCard
+                    key={story._id}
+                    story={story}
+                    isPriority={index < 3}
+                  />
                 ))}
               </StoriesGrid>
             </div>

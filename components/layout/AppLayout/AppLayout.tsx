@@ -16,7 +16,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <AuthModalProvider>
       <div className={css.appWrapper}>
         {isAuthPage ? <AuthHeader /> : <Header />}
-        <main>{children}</main>
+        <main className={css.main}>{children}</main>
         {isAuthPage ? <AuthFooter /> : <Footer />}
       </div>
     </AuthModalProvider>

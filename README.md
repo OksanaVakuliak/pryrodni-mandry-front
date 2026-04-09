@@ -4,7 +4,7 @@
 еко-туризму в Україні. Проєкт побудований на **Next.js** з акцентом на
 продуктивність, доступність та mobile-first підхід.
 
----
+## ![Home page](image.png)
 
 ## 🛠 Технологічний стек
 
@@ -61,49 +61,51 @@
 ```text
 pryrodni-mandry-front/
 ├── app/
-│   ├── (auth)/                 # Маршрути реєстрації та входу
-│   ├── (private routes)/       # 🔒 Захищені маршрути
-│   ├── (public routes)/        # 🌍 Публічні маршрути
-│   ├── api/                    # ⚙️ Route Handlers (API проксі/ендпоінти)
+│   ├── (auth)/
+│   ├── (private routes)/
+│   ├── (public routes)/
+│   ├── api/
+│   ├── error.tsx
 │   ├── favicon.ico
-│   ├── globals.css             # Глобальні стилі та CSS змінні
-│   ├── layout.tsx              # Головний лейаут застосунку
-│   ├── loading.tsx             # Глобальний стан завантаження
-│   └── not-found.tsx           # Сторінка 404
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── loading.tsx
+│   └── not-found.tsx
 │
-├── components/                 # 🧩 React Компоненти
-│   ├── AddStory/               # Логіка та форми створення історії
-│   ├── HomePage/               # Секції головної сторінки (Hero, About тощо)
-│   ├── layout/                 # Структурні елементи (Header, Footer, AuthBar)
-│   ├── LoginPage/              # Компоненти сторінки входу
-│   ├── PersonalPage/           # Редагування профілю (дод. завдання)
-│   ├── ProfilePage/            # Компоненти профілю (Tabs, Stories)
-│   ├── RegisterPage/           # Компоненти сторінки реєстрації
-│   ├── StoriesPage/            # Фільтри та списки всіх історій
-│   ├── StoryPage/              # Деталі історії та рекомендовані статті
-│   ├── TravallersPage/         # Список усіх мандрівників
-│   ├── TravelerPage/           # Публічний профіль мандрівника
-│   └── ui/                     # 🎨 Базові UI-компоненти (Button, Input, PageTitle)
+├── components/
+│   ├── AddStory/
+│   ├── Errors/
+│   ├── HomePage/
+│   ├── layout/
+│   ├── LoginPage/
+│   ├── ProfilePage/
+│   ├── providers/
+│   ├── RegisterPage/
+│   ├── StoriesPage/
+│   ├── StoryPage/
+│   ├── TravelerPage/
+│   ├── TravellersPage/
+│   └── ui/
 │
-├── lib/                        # 📚 Бібліотеки та конфігурації
-│   ├── api/                    # Налаштування Axios інстансів
-│   └── store/                  # Керування станом (Zustand stores)
+├── lib/
+│   ├── api/
+│   └── store/
 │
-├── public/                     # 📂 Статичні файли
-├── schemas/                    # 🔍 Yup-схеми для валідації форм
-├── types/                      # 📝 TypeScript інтерфейси та типи
+├── public/
+├── schemas/
+├── types/
 │
-├── .env                        # Локальні змінні оточення
-├── .env.example                # Публічний шаблон змінних оточення
-├── .gitignore                  # Список ігнорування Git
-├── .prettierrc                 # Налаштування форматування коду
-├── eslint.config.mjs           # Конфігурація лінтера
-├── next-env.d.ts               # Типи Next.js середовища
-├── next.config.ts              # Основні налаштування Next.js
-├── package-lock.json           # Фіксація версій залежностей
-├── package.json                # Залежності та скрипти проєкту
-├── README.md                   # Документація проєкту
-└── tsconfig.json               # Налаштування TypeScript
+├── .env
+├── .env.example
+├── .gitignore
+├── .prettierrc
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── README.md
+└── tsconfig.json
 ```
 
 ---
@@ -202,6 +204,7 @@ npm install
 
 ```text
 NEXT_PUBLIC_API_URL=http://localhost:3000/api
+BACKEND_URL=http://localhost:4000/api
 ```
 
 ### 3. Запуск сервера розробки

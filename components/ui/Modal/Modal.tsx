@@ -26,10 +26,38 @@ export function Modal({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
+        return;
+      }
+
+      if (e.key === 'Tab' && wrapper.current) {
+        const focusable = wrapper.current.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
+
+    const focusable = wrapper.current?.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    if (focusable && focusable.length > 0) {
+      focusable[0].focus();
+    }
 
     return () => {
       document.body.style.position = '';
@@ -57,7 +85,13 @@ export function Modal({
 
   return (
     <div ref={overlay} className={css.backdrop} onClick={onClick}>
-      <div ref={wrapper} className={css.content}>
+      <div
+        ref={wrapper}
+        className={css.content}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Модальне вікно"
+      >
         <Button
           variant="secondary"
           onClick={onDismiss}

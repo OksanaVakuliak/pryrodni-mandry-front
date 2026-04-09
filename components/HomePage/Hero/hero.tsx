@@ -24,8 +24,9 @@ const Hero = () => {
           width={335}
           height={469}
           src="/Image/Hero.webp"
-          alt="mountains"
-          loading="eager"
+          alt="Краєвид гір України"
+          priority
+          fetchPriority="high"
         />
       </div>
     </section>
